@@ -6,8 +6,6 @@ vars {
   redirectUrl: http://localhost:53507/callback
   receiver-api: https://api-receiver.azurewebsites.net/api/v1
   currentdate: 
+  apiKey: {{process.env.apiKey}}
+  client_secret: {{process.env.client_secret}}
 }
-vars:secret [
-  apiKey,
-  client_secret
-]
