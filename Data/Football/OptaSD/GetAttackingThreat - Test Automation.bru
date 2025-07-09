@@ -1,0 +1,60 @@
+meta {
+  name: GetAttackingThreat - Test Automation
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/attackingthreat?matchId=4z5clcdm3s5tdlwd0z7hfh82c&eventTypes=goals
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 4z5clcdm3s5tdlwd0z7hfh82c
+  eventTypes: goals
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response has predictions array", function () {
+      const jsonData = res.getBody();
+      expect(jsonData).to.have.property("predictions");
+      expect(jsonData.predictions).to.be.an("array").that.is.not.empty;
+  });
+  
+  const schema = {
+    "type": "object",
+    "properties": {
+      "predictions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string" },
+            "description": { "type": "string" },
+            "minute": { "type": "integer" },
+            "periodId": { "type": "integer" },
+            "value": { "type": "number" },
+            "x": { "type": "number" },
+            "y": { "type": "number" }
+          },
+          "required": ["type", "description", "minute", "periodId", "value", "x", "y"]
+        }
+      }
+    },
+    "required": ["predictions"]
+  };
+  
+  test("Response matches schema", function () {
+  //   pm.response.to.have.jsonSchema(schema);
+  });
+  
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Remove project team filters
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{api}}/teammanagement/gameday/projects/49/teams/unassign
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  [
+      43
+  ]
+}

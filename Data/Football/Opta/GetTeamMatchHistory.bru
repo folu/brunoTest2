@@ -1,0 +1,23 @@
+meta {
+  name: GetTeamMatchHistory
+  type: http
+  seq: 48
+}
+
+get {
+  url: {{api}}/data/football/opta/team/form?competitionId=8&teamIds=t49&count=6&seasonId=2019&formDelimeter=/
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  teamIds: t49
+  count: 6
+  seasonId: 2019
+  formDelimeter: /
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

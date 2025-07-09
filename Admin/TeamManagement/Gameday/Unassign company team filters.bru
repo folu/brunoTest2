@@ -1,0 +1,21 @@
+meta {
+  name: Unassign company team filters
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{api}}/teammanagement/gameday/companies/05c079ef-951f-4da7-8137-637ca455715f/teams/unassign
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  [
+      1, 2, 3
+  ]
+}

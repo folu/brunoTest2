@@ -1,0 +1,20 @@
+meta {
+  name: GetWinProbability
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/winProbability?competitionId=nhl&eventId=2367460
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  eventId: 2367460
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

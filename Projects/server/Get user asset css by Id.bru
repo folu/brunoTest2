@@ -1,0 +1,15 @@
+meta {
+  name: Get user asset css by Id
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/server/projects/user/19c87481-5514-4d78-b1db-4d339950691a/assets/66093
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

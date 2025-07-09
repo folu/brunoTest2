@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerLeaders
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/player/leaders?categoryId=rushing-touchdowns&leagueId=38471
+  body: none
+  auth: none
+}
+
+params:query {
+  categoryId: rushing-touchdowns
+  leagueId: 38471
+  ~amountOfBatches: 2
+  ~teamId: 234
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

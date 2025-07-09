@@ -1,0 +1,21 @@
+meta {
+  name: GetTeamOpponents
+  type: http
+  seq: 50
+}
+
+get {
+  url: {{api}}/data/football/opta/team/opponents?teamIds=t14|t3&seasonId=2020&leagueId=8
+  body: none
+  auth: none
+}
+
+params:query {
+  teamIds: t14|t3
+  seasonId: 2020
+  leagueId: 8
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

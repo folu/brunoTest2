@@ -1,0 +1,19 @@
+meta {
+  name: GetRegistrationConfig
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/registration/config?clientName=05c079ef-951f-4da7-8137-637ca455715f
+  body: none
+  auth: none
+}
+
+params:query {
+  clientName: 05c079ef-951f-4da7-8137-637ca455715f
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

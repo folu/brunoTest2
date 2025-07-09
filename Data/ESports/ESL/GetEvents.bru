@@ -1,0 +1,23 @@
+meta {
+  name: GetEvents
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/esports/esl/events?series=ESL One&to=2021-07-16&from=2018-07-16
+  body: none
+  auth: none
+}
+
+params:query {
+  series: ESL One
+  to: 2021-07-16
+  from: 2018-07-16
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

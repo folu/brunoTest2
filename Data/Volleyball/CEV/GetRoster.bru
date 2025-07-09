@@ -1,0 +1,19 @@
+meta {
+  name: GetRoster
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/volleyball/cev/roster?teamId=10866
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 10866
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

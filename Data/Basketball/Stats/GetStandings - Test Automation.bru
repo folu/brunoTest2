@@ -1,0 +1,51 @@
+meta {
+  name: GetStandings - Test Automation
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{api}}/data/basketball/stats/standings?competitionId=nba
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nba
+  ~teamId: 5312
+  ~language: en
+  ~groupByDivision: true
+  ~groupByConference: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 2000ms", function () {
+      expect(res.getResponseTime()).to.be.below(2000);
+  });
+  
+  test("Response structure validation", () => {
+      const jsonData = res.getBody();
+      expect(jsonData).to.be.an("array");
+  
+      jsonData.forEach(team => {
+          if (team.hasOwnProperty("conferenceGamesBehind")) {
+              expect(team).to.have.property("conferenceGamesBehind").that.is.a("number");
+          }
+          if (team.hasOwnProperty("divisionGamesBehind")) {
+              expect(team).to.have.property("divisionGamesBehind").that.is.a("number");
+          }
+      });
+  });
+  
+  
+  
+  
+}

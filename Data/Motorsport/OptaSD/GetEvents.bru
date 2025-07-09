@@ -1,0 +1,19 @@
+meta {
+  name: GetEvents
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/motorsport/optasd/events?seriesId=1azyuw7z49bvlqjhyws5byp2i
+  body: none
+  auth: none
+}
+
+params:query {
+  seriesId: 1azyuw7z49bvlqjhyws5byp2i
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,24 @@
+meta {
+  name: GetAllMatches
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/cricket/opta/allmatches?feedType=c1m&startDate=2019-11-01&endDate=2024-07-30
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: c1m
+  startDate: 2019-11-01
+  endDate: 2024-07-30
+  ~tournamentId: 3362
+  ~filterByTeam: 874
+  ~groupByDate: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

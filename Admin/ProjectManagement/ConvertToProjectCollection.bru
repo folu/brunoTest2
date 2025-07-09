@@ -1,0 +1,25 @@
+meta {
+  name: ConvertToProjectCollection
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/project-management/project-suggestions?projectId=4187
+  body: none
+  auth: bearer
+}
+
+params:query {
+  projectId: 4187
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

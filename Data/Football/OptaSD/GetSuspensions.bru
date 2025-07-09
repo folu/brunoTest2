@@ -1,0 +1,25 @@
+meta {
+  name: GetSuspensions
+  type: http
+  seq: 37
+}
+
+get {
+  url: {{api}}/data/football/optasd/suspensions?tournamentId=1jt5mxgn4q5r6mknmlqv5qjh0&collectionPath=/collections/2023/football/english premier league/crests.json&date=2023-10-27
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1jt5mxgn4q5r6mknmlqv5qjh0
+  collectionPath: /collections/2023/football/english premier league/crests.json
+  date: 2023-10-27
+  ~seasonId: 2021
+  ~teamId: 4txjdaqveermfryvbfrr4taf7
+  ~startDate: 2023-10-23
+  ~endDate: 2023-11-30
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Invite Receiver Multiple
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{api}}/server/receiver/invite-multiple
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "InvitedByUserId": "00e20e52-f115-4b62-b89d-c39f071d5920",
+      "Emails" : [
+          "matthew.chamberlain@statsperform.com",
+          "matty@13strides.com"
+      ]
+  }
+}

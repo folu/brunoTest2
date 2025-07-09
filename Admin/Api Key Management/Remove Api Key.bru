@@ -1,0 +1,19 @@
+meta {
+  name: Remove Api Key
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{api}}/apikeymanagement?id=1
+  body: json
+  auth: none
+}
+
+params:query {
+  id: 1
+}
+
+headers {
+  Content-Type: application/json
+}

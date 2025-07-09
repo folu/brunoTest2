@@ -1,0 +1,21 @@
+meta {
+  name: GetMatch - Test Automation
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/baseball/stats/match?eventId=2174103&includeMatchEvents=true&includePlayerLeaderStats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2174103
+  includeMatchEvents: true
+  includePlayerLeaderStats: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

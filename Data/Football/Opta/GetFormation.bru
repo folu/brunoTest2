@@ -1,0 +1,21 @@
+meta {
+  name: GetFormation
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/football/opta/formation?eventId=g1069732&homeOrAway=home&leagueId=22
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: g1069732
+  homeOrAway: home
+  leagueId: 22
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

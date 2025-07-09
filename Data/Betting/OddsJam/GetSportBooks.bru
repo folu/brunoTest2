@@ -1,0 +1,21 @@
+meta {
+  name: GetSportBooks
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/sportsbooks?eventId=27927-82789-23-38&sport=football&league=NFL
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 27927-82789-23-38
+  sport: football
+  league: NFL
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

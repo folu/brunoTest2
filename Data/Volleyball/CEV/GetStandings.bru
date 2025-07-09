@@ -1,0 +1,19 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/volleyball/cev/standings?championshipId=6126
+  body: none
+  auth: none
+}
+
+params:query {
+  championshipId: 6126
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

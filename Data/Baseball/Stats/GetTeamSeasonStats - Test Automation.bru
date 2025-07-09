@@ -1,0 +1,65 @@
+meta {
+  name: GetTeamSeasonStats - Test Automation
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{api}}/data/baseball/stats/team/seasonstats?teamId=234&seasonId=2019
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 234
+  seasonId: 2019
+  ~divisionId: 13
+  ~teamTakeCount: 3
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  test("Response time is less than 2000ms", function () {
+      expect(res.getResponseTime()).to.be.below(2000);
+  });
+  
+  test("Response structure is valid", function () {
+      const jsonData = res.getBody();
+      expect(jsonData).to.have.property("team");
+      expect(jsonData).to.have.property("battingStats");
+      expect(jsonData).to.have.property("pitchingStats");
+      expect(jsonData).to.have.property("fieldingStats");
+      expect(jsonData.fieldingStats).to.be.an("array");
+  });
+  
+  test("Team details are correct", function () {
+      const team = res.getBody().team;
+      expect(team.name).to.eql("New York Yankees");
+      expect(team.abbreviation).to.eql("NYY");
+      expect(team.crest).to.match(/^https?:\/\/.+/);
+  });
+  
+  test("Batting stats are correct", function () {
+      const battingStats = res.getBody().battingStats;
+      expect(battingStats.battingAverage).to.eql(".267");
+      expect(battingStats.hits.total).to.eql(1493);
+      expect(battingStats.runsScored).to.eql(943);
+  });
+  
+  test("Fielding stats are consistent", function () {
+      const fieldingStats = res.getBody().fieldingStats;
+      fieldingStats.forEach(stat => {
+          expect(stat).to.have.property("position");
+          expect(stat).to.have.property("fieldingPercentage");
+          expect(stat).to.have.property("errors");
+      });
+  });
+  
+  
+}

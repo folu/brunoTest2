@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamMatchRadarStats
+  type: http
+  seq: 32
+}
+
+get {
+  url: {{api}}/data/football/opta/team/matchstats/radar?leagueId=8&seasonId=2019&eventId=g1059811
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 8
+  seasonId: 2019
+  eventId: g1059811
+  ~requestedStats: total_pass|open_play_pass|accurate_pass|attempts_conceded_ibox|touches|ball_recovery|duel_lost
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

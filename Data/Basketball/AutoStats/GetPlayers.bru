@@ -1,0 +1,24 @@
+meta {
+  name: GetPlayers
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/basketball/autostats/player/stats?scopeId=2463006&playerId=846639&tournamentId=fiba_asia
+  body: none
+  auth: none
+}
+
+params:query {
+  scopeId: 2463006
+  playerId: 846639
+  tournamentId: fiba_asia
+  ~language: en
+  ~groupByConference: true
+  ~scope: Game
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

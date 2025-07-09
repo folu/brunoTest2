@@ -1,0 +1,34 @@
+meta {
+  name: post
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{api}}/social/post/:networkId
+  body: json
+  auth: none
+}
+
+params:path {
+  networkId: 199BB571-0E5D-415F-A307-04A355589533
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+  
+      "ApplicationId": "B9727238-1B6B-4416-B6FB-FCFB35F22534",
+      "ConnectionId": "1F7D42CD-AD8C-447B-8710-D5AF3C6A2E6F",    
+      "UserId": "D0A3BABD-B8C1-4EEF-8BC9-EA308CC1CECE",
+      "NetworkId": "199BB571-0E5D-415F-A307-04A355589533",
+      "ItemId": "31494",
+      "Text": "testing social network stuff",
+      "FilenameOverride": "name8",
+      "Url": "https://playingsurface1.blob.core.windows.net/uploads/members/a635fb66-cf7d-4bdd-993d-920329610c4a/true-visions-goal--f88e56aa-2561-41bd-9692-bcdeb86d4c6d.png"
+  }
+}

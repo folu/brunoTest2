@@ -1,0 +1,15 @@
+meta {
+  name: RemoveUserFromCompany
+  type: http
+  seq: 21
+}
+
+delete {
+  url: {{api}}/teammanagement/companies/05c079ef-951f-4da7-8137-637ca455715f/users/9e2b6401-70bb-4846-a54f-9dff3e466903
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

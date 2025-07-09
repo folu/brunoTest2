@@ -1,0 +1,21 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/football/stats/matches?leagueId=fran&startDate=2020-02-06&endDate=2020-03-09
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: fran
+  startDate: 2020-02-06
+  endDate: 2020-03-09
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

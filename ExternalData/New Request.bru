@@ -1,0 +1,68 @@
+meta {
+  name: New Request
+  type: http
+  seq: 1
+}
+
+post {
+  url: 188.166.153.249:30827/api/v1/padata/uploadfeed/c20080212asc.xml
+  body: xml
+  auth: none
+}
+
+body:xml {
+  <HorseRacingCard>
+  	<Meeting status="Dormant" id="50687" country="England" course="Market Rasen" date="20120901">
+  		<AdvancedGoing>Good</AdvancedGoing>
+  		<Race trifecta="No" id="422373" date="20120901" time="1645+0100" raceType="Hurdle" trackType="Chambo" handicap="No" class="4" showcase="No" maxRunners="8" numFences="8">
+  			<Title>Garthwest Packaging Juvenile Maiden Hurdle</Title>
+  			<AddedMoney currency="GBP" amount="3900"/>
+  			<PenaltyValue currency="GBP" amount="2534"/>
+  			<Prizes currency="GBP">
+  				<Prize position="1" amount="2534"/>
+  				<Prize position="2" amount="744"/>
+  				<Prize position="3" amount="372"/>
+  				<Prize position="4" amount="186"/>
+  			</Prizes>
+  			<Eligibility type="3YO only"/>
+  			<Distance units="yards" value="3740" text="2m 1f 0y"/>
+  			<LastWinner year="2011" ran="8">
+  				<Horse id="1578979" name="Royal Bonsai" bred="GB">
+  					<Cloth number="7"/>
+  					<Age years="3"/>
+  					<Weight text="10 12" units="pounds" value="152"/>
+  					<Trainer id="9243" name="J J Quinn" nationality="GB" location="Malton"/>
+  					<Jockey id="17888" name="D C Costello"/>
+  					<StartingPrice>
+  						<Price numerator="13" denominator="8"/>
+  						<Favourite position="1" joint="1"/>
+  					</StartingPrice>
+  				</Horse>
+  			</LastWinner>
+  			<Horse id="1715889" name="Adili" bred="IRE">
+  				<Cloth number="1"/>
+  				<FormFigures figures="P" type="JumpSix"/>
+  				<LastRunDays type="Flat" days="46"/>
+  				<LastRunDays type="Jump" days="71"/>
+  				<Age years="3"/>
+  				<Weight text="10 12" units="pounds" value="152"/>
+  				<Trainer id="1995" name="B Ellison" nationality="GB" location="Malton"/>
+  				<Owner name="Brian Ellison &amp; Chris Lowther"/>
+  				<Jockey id="83305" name="Danny Cook"/>
+  				<JockeyColours filename="20120901mar164501.png" description="Black and white diamonds"/>
+  				<Colour type="ch"/>
+  				<Sex type="g"/>
+  				<Breeding type="Sire" name="Dubai Destination" bred="USA" yearBorn="1999"/>
+  				<Breeding type="Dam" name="Adirika" bred="IRE" yearBorn="1999"/>
+  				<Breeding type="DamSire" name="Miswaki" bred="USA" yearBorn="1978"/>
+  				<FoalDate date="20090304"/>
+  				<ForecastPrice>
+  					<Price numerator="8" denominator="1"/>
+  				</ForecastPrice>
+  				<Travelled units="miles" value="71"/>
+  			</Horse>
+  		</Race>
+  	</Meeting>
+  </HorseRacingCard>
+  
+}

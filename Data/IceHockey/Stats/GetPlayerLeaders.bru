@@ -1,0 +1,26 @@
+meta {
+  name: GetPlayerLeaders
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/player/leaders?competitionId=nhl&leaderCategoryId=1&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  leaderCategoryId: 1
+  seasonId: 2022
+  ~topCount: 5
+  ~trailing: true
+  ~eventTypeId: 1
+  ~teamId: 4954
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

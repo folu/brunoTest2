@@ -1,0 +1,35 @@
+meta {
+  name: Set Job Seen
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{api}}/server/videoV2/set-job-seen?userId=00e20e52-f115-4b62-b89d-c39f071d5920&jobId=9399cc65-4343-41e2-053e-08d7ca8beb03
+  body: json
+  auth: bearer
+}
+
+params:query {
+  userId: 00e20e52-f115-4b62-b89d-c39f071d5920
+  jobId: 9399cc65-4343-41e2-053e-08d7ca8beb03
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+  	"JobId": "898a629e-57a6-42da-040e-08d7bab096e6",
+  	"JobStatus": "1",
+  	"CompletedPercentage": "100",
+  	"VideoUri": "actualVideoUri.mp4",
+  	"JobTime": "0.3:52"
+  }
+}

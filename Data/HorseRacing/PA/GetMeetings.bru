@@ -1,0 +1,19 @@
+meta {
+  name: GetMeetings
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/equestrian/pa/meetings
+  body: none
+  auth: none
+}
+
+params:query {
+  ~year: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

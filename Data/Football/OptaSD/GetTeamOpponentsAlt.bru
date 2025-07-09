@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamOpponentsAlt
+  type: http
+  seq: 45
+}
+
+get {
+  url: {{api}}/data/football/optasd/team/opponents?teamIds=4dsgumo7d4zupm2ugsvm4zm4d&seasonId=2020&excludeToday=true&leagueId=80foo89mm28qjvyhjzlpwj28k
+  body: none
+  auth: none
+}
+
+params:query {
+  teamIds: 4dsgumo7d4zupm2ugsvm4zm4d
+  seasonId: 2020
+  excludeToday: true
+  leagueId: 80foo89mm28qjvyhjzlpwj28k
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

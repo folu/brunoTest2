@@ -1,0 +1,15 @@
+meta {
+  name: Get Parent ProjectId
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/server/projects/5264
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

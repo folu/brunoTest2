@@ -1,0 +1,19 @@
+meta {
+  name: Get Leaderboard
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/golf/europeantour/leaderboard?eventId=2022200
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2022200
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

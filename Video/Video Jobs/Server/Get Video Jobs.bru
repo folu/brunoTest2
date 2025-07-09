@@ -1,0 +1,30 @@
+meta {
+  name: Get Video Jobs
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/server/videoV2/get-video-jobs?userId=19c87481-5514-4d78-b1db-4d339950691a&jobId=FA369860-858D-4B89-ABB1-08DB4BDF5BBE&includeSeen=true
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  userId: 19c87481-5514-4d78-b1db-4d339950691a
+  jobId: FA369860-858D-4B89-ABB1-08DB4BDF5BBE
+  includeSeen: true
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  File: @file(/C:/Users/Matty/Desktop/D9J7E_RW4AA6dag.mp4)
+}

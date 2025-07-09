@@ -1,0 +1,15 @@
+meta {
+  name: Get project permissions
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/teammanagement/gameday/projectpermission/49
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

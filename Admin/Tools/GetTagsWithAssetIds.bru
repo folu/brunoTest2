@@ -1,0 +1,19 @@
+meta {
+  name: GetTagsWithAssetIds
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/admin-tools/tags-with-assetIds
+  body: none
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

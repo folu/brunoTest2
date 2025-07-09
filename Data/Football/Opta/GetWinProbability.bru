@@ -1,0 +1,22 @@
+meta {
+  name: GetWinProbability
+  type: http
+  seq: 57
+}
+
+get {
+  url: {{api}}/data/football/opta/winprobability?leagueId=8&eventId=g2292987&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 8
+  eventId: g2292987
+  seasonId: 2022
+  ~dataType: linechart
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

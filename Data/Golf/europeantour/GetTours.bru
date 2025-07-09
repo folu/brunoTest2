@@ -1,0 +1,19 @@
+meta {
+  name: GetTours
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/golf/europeantour/tours?year=2018
+  body: none
+  auth: none
+}
+
+params:query {
+  year: 2018
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

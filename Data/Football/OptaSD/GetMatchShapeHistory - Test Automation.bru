@@ -1,0 +1,68 @@
+meta {
+  name: GetMatchShapeHistory - Test Automation
+  type: http
+  seq: 41
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/shapehistory?eventId=eowx6acmnsk55eges18y5iec4&isInPoss=false&includeTimeline=true
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: eowx6acmnsk55eges18y5iec4
+  isInPoss: false
+  includeTimeline: true
+  ~isInVenue: true
+  ~isHome: false
+  ~filterTimeLineByPeriod: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Players have all required info", function () {
+      const coords = res.getBody().shapes[0].formation.formationCoords;
+  
+      coords.forEach(player => {
+          expect(player).to.have.property("playerId");
+          expect(player).to.have.property("playerKnownName");
+          expect(player).to.have.property("shirtNumber");
+          expect(player).to.have.property("position");
+          expect(player).to.have.property("x");
+          expect(player).to.have.property("y");
+      });
+  });
+  
+  test("xG and xGC are present if provided", function () {
+      const shape = res.getBody().shapes[0];
+      
+      if (shape.hasOwnProperty("xG")) {
+          expect(shape.xG).to.be.a("number");
+      }
+  
+      if (shape.hasOwnProperty("xGC")) {
+          expect(shape.xGC).to.be.a("number");
+      }
+  });
+  
+  test("No-duplicate player IDs in formationCoords", function () {
+      const coords = res.getBody().shapes[0].formation.formationCoords;
+      const ids = coords.map(p => p.playerId);
+      const uniqueIds = new Set(ids);
+      expect(uniqueIds.size).to.eql(ids.length);
+  });
+  
+  
+  test("Formation time range follows format", function () {
+      const range = res.getBody().shapes[0].formation.formationTimeRange;
+      expect(range).to.match(/^\d{1,2}-\d{1,2}$/);
+  });
+}

@@ -1,0 +1,19 @@
+meta {
+  name: GetOverview
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/server/admin/autopost/insights?matchId=g2367914
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: g2367914
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

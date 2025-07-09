@@ -1,0 +1,30 @@
+meta {
+  name: Update Video Job
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{api}}/server/videoV2/update-video-job
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+  	"JobId": "898a629e-57a6-42da-040e-08d7bab096e6",
+  	"JobStatus": "1",
+  	"CompletedPercentage": "100",
+  	"VideoUri": "actualVideoUri.mp4",
+  	"JobTime": "0.3:52"
+  }
+}

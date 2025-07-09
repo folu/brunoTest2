@@ -1,0 +1,20 @@
+meta {
+  name: GetSquads
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/cricket/opta/squads?feedType=c40w&teamIds=897|202|203
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: c40w
+  teamIds: 897|202|203
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,20 @@
+meta {
+  name: GetTeams
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/football/stats/teams?leagueId=39
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 39
+  ~eventId: 2130401
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Get user key access
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/apikeymanagement/assign?keytype=OAUTHKEY&keyid=postman
+  body: none
+  auth: none
+}
+
+params:query {
+  keytype: OAUTHKEY
+  keyid: postman
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}

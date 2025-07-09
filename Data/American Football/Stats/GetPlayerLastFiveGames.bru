@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerLastFiveGames
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/player/lastFiveGames?playerId=830517&seasonId=2023&language=en&leagueId=nfl
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 830517
+  seasonId: 2023
+  language: en
+  leagueId: nfl
+  ~collectionPath: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

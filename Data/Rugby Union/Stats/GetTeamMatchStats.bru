@@ -1,0 +1,23 @@
+meta {
+  name: GetTeamMatchStats
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/matchstats/player?matchId=20151210110&playerId=3241
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 20151210110
+  playerId: 3241
+  ~groupbydate: true
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

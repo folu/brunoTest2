@@ -1,0 +1,23 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/matches?sport=soccer&leagueId=England_-_Premier_League
+  body: none
+  auth: none
+}
+
+params:query {
+  sport: soccer
+  leagueId: England_-_Premier_League
+  ~startDate: 2023-10-01
+  ~endDate: 2023-11-01
+  ~isLive: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

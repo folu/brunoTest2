@@ -1,0 +1,19 @@
+meta {
+  name: GetSessionDetails
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/motorsport/optasd/sessionDetails?sessionId=afkbznwx2s5f6mzpw63h5m9gq
+  body: none
+  auth: none
+}
+
+params:query {
+  sessionId: afkbznwx2s5f6mzpw63h5m9gq
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

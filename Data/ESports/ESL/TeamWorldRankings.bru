@@ -1,0 +1,22 @@
+meta {
+  name: TeamWorldRankings
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/esports/esl/standings?roundId=14274&groupByGroupName=false
+  body: none
+  auth: none
+}
+
+params:query {
+  roundId: 14274
+  groupByGroupName: false
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

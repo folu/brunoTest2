@@ -1,0 +1,17 @@
+meta {
+  name: Auth Receiver Refresh Token
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{api}}/receiver/authreceiver?username=13strides&password=**&grantType=password
+  body: none
+  auth: none
+}
+
+params:query {
+  username: 13strides
+  password: **
+  grantType: password
+}

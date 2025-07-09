@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerSeasonStats
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/player/seasonStats?competitionId=nhl&playerId=831092&eventTypeId=1&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  playerId: 831092
+  eventTypeId: 1
+  seasonId: 2022
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

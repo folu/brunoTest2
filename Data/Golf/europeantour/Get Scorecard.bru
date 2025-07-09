@@ -1,0 +1,21 @@
+meta {
+  name: Get Scorecard
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/golf/europeantour/scorecard?eventId=2019060&playerId=31183&splitHoles=9
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2019060
+  playerId: 31183
+  splitHoles: 9
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

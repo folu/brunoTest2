@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchPassingGrid
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/match/passingGrid?eventId=2449057&leagueId=nfl
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2449057
+  leagueId: nfl
+  ~filterByPlayer: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

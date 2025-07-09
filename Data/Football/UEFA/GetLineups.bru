@@ -1,0 +1,21 @@
+meta {
+  name: GetLineups
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/football/uefa/match/lineups?tournamentId=1&matchId=2027047&language=en
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1
+  matchId: 2027047
+  language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

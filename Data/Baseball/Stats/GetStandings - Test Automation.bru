@@ -1,0 +1,64 @@
+meta {
+  name: GetStandings - Test Automation
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/baseball/stats/standings?competitionId=mlb&amountOfBatches=2&conferenceId=6
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: mlb
+  amountOfBatches: 2
+  conferenceId: 6
+  ~language: en
+  ~groupByDivision: true
+  ~groupByConference: true
+  ~targetTeam: 253
+  ~take: 10
+  ~teamIds: 234
+  ~seasonId: 2024
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  test("Response contains at least 1 batch with teams", function () {
+      const res = res.getBody();
+      expect(res).to.have.property('batches');
+      expect(res.batches).to.be.an('array').that.is.not.empty;
+      res.batches.forEach(batch => {
+          expect(batch).to.be.an('array').that.is.not.empty;
+      });
+  });
+  
+  test("All teams in batches belong to conference 6", function () {
+      const batches = res.getBody().batches;
+      batches.flat().forEach((team, i) => {
+          expect(team.conference, `Team at flat index ${i} is not in conference 6`).to.eql("6");
+      });
+  });
+  
+  test("Each batch is an array of teams", function () {
+      const batches = res.getBody().batches;
+      batches.forEach((batch, index) => {
+          expect(batch, `Batch at index ${index} is not an array`).to.be.an('array');
+      });
+  });
+  
+  test("Total number of teams across batches is greater than 0", function () {
+      const batches = res.getBody().batches;
+      const totalTeams = batches.reduce((acc, batch) => acc + batch.length, 0);
+      expect(totalTeams).to.be.greaterThan(0);
+  });
+  
+  
+}

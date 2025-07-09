@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerReceptionCharts
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/player/receptionChart?eventId=2656919&FilterByTeam=324&leagueId=nfl&minimumYards=10
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2656919
+  FilterByTeam: 324
+  leagueId: nfl
+  minimumYards: 10
+  ~filterByPlayer: 868199
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

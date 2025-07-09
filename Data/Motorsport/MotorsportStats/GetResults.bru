@@ -1,0 +1,24 @@
+meta {
+  name: GetResults
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/motorsport/motorsportstats/result?season=e11717ed-2179-4250-88ba-7c7a79f7c3c0&seriesId=a33f8b4a-2b22-41ce-8e7d-0aea08f0e176&sessionId=c1699106-802f-4d70-9734-253458c03ab3
+  body: none
+  auth: none
+}
+
+params:query {
+  season: e11717ed-2179-4250-88ba-7c7a79f7c3c0
+  seriesId: a33f8b4a-2b22-41ce-8e7d-0aea08f0e176
+  sessionId: c1699106-802f-4d70-9734-253458c03ab3
+  ~raceCode: THA
+  ~amountOfBatches: 3
+  ~limit: 3
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

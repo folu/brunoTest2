@@ -1,0 +1,44 @@
+meta {
+  name: GetMatch - Test Automation
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/basketball/stats/match?IncludePlayerStatLeaders=true&eventId=2878694&tournamentId=nba&teamId=25
+  body: none
+  auth: none
+}
+
+params:query {
+  IncludePlayerStatLeaders: true
+  eventId: 2878694
+  tournamentId: nba
+  teamId: 25
+  ~endDate: 2019-10-16
+  ~groupShotZone: true
+  ~includeMatchEvents: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  
+  const periods = res.getBody().periods;
+  
+  test("Root level periods are in correct numerical order", function () {
+      const periodNumbers = periods.map(p => p.period).filter(p => typeof p === "number");
+  
+      console.log("Root-level period numbers:", periodNumbers); //just for debugging purposes
+  
+      const isSorted = periodNumbers.every((num, i, arr) => i === 0 || arr[i - 1] <= num);
+      expect(isSorted).to.be.true;
+  });
+  
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Get User Session
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/teammanagement/user-session?userId=19C87481-5514-4D78-B1DB-4D339950691A
+  body: none
+  auth: none
+}
+
+params:query {
+  userId: 19C87481-5514-4D78-B1DB-4D339950691A
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

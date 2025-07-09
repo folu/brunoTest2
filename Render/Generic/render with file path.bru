@@ -1,0 +1,32 @@
+meta {
+  name: render with file path
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{render-api}}/generic/render/server/file
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "TemplatePath": "ps-api/psvideo/stories-circle-builder.handlebars",
+      "Width": 100,
+      "Height": 100,
+      "Style": null,
+      "Data": {
+          "width": 100,
+          "height": 100,
+          "crest": "https://playingsurface1.blob.core.windows.net/assets/collections/football/crests/thumbs/arsenal_t3.png",
+          "color": "#ca0538"
+      },
+      "ResponseType": 0
+  
+  }
+}

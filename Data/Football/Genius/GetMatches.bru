@@ -1,0 +1,21 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/football/opta/standings?leagueId=24&seasonId=2019
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 24
+  seasonId: 2019
+  ~amountOfBatches: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

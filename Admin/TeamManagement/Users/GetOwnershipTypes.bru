@@ -1,0 +1,15 @@
+meta {
+  name: GetOwnershipTypes
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{api}}/teammanagement/ownerships
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

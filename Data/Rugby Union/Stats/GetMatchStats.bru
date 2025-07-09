@@ -1,0 +1,23 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/match/stats?competitionId=503&seasonId=2021&groupbydate=true
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 503
+  seasonId: 2021
+  groupbydate: true
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

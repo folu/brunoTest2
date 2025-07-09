@@ -1,0 +1,22 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/matchstats?matchId=943571&includeMatchEvents=true
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 943571
+  includeMatchEvents: true
+  ~t: halftime
+  ~leagueId: 5
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

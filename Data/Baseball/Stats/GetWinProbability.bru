@@ -1,0 +1,20 @@
+meta {
+  name: GetWinProbability
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/data/baseball/stats/winProbability?seasonId=2022&eventId=2412973
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2022
+  eventId: 2412973
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

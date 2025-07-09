@@ -1,0 +1,20 @@
+meta {
+  name: GetMatch
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/cricket/opta/match?feedType=C2&matchId=50838
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: C2
+  matchId: 50838
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

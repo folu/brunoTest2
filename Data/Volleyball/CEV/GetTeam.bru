@@ -1,0 +1,19 @@
+meta {
+  name: GetTeam
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/volleyball/cev/team?competitionId=1316
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1316
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

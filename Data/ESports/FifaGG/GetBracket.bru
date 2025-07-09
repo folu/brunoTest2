@@ -1,0 +1,24 @@
+meta {
+  name: GetBracket
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/esports/fifagg/bracket?roundId=7f3953fc-3cc6-4190-8514-8f4df9537f3f&endDate=2022-07-16T19:00:00Z&startDate=2022-07-16T14:00:00Z&groupbyGameweek=true&batchSize=2
+  body: none
+  auth: none
+}
+
+params:query {
+  roundId: 7f3953fc-3cc6-4190-8514-8f4df9537f3f
+  endDate: 2022-07-16T19:00:00Z
+  startDate: 2022-07-16T14:00:00Z
+  groupbyGameweek: true
+  batchSize: 2
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

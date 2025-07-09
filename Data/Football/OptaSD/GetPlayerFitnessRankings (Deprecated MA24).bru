@@ -1,0 +1,24 @@
+meta {
+  name: GetPlayerFitnessRankings (Deprecated MA24)
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/matchfitness/rankings?eventId=7vz309dptrwaxgsuie6tt5g8a&stat=speedRuns&sortBy=desc
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 7vz309dptrwaxgsuie6tt5g8a
+  stat: speedRuns
+  sortBy: desc
+  ~seasonId: 2021
+  ~comeptitionId: 88uv51hj9upft1fpg33qbwob8
+  ~language: en-gb
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

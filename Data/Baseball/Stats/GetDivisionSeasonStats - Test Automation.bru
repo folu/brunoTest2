@@ -1,0 +1,79 @@
+meta {
+  name: GetDivisionSeasonStats - Test Automation
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{api}}/data/baseball/stats/division/team/seasonstats?divisionId=13&seasonId=2019&teamTakeCount=5
+  body: none
+  auth: none
+}
+
+params:query {
+  divisionId: 13
+  seasonId: 2019
+  teamTakeCount: 5
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 2000ms", function () {
+      expect(res.getResponseTime()).to.be.below(2000);
+  });
+  
+  test("Response structure is valid", function () {
+      const jsonData = res.getBody();
+      expect(jsonData).to.be.an("array"); 
+      jsonData.forEach(team => {
+      
+          expect(team).to.have.property("team");
+          expect(team).to.have.property("battingStats");
+          expect(team).to.have.property("pitchingStats");
+          expect(team).to.have.property("fieldingStats");
+     
+          expect(team.fieldingStats).to.be.an("array");
+      });
+  });
+  
+  test("Team details are correct", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(team => {
+          const teamDetails = team.team;
+          expect(teamDetails).to.have.property("id");
+          expect(teamDetails).to.have.property("name");
+          expect(teamDetails.crest).to.match(/^https?:\/\/.+/); 
+      });
+  });
+  
+  test("Batting stats are correct", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(team => {
+          const battingStats = team.battingStats;
+          expect(battingStats).to.have.property("battingAverage");
+          expect(battingStats).to.have.property("plateAppearances");
+          expect(battingStats.hits).to.have.property("total");
+          expect(battingStats.stolenBases).to.have.property("percentage");
+      });
+  });
+  
+  test("Fielding stats are consistent", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(team => {
+          team.fieldingStats.forEach(fielding => {
+              expect(fielding).to.have.property("position");
+              expect(fielding).to.have.property("fieldingPercentage");
+              expect(fielding).to.have.property("errors");
+          });
+      });
+  });
+  
+  
+}

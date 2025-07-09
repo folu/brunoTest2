@@ -1,0 +1,22 @@
+meta {
+  name: GetFormation
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/football/uefa/formation?eventId=2027079&homeOrAway=home&leagueId=1&language=en
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2027079
+  homeOrAway: home
+  leagueId: 1
+  language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

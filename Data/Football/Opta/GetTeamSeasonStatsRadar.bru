@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamSeasonStatsRadar
+  type: http
+  seq: 37
+}
+
+get {
+  url: {{api}}/data/football/opta/team/seasonstats/radar?leagueId=8&seasonId=2019&teamIds=t3|t7|t91&stats=total tackle pct ranking|total cross pct ranking|total offside ranking|total claim ranking|total goals conceded obox ranking|total tackle ranking|total won tackle ranking
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 8
+  seasonId: 2019
+  teamIds: t3|t7|t91
+  stats: total tackle pct ranking|total cross pct ranking|total offside ranking|total claim ranking|total goals conceded obox ranking|total tackle ranking|total won tackle ranking
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

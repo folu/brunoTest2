@@ -1,0 +1,21 @@
+meta {
+  name: Get Match Feed
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/gameday/match/feed?id=g2293113
+  body: none
+  auth: none
+}
+
+params:query {
+  id: g2293113
+  ~eventtypes: fulltime_expectedgoals
+}
+
+headers {
+  x-api-key: z1zByZ3ktKe2arO3vV
+  ~x-api-key: {{apiKey}}
+}

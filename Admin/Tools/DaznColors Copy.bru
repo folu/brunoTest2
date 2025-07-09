@@ -1,0 +1,25 @@
+meta {
+  name: DaznColors Copy
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/admin-tools/dazncolors?optasdId=6ftoiyso5ypxhtpzlfk55plka&optaId=5&seasonId=2019
+  body: none
+  auth: bearer
+}
+
+params:query {
+  optasdId: 6ftoiyso5ypxhtpzlfk55plka
+  optaId: 5
+  seasonId: 2019
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

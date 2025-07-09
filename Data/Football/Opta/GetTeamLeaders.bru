@@ -1,0 +1,26 @@
+meta {
+  name: GetTeamLeaders
+  type: http
+  seq: 46
+}
+
+get {
+  url: {{api}}/data/football/opta/team/leaders?leagueId=7&leaderCategoryId=total red card&seasonId=2024&reverseOrder=false
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 7
+  leaderCategoryId: total red card
+  seasonId: 2024
+  reverseOrder: false
+  ~timeframe: 
+  ~batchCount: 
+  ~amountOfBatches: 1
+  ~isLive: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

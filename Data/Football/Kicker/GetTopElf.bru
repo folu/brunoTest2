@@ -1,0 +1,22 @@
+meta {
+  name: GetTopElf
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/football/kicker/elevenoftheday?leagueId=3&seasonId=2021-22&matchDay=0&offset=0
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 3
+  seasonId: 2021-22
+  matchDay: 0
+  offset: 0
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

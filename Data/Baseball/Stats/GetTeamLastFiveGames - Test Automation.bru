@@ -1,0 +1,66 @@
+meta {
+  name: GetTeamLastFiveGames - Test Automation
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{api}}/data/baseball/stats/team/lastFiveGames?teamId=253&seasonId=2024&competitionId=mlb&eventTypeId=regular season
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 253
+  seasonId: 2024
+  competitionId: mlb
+  eventTypeId: regular season
+  ~collectionPath: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  
+  //currently divison info is not available - to confirm
+  test("Verify all required values from mock graphic are present", function () {
+      const jsonData = res.getBody();
+      const gameStats = jsonData.gameStats;
+  
+      //  team details
+      const team = jsonData.team;
+      expect(team.name).to.eql("Arizona Diamondbacks");
+      expect(team.crest).to.match(/^https?:\/\/.+/);
+  
+      // Validate game stats for each game
+      gameStats.forEach((game, index) => {
+          // Basic game details
+          expect(game).to.have.property("gameDate");
+          expect(game).to.have.property("opponent");
+          expect(game).to.have.property("gameScore");
+          expect(game).to.have.property("outcome");
+  
+          // defensive stats
+          const defence = game.defence;
+          expect(defence).to.have.property("errors");
+          expect(defence).to.have.property("fieldingPercentage");
+          expect(defence).to.have.property("doublePlays");
+          expect(defence).to.have.property("assists");
+          expect(defence).to.have.property("stolenBasesAllowed");
+          expect(defence).to.have.property("caughtStealing");
+          expect(defence).to.have.property("passedBalls");
+          expect(defence).to.have.property("wildPitches");
+      });
+  
+      test("Verify 5 games are available", function () {
+          expect(gameStats.length).to.eql(5);
+      });
+  });
+  
+}

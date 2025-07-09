@@ -1,0 +1,25 @@
+meta {
+  name: Upload content Copy
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://api.socialie.com/events/playing_surface/playingsurface
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:multipart-form {
+  file: https://playingsurface1.blob.core.windows.net/uploads/members/00e20e52-f115-4b62-b89d-c39f071d5920/efl-201920-ifollow-leasingcom-general--b437e7ef-1383-4a1c-9300-42d54401139a.png
+  source.sourceSystem: playingsurface
+  source.sourceSystemId: 856848
+  name: efl-201920-ifollow-leasingcom-general--b437e7ef-1383-4a1c-9300-42d54401139a.png
+  description: testing description
+  language: en
+  tags: aston villa,brighton,ifollow,live streaming
+}

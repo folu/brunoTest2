@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamForm
+  type: http
+  seq: 45
+}
+
+get {
+  url: {{api}}/data/football/opta/team/form?teamIds=t6&seasonId=2023&competitionId=8&leagueId=8
+  body: none
+  auth: none
+}
+
+params:query {
+  teamIds: t6
+  seasonId: 2023
+  competitionId: 8
+  leagueId: 8
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

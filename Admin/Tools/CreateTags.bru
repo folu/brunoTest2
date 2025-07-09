@@ -1,0 +1,19 @@
+meta {
+  name: CreateTags
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/admin-tools/create-tags
+  body: none
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

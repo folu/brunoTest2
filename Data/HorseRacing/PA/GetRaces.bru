@@ -1,0 +1,19 @@
+meta {
+  name: GetRaces
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/horseracing/pa/races?meetingId=20210316che
+  body: none
+  auth: none
+}
+
+params:query {
+  meetingId: 20210316che
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

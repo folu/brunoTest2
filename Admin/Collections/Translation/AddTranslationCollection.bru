@@ -1,0 +1,23 @@
+meta {
+  name: AddTranslationCollection
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{api}}/admin/collections/translations/football?collectionName=mattytest1
+  body: json
+  auth: bearer
+}
+
+params:query {
+  collectionName: mattytest1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

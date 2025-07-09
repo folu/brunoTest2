@@ -1,0 +1,26 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/handball/hbstatz/matches?groupByDate=true
+  body: none
+  auth: none
+}
+
+params:query {
+  groupByDate: true
+  ~startDate: 2019-03-06
+  ~endDate: 2019-03-09
+  ~seasonId: 2019
+  ~tournamentId: 8
+  ~endDate: 2020-05-01
+  ~startDate: 2019-05-01
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Referer: sajnahjdom/test
+}

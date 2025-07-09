@@ -1,0 +1,23 @@
+meta {
+  name: GetExpectedGoalsSeason
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/football/opta/expectedgoalsseason?seasonId=2021&leagueId=23&teamId=t186
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2021
+  leagueId: 23
+  teamId: t186
+  ~playerId: p246333
+  ~excludeBlockedShots: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

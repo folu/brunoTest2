@@ -1,0 +1,23 @@
+meta {
+  name: GetResult
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/motorsport/motogp/result?season=2019&seriesId=motogp&raceCode=THA&sessionShortName=FP1&amountOfBatches=3
+  body: none
+  auth: none
+}
+
+params:query {
+  season: 2019
+  seriesId: motogp
+  raceCode: THA
+  sessionShortName: FP1
+  amountOfBatches: 3
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

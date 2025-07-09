@@ -1,0 +1,19 @@
+meta {
+  name: GetCompanies
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/teammanagement/companies?agentId=00e20e52-f115-4b62-b89d-c39f071d5920
+  body: none
+  auth: none
+}
+
+params:query {
+  agentId: 00e20e52-f115-4b62-b89d-c39f071d5920
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

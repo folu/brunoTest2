@@ -1,0 +1,22 @@
+meta {
+  name: GetBestOdds
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/betting/oddschecker/best-odds?market=3569203141,3569203096,3569203343
+  body: none
+  auth: none
+}
+
+params:query {
+  market: 3569203141,3569203096,3569203343
+  ~orderDirection: desc
+  ~groupByMarketName: true
+  ~take: 5
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

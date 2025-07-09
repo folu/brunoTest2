@@ -1,0 +1,92 @@
+meta {
+  name: GetLineBreakingPasses - Test Automation
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/linebreakingpasses?leagueId=bam3j6qs1v79osuz7nwgy4rh0&eventId=5pker2jyf9eg76v5s1d3ipxxw&seasonId=2024&teamId=4dsgumo7d4zupm2ugsvm4zm4d&playerId=dydwiixiims98cx2iihfuf8wl&includePassFilters=true
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: bam3j6qs1v79osuz7nwgy4rh0
+  eventId: 5pker2jyf9eg76v5s1d3ipxxw
+  seasonId: 2024
+  teamId: 4dsgumo7d4zupm2ugsvm4zm4d
+  playerId: dydwiixiims98cx2iihfuf8wl
+  includePassFilters: true
+  ~isInVenue: true
+  ~lineBreakingPassFilter: oneline
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is acceptable", function () {
+      expect(res.getResponseTime()).to.be.below(4000); //3000 is failing 
+  });
+  
+  
+  test("Response structure is correct", function () {
+      const response = res.getBody();
+      expect(response).to.be.an("array");
+      
+      response.forEach(innerArray => {
+          expect(innerArray).to.be.an("array");
+  
+          innerArray.forEach(item => {
+              expect(item).to.have.property("id");
+              expect(item).to.have.property("typeId");
+              expect(item).to.have.property("type");
+              expect(item).to.have.property("x");
+              expect(item).to.have.property("y");
+              expect(item).to.have.property("period");
+              expect(item).to.have.property("player");
+  
+              if (item.player) {
+                  expect(item.player).to.have.property("id");
+                  expect(item.player).to.have.property("fullName");
+                  expect(item.player).to.have.property("captainText");
+              }
+          });
+      });
+  });
+  test("Correct number of line-breaking passes", function () {
+      const response = res.getBody();
+      expect(response.length).to.eql(8); 
+  });
+  
+  
+  //this is to check if player contins the expected id and fullName
+  test("Player details are correct", function () {
+      const response = res.getBody();
+      let playerFound = false;
+  
+      response.forEach(innerArray => {
+          if (Array.isArray(innerArray)) {
+              innerArray.forEach(item => {
+                  if (item.player) {
+                      playerFound = true; 
+                      expect(item.player.id).to.eql("fij46jr9fq43444gr1y8tl9l");
+                      expect(item.player.fullName).to.eql("G. Gudmundsson");
+                  }
+              });
+          }
+      });
+  
+      if (!playerFound) {
+          expect.fail("No player object found in the response");
+      }
+  });
+  
+  
+  
+}

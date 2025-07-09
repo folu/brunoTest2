@@ -1,0 +1,25 @@
+meta {
+  name: GetMatchEvents
+  type: http
+  seq: 27
+}
+
+get {
+  url: {{api}}/data/football/opta/match/events?leagueId=5&eventId=g2336384&seasonId=2022&teamId=t156&eventType=crosses
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 5
+  eventId: g2336384
+  seasonId: 2022
+  teamId: t156
+  eventType: crosses
+  ~playerId: p59966
+  ~feedType: f24
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,24 @@
+meta {
+  name: GetPlayerFitnessRankingsOV
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/matchfitness/rankingsOV?eventId=275s60cyrmxknu83lprwzmxhw&stat=minutesPlayed&filterByTeam=2khen2a38l2hkx33s73pehl6o&sortBy=asc
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 275s60cyrmxknu83lprwzmxhw
+  stat: minutesPlayed
+  filterByTeam: 2khen2a38l2hkx33s73pehl6o
+  sortBy: asc
+  ~isInVenue: true
+  ~roundValuesTo: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

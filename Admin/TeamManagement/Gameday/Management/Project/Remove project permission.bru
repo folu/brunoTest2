@@ -1,0 +1,21 @@
+meta {
+  name: Remove project permission
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{api}}/teammanagement/gameday/projectpermission/49/project/unlink
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  [
+      1, 2, 3
+  ]
+}

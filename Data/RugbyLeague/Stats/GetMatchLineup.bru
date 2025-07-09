@@ -1,0 +1,23 @@
+meta {
+  name: GetMatchLineup
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/rugbyleague/stats/match/lineups/?matchId=20221110110
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 20221110110
+  ~playerBatchCount: 8
+  ~take: 15
+  ~tournamentId: 1
+  ~seasonId: 2022
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,29 @@
+meta {
+  name: Get Assets By Admin Search
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/server/projects/assets?sortBy=title&sortDirection=desc
+  body: multipartForm
+  auth: none
+}
+
+params:query {
+  sortBy: title
+  sortDirection: desc
+  ~search: time
+  ~pageSize: 50
+  ~pageNumber: 2
+  ~projectId: 4
+  ~userId: 05D71A4E-0357-46E7-8C1A-04013CB65E8C
+  ~userId: 037571E0-36B1-4F31-973B-050951A27177
+  ~tags[data_provider]: stats
+  ~tags[social]: twitter
+  ~tags[groupby]: twitter,instagram
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

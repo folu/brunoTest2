@@ -1,0 +1,15 @@
+meta {
+  name: GetUser Copy
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{api}}/teammanagement/users/register
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

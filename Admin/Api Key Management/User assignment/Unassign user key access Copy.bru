@@ -1,0 +1,24 @@
+meta {
+  name: Unassign user key access Copy
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{api}}/apikeymanagement/assign
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "KeyType": "OAUTHKEY",
+  	"KeyId": "postman",
+      "UserId": "19C87481-5514-4D78-B1DB-4D339950691A"
+  }
+}

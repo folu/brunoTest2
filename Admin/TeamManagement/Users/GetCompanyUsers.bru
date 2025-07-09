@@ -1,0 +1,15 @@
+meta {
+  name: GetCompanyUsers
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/teammanagement/companies/05c079ef-951f-4da7-8137-637ca455715f/users
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

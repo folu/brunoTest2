@@ -1,0 +1,21 @@
+meta {
+  name: GetResults
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{api}}/data/cricket/opta/results?feedType=c9m&groupByDate=true
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: c9m
+  groupByDate: true
+  ~competitionId: 2443
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

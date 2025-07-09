@@ -1,0 +1,56 @@
+meta {
+  name: GetSeasonStandings - Test Automation
+  type: http
+  seq: 53
+}
+
+get {
+  url: {{api}}/data/football/opta/seasonstandings?leagueId=104&upToMatchDay=2&seasonId=2023&collectionPath=2023/football/french ligue 2/crests.json
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 104
+  upToMatchDay: 2
+  seasonId: 2023
+  collectionPath: 2023/football/french ligue 2/crests.json
+  ~amountOfBatches: 2
+  ~groupByTeams: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  let jsonData = res.getBody();
+  
+  test("Standings array is present", function (){
+      expect(jsonData.standings).to.be.an("array").that.is.not.empty;
+  
+  });
+  
+  //Team details (id, name, and crest) - from ACs
+  test("Team contains id, name, and crest", function () {
+      expect(res.getBody()).to.be.an('object');
+      expect(res.getBody().standings).to.be.an('array');
+      res.getBody().standings.forEach((standing) => {
+       expect(standing).to.have.property('matchDay');
+       standing.standings.forEach((teamStanding) => {
+          expect(teamStanding.team).to.be.an('object');
+          expect(teamStanding.team).to.have.property('id');
+          expect(teamStanding.team).to.have.property('name');
+          expect(teamStanding.team).to.have.property('crest');
+       });
+      });
+  
+   test("Request includes collectionpath parameter", function () {
+   expect(req.getUrl().query.has("collectionPath")).to.be.true;
+  });
+  });
+}

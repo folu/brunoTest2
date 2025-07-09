@@ -1,0 +1,19 @@
+meta {
+  name: GetMatchLogs
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/server/admin/autopost/insights/logs?matchId=g2407463
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: g2407463
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,20 @@
+meta {
+  name: ChampionshipCalandar
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://api.performfeeds.com/motorsportdata/championshipcalendar/1ckn0deyyj8b1vux5zq5xazab/active/authorized?_rt=b&_fmt=json
+  body: none
+  auth: none
+}
+
+params:query {
+  _rt: b
+  _fmt: json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,26 @@
+meta {
+  name: ProjectAssets
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/admin-tools/project-assets?projectId=4187&type=json
+  body: none
+  auth: bearer
+}
+
+params:query {
+  projectId: 4187
+  type: json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

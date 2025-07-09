@@ -1,0 +1,30 @@
+meta {
+  name: user/graphics
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/partners/history/user/graphics
+  body: none
+  auth: oauth2
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: https://localhost:44388/login
+  authorization_url: {{host}}/connect/authorize
+  access_token_url: {{host}}/connect/token
+  refresh_token_url: 
+  client_id: ps-client
+  client_secret: 340c18f1-4064-460f-afad-05db09b4b074
+  scope: offline_access graphics roles
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

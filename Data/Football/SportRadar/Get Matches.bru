@@ -1,0 +1,23 @@
+meta {
+  name: Get Matches
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/football/sportradar/matches?tournamentId=sr:tournament:215&startDate=2019-03-06&endDate=2019-03-09
+  body: none
+  auth: apikey
+}
+
+params:query {
+  tournamentId: sr:tournament:215
+  startDate: 2019-03-06
+  endDate: 2019-03-09
+}
+
+auth:apikey {
+  key: x-api-key
+  value: {{apiKey}}
+  placement: header
+}

@@ -1,0 +1,80 @@
+meta {
+  name: GetLeadTracker - Test Automation
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/basketball/stats/match/leadTracker?matchId=&eventId=2716820&competitionId=nba
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 
+  eventId: 2716820
+  competitionId: nba
+  ~dataType: barchart
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  const schema = {
+      "type": "object",
+      "properties": {
+          "quarters": {
+              "type": "object",
+              "properties": {
+                  "first": {
+                      "type": "object",
+                      "properties": {
+                          "period": { "type": "number" },
+                          "maxLeadPoint": { "type": "number" },
+                          "homeTeam": { "type": "object" },
+                          "awayTeam": { "type": "object" }
+                      }
+                  }
+              }
+          }
+      },
+      "required": ["quarters"]
+  };
+  
+  test("Response matches JSON Schema", function () {
+      const jsonData = res.getBody();
+      expect(tv4.validate(jsonData, schema)).to.be.true;
+  });
+  
+  
+  test("Biggest lead is correct", function () {
+      const jsonData = res.getBody();
+  
+      const biggestLeadDAL = jsonData.quarters.first.awayTeam.biggestLead;
+      const biggestLeadGSW = jsonData.quarters.first.homeTeam.biggestLead;
+  
+      expect(biggestLeadDAL.leadPoint).to.eql(19);
+      expect(biggestLeadDAL.time).to.eql("Q1 - 04:35");
+      expect(biggestLeadGSW.leadPoint).to.eql(1);
+      expect(biggestLeadGSW.time).to.eql("Q1 - 11:21");
+  });
+  
+  test("Lead tracker points are consistent", function () {
+      const jsonData = res.getBody();
+      const leadPoints = jsonData.quarters.first.leadTrackerDataPoints;
+  
+      leadPoints.forEach(point => {
+          expect(point.leadValue).to.be.a('number');
+          expect(point.type).to.be.oneOf(["homelead", "awaylead"]);
+          expect(point.x).to.be.above(-1);
+          expect(point.y).to.be.above(-1);
+      });
+  });
+  
+}

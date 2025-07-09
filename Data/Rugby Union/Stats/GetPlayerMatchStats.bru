@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerMatchStats
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/matchstats/player?matchId=20215031360&playerId=48191
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 20215031360
+  playerId: 48191
+  ~groupbydate: true
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

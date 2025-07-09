@@ -1,0 +1,19 @@
+meta {
+  name: GetPlayerDetails
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/volleyball/cev/roster/player?playerId=2443
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 2443
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

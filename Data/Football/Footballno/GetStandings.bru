@@ -1,0 +1,21 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/football/fotballdata/seasonstandings?leagueId=181688
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 181688
+  ~seasonId: 2020
+  ~amountOfBatches: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

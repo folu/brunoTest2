@@ -1,0 +1,23 @@
+meta {
+  name: GetMatchPenaltyHistory Copy
+  type: http
+  seq: 21
+}
+
+get {
+  url: {{api}}/data/football/opta/match/penaltyhistory?leagueId=5&seasonId=2022&playerId=p44989&eventId=g2326775
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 5
+  seasonId: 2022
+  playerId: p44989
+  eventId: g2326775
+  ~teamId: t43
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

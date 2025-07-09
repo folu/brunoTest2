@@ -1,0 +1,21 @@
+meta {
+  name: Upload Assets
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{api}}/locker/upload-assets
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:multipart-form {
+  files: @file(/C:/Users/matty/Pictures/logos/ps_logo_blue.jpg|/C:/Users/matty/Pictures/logos/ps_logo_grey.png|/C:/Users/matty/Pictures/logos/ps_logo_pink.jpg|/C:/Users/matty/Pictures/logos/ps_logo-256-js.jpg)
+  userId: 19c87481-5514-4d78-b1db-4d339950691a
+  parentId: 1874425
+}

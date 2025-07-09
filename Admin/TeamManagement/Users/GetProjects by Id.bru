@@ -1,0 +1,20 @@
+meta {
+  name: GetProjects by Id
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{api}}/teammanagement/projects/3455/users?userId=00e20e52-f115-4b62-b89d-c39f071d5920&groupToHierarchy=true
+  body: none
+  auth: none
+}
+
+params:query {
+  userId: 00e20e52-f115-4b62-b89d-c39f071d5920
+  groupToHierarchy: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

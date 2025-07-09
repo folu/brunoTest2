@@ -1,0 +1,21 @@
+meta {
+  name: GetBowlerHeatmap
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{api}}/data/cricket/opta/bowler/heatmap?innings=3&matchId=46036
+  body: none
+  auth: none
+}
+
+params:query {
+  innings: 3
+  matchId: 46036
+  ~bowlerId: 9855
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

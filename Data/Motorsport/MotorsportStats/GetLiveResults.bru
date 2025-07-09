@@ -1,0 +1,25 @@
+meta {
+  name: GetLiveResults
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/motorsport/motorsportstats/liveresult?season=9de96368-3bb0-4480-9284-fe38b117fb60&seriesId=a33f8b4a-2b22-41ce-8e7d-0aea08f0e176&sessionId=c976bad4-7b67-4775-9b90-870db0ff5582&limit=3&lap=2
+  body: none
+  auth: none
+}
+
+params:query {
+  season: 9de96368-3bb0-4480-9284-fe38b117fb60
+  seriesId: a33f8b4a-2b22-41ce-8e7d-0aea08f0e176
+  sessionId: c976bad4-7b67-4775-9b90-870db0ff5582
+  limit: 3
+  lap: 2
+  ~raceCode: THA
+  ~amountOfBatches: 3
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

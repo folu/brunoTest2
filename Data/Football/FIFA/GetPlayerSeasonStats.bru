@@ -1,0 +1,20 @@
+meta {
+  name: GetPlayerSeasonStats
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/football/fifa/player/seasonstats?seasonId=255711&playerId=228537
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 255711
+  playerId: 228537
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

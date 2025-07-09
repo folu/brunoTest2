@@ -1,0 +1,46 @@
+meta {
+  name: GetFeedOptions
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/inplay/options?userId=00E20E52-F115-4B62-B89D-C39F071D5920
+  body: json
+  auth: oauth2
+}
+
+params:query {
+  userId: 00E20E52-F115-4B62-B89D-C39F071D5920
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: application/json
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+body:json {
+  {
+  	"userId": "00E20E52-F115-4B62-B89D-C39F071D5920"
+  	
+  }
+}

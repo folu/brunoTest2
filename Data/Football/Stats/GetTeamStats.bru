@@ -1,0 +1,20 @@
+meta {
+  name: GetTeamStats
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/football/stats/team/stats?leagueId=safr&teamIds=7410|10472
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: safr
+  teamIds: 7410|10472
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

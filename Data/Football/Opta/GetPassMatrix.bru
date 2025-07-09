@@ -1,0 +1,25 @@
+meta {
+  name: GetPassMatrix
+  type: http
+  seq: 28
+}
+
+get {
+  url: {{api}}/data/football/opta/match/passingmatrix?leagueId=3&eventId=g2041912&seasonId=2020&teamId=t114&getShirtNumbers=true
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 3
+  eventId: g2041912
+  seasonId: 2020
+  teamId: t114
+  getShirtNumbers: true
+  ~feedtype: f27
+  ~includeSubs: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

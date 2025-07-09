@@ -1,0 +1,28 @@
+meta {
+  name: UserInvite
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{api}}/teammanagement/companies/05c079ef-951f-4da7-8137-637ca455715f/invite
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "CompanyId": "05c079ef-951f-4da7-8137-637ca455715f",
+      "Email": "mattytest@email.com",
+      "InvitedBy": "00e20e52-f115-4b62-b89d-c39f071d5920",
+      "Meta": {
+          "Roles": ["teammanager"],
+          "Permissions": [],
+          "ProjectIds": []
+      }
+  }
+}

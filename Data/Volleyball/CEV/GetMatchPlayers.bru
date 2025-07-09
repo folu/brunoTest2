@@ -1,0 +1,20 @@
+meta {
+  name: GetMatchPlayers
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/volleyball/cev/match/players?matchId=30873&teamId=10879
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 30873
+  teamId: 10879
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

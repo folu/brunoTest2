@@ -1,0 +1,248 @@
+meta {
+  name: render pdf
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{render-api}}/render/server/graphic
+  body: json
+  auth: oauth2
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+body:json {
+  {
+      "GraphicId": null,
+      "UserId": "19c87481-5514-4d78-b1db-4d339950691a",
+      "AssetId": 58988,
+      "AssetRevisionId": null,
+      "Input": [
+          {
+              "Text": "Match stats",
+              "Top": 17.0,
+              "Left": 87.0,
+              "Id": "Title",
+              "Type": 1
+          },
+          {
+              "Text": "Aston Villa",
+              "Top": 113.0,
+              "Left": 17.0,
+              "Id": "homeTeam",
+              "Type": 1
+          },
+          {
+              "Text": "V",
+              "Top": 100.0,
+              "Left": 150.0,
+              "Id": "v",
+              "Type": 1
+          },
+          {
+              "Text": "Fulham",
+              "Top": 112.0,
+              "Left": 190.0,
+              "Id": "awayTeam",
+              "Type": 1
+          },
+          {
+              "Items": [
+                  {}
+              ],
+              "Id": "seasons",
+              "Type": 3
+          },
+          {
+              "Items": [
+                  {}
+              ],
+              "Id": "matchesDDL",
+              "Type": 3
+          },
+          {
+              "Items": [
+                  {
+                      "name": "color1",
+                      "image": "/assets/toolkit/placeholders/blank.png"
+                  }
+              ],
+              "Id": "HomeBG",
+              "Type": 3
+          },
+          {
+              "Items": [
+                  {
+                      "name": "color1",
+                      "image": "/assets/toolkit/placeholders/blank.png"
+                  }
+              ],
+              "Id": "HomeBG2",
+              "Type": 3
+          },
+          {
+              "Items": [
+                  {
+                      "name": "color1",
+                      "image": "/assets/toolkit/placeholders/blank.png"
+                  }
+              ],
+              "Id": "AwayBG2",
+              "Type": 3
+          },
+          {
+              "Items": [
+                  {
+                      "name": "color1",
+                      "image": "/assets/toolkit/placeholders/blank.png"
+                  }
+              ],
+              "Id": "AwayBG",
+              "Type": 3
+          },
+          {
+              "Items": [
+                  {
+                      "id": "t3",
+                      "name": "Arsenal",
+                      "image": "https://playingsurface1.blob.core.windows.net/assets/collections/football/crests/aston%20villa_t7.png",
+                      "displayname": "Arsenal"
+                  }
+              ],
+              "Id": "HomeCrest",
+              "Type": 3
+          },
+          {
+              "Items": [
+                  {
+                      "id": "t3",
+                      "name": "Arsenal",
+                      "image": "https://playingsurface1.blob.core.windows.net/assets/collections/football/crests/custom/thesun/fulham_t54.png",
+                      "displayname": "Arsenal"
+                  }
+              ],
+              "Id": "AwayCrest",
+              "Type": 3
+          },
+          {
+              "Items": [
+                  {
+                      "LeftValue": "6",
+                      "Stat": "Shots on target",
+                      "RightValue": "5"
+                  },
+                  {
+                      "LeftValue": "12",
+                      "Stat": "Shots",
+                      "RightValue": "9"
+                  },
+                  {
+                      "LeftValue": "1",
+                      "Stat": "Blocked shots",
+                      "RightValue": "0"
+                  },
+                  {
+                      "LeftValue": "51%",
+                      "Stat": "Possession",
+                      "RightValue": "49%"
+                  },
+                  {
+                      "LeftValue": "511",
+                      "Stat": "Passes",
+                      "RightValue": "489"
+                  },
+                  {
+                      "LeftValue": "425",
+                      "Stat": "Completed passes",
+                      "RightValue": "413"
+                  },
+                  {
+                      "LeftValue": "7",
+                      "Stat": "Tackles",
+                      "RightValue": "15"
+                  },
+                  {
+                      "LeftValue": "4",
+                      "Stat": "Fouls conceded",
+                      "RightValue": "17"
+                  },
+                  {
+                      "LeftValue": "2",
+                      "Stat": "Corners",
+                      "RightValue": "2"
+                  }
+              ],
+              "Id": "Table",
+              "Type": 3
+          }
+      ],
+      "Metadata": {
+          "dataprovider": "opta"
+      },
+      "Options": {
+          "OutputPdf": true,
+          "PdfOutputFormat": 1,
+          "Dpi": 300,
+          "Background": null,
+          "Layout": 0,
+          "Theme": null,
+          "DynamicTheme": {
+              "Name": "dynamic theme",
+              "Source": [
+                  {
+                      "Items": {
+                          "name": "HomeBG__image",
+                          "background": "#500018ff"
+                      }
+                  },
+                  {
+                      "Items": {
+                          "name": "HomeBG2__image",
+                          "background": "#500018ff"
+                      }
+                  },
+                  {
+                      "Items": {
+                          "name": "AwayBG__image",
+                          "background": "#000000ff"
+                      }
+                  },
+                  {
+                      "Items": {
+                          "name": "AwayBG2__image",
+                          "background": "#000000ff"
+                      }
+                  }
+              ]
+          },
+          "OutputWidth": null,
+          "OutputHeight": null,
+          "CropOptions": null
+      },
+      "Debug": true,
+      "ScreenshotType": 1
+  }
+}

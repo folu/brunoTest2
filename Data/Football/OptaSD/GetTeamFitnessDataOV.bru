@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamFitnessDataOV
+  type: http
+  seq: 39
+}
+
+get {
+  url: {{api}}/data/football/optasd/team/matchfitnessOV?eventId=275s60cyrmxknu83lprwzmxhw&teamId=2khen2a38l2hkx33s73pehl6o
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 275s60cyrmxknu83lprwzmxhw
+  teamId: 2khen2a38l2hkx33s73pehl6o
+  ~isInVenue: true
+  ~roundValuesTo: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

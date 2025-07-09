@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerMatchStats
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/player/matchstats?playerId=419541&tournamentId=38471&teamId=3078&eventId=9226447
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 419541
+  tournamentId: 38471
+  teamId: 3078
+  eventId: 9226447
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

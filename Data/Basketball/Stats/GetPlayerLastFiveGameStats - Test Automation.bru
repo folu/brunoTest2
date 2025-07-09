@@ -1,0 +1,85 @@
+meta {
+  name: GetPlayerLastFiveGameStats - Test Automation
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{api}}/data/basketball/stats/player/lastFiveGames?competitionId=nba&playerId=1257420&language=en&seasonId=2024&eventTypeId=regular season
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nba
+  playerId: 1257420
+  language: en
+  seasonId: 2024
+  eventTypeId: regular season
+  ~NumberOfGame: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 3000ms", function () {
+      expect(res.getResponseTime()).to.be.below(3000);
+  });
+  
+  test("Player and team details are correct", function () {
+      const response = res.getBody();
+  
+      // Verify player details
+      const player = response.player;
+      expect(player, "Player data should be available").to.exist;
+      expect(player.id, "Player ID should be 1257420").to.equal("1257420");
+      expect(player.fullName, "Player name should be LaMelo Ball").to.equal("LaMelo Ball");
+      expect(player.firstName, "First name should be LaMelo").to.equal("LaMelo");
+      expect(player.lastName, "Last name should be Ball").to.equal("Ball");
+  
+      // Verify team details
+      const team = response.team;
+      expect(team, "Team data should be available").to.exist;
+      expect(team.name, "Team name should be Charlotte Hornets").to.equal("Charlotte Hornets");
+      expect(team.abbreviation, "Team abbreviation should be CHA").to.equal("CHA");
+      expect(team.location, "Team location should be Charlotte").to.equal("Charlotte");
+      expect(team.crest, "Crest URL should contain charlotte hornets_bsk5312.png").to.include("charlotte hornets_bsk5312.png");
+  });
+  
+  test("Game stats are valid for each game", function () {
+      const gameStats = res.getBody().gameStats;
+  
+      // Ensure game stats are available
+      expect(gameStats, "Game stats should be an array").to.be.an("array").that.is.not.empty;
+  
+      // Check stats for each game
+      gameStats.forEach((game, index) => {
+          expect(game.gameDate, `Game ${index + 1} should have a valid date`).to.exist;
+          expect(game.stats.forward.points, `Game ${index + 1} forward points should be valid`).to.be.a("number");
+          expect(game.stats.guard.steals, `Game ${index + 1} guard steals should be valid`).to.be.a("number");
+          expect(game.stats.guard.fieldGoalsPercentage, `Game ${index + 1} field goal percentage should be in valid format`).to.match(/^\d+(\.\d+)?%$/);
+      });
+  });
+  
+  test("Game averages are correct", function () {
+      const averages = res.getBody().gameStatsAverages;
+  
+      // Ensure averages are available
+      expect(averages, "Game averages should be available").to.exist;
+  
+      // Check forward averages
+      expect(averages.forward.points, "Forward average points should be valid").to.be.a("number");
+      expect(averages.forward.fieldGoalsPercentage, "Forward average field goal percentage should be valid").to.match(/^\d+(\.\d+)?%$/);
+  
+      // Check guard averages
+      expect(averages.guard.threePointPercentage, "Guard average three-point percentage should be valid").to.match(/^\d+(\.\d+)?%$/);
+  });
+  
+  //Ivalid player ID -> 400 Bad Request
+}

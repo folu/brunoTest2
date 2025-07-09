@@ -1,0 +1,28 @@
+meta {
+  name: GetUsageSummaryClubs
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/admin-tools/usage-summary-clubs/:projectId?date=2023-08-01
+  body: none
+  auth: bearer
+}
+
+params:query {
+  date: 2023-08-01
+  ~excludeCompanies: 13 strides,stats,test
+}
+
+params:path {
+  projectId: 5142
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

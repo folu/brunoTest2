@@ -1,0 +1,27 @@
+meta {
+  name: Upload video asset
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{api}}/video/upload?assetId=mattytest
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  assetId: mattytest
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  File: @file(/C:/Users/Matty/Desktop/D9J7E_RW4AA6dag.mp4)
+}

@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerSeasonStats
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/player/seasonstats?playerId=1378904&leagueId=cfb
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 1378904
+  leagueId: cfb
+  ~seasonId: 2023
+  ~t: 868199
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

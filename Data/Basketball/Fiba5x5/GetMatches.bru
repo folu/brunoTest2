@@ -1,0 +1,22 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/basketball/fiba5x5/matches?tournamentId=208212&seasonId=2020
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 208212
+  seasonId: 2020
+  ~endDate: 2019-10-16
+  ~groupByGroup: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,30 @@
+meta {
+  name: AddProjectCollection
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{api}}/admin/collections/projects/4174?name=testexternalcollection
+  body: json
+  auth: bearer
+}
+
+params:query {
+  name: testexternalcollection
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "CollectionName": "new collection test",
+      "Creator": "matty"
+  }
+}

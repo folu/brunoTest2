@@ -1,0 +1,20 @@
+meta {
+  name: Translate
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/localisation?word=shots&language=es
+  body: none
+  auth: none
+}
+
+params:query {
+  word: shots
+  language: es
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

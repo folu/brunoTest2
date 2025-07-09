@@ -1,0 +1,11 @@
+meta {
+  name: Send a test push notification to the logged in user
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{receiver-api}}/api/v1/Debug/send-test-notification
+  body: none
+  auth: none
+}

@@ -1,0 +1,19 @@
+meta {
+  name: DeleteRegistrationConfig
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{api}}/registration/config?clientName=stoyko-test
+  body: none
+  auth: none
+}
+
+params:query {
+  clientName: stoyko-test
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

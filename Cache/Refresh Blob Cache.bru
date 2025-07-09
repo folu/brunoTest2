@@ -1,0 +1,23 @@
+meta {
+  name: Refresh Blob Cache
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/cache/refresh-blob-cache
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~confirmDelete: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,11 @@
+meta {
+  name: Clears the notification token for the logged in user
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{receiver-api}}/Notifications/clear-notification-token
+  body: none
+  auth: none
+}

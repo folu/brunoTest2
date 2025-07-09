@@ -1,0 +1,21 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/volleyball/fivb/matches?tournamentId=1082&startDate=2018-05-10&endDate=2018-05-30
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1082
+  startDate: 2018-05-10
+  endDate: 2018-05-30
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

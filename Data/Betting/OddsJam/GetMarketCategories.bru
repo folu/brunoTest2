@@ -1,0 +1,21 @@
+meta {
+  name: GetMarketCategories
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/market-categories?id=point_spread&sport=football&leagueId=NFL
+  body: none
+  auth: none
+}
+
+params:query {
+  id: point_spread
+  sport: football
+  leagueId: NFL
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

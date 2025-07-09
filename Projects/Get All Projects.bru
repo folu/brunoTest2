@@ -1,0 +1,19 @@
+meta {
+  name: Get All Projects
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/admin/assets/list/storage/assets
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

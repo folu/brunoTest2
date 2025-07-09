@@ -1,0 +1,22 @@
+meta {
+  name: StatsToOptaSDBasketballMapping
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{api}}/admin-tools/stats-opta-basketball-mapping?optaId=d17vu4esjy1nwsl5glovzjvo4&statsId=euroleague&seasonId=2022&asInsert=true
+  body: none
+  auth: none
+}
+
+params:query {
+  optaId: d17vu4esjy1nwsl5glovzjvo4
+  statsId: euroleague
+  seasonId: 2022
+  asInsert: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

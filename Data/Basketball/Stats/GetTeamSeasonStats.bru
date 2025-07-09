@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamSeasonStats
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{api}}/data/basketball/stats/teams/seasonstats?tournamentId=cbk&teamId=1948&seasonid=2023
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: cbk
+  teamId: 1948
+  seasonid: 2023
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

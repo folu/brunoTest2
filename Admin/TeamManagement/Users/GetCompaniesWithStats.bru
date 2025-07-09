@@ -1,0 +1,19 @@
+meta {
+  name: GetCompaniesWithStats
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/teammanagement/companies/stats?userId=00e20e52-f115-4b62-b89d-c39f071d5920
+  body: none
+  auth: none
+}
+
+params:query {
+  userId: 00e20e52-f115-4b62-b89d-c39f071d5920
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamStats
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{api}}/data/basketball/stats/teams/seasonstats?tournamentId=nba&seasonId=2023&teamId=15
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: nba
+  seasonId: 2023
+  teamId: 15
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

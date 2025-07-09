@@ -1,0 +1,29 @@
+meta {
+  name: GetPlayerStatLeaders
+  type: http
+  seq: 39
+}
+
+get {
+  url: {{api}}/data/football/opta/player/leaders?leagueId=616&categoryId=total pass&includeRemainingStats=true&seasonId=2021&sortOrder=asc
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 616
+  categoryId: total pass
+  includeRemainingStats: true
+  seasonId: 2021
+  sortOrder: asc
+  ~teamId: t6244
+  ~timeframe: 
+  ~take: 5
+  ~locale: en-op
+  ~playerPosition: MidFielder
+  ~isLive: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

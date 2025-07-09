@@ -1,0 +1,19 @@
+meta {
+  name: ListTranslationCollections
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/admin/collections/translations/football/list
+  body: none
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,23 @@
+meta {
+  name: GetSquadPlayers
+  type: http
+  seq: 55
+}
+
+get {
+  url: {{api}}/data/football/opta/squadplayers?competitionId=8&seasonId=2019&teamId=t43&groupByTeam=true
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  seasonId: 2019
+  teamId: t43
+  groupByTeam: true
+  ~filterByPosition: full back
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Search translations
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/localisation/search?term=tackle
+  body: none
+  auth: none
+}
+
+params:query {
+  term: tackle
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

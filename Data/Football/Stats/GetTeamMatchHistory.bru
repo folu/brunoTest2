@@ -1,0 +1,21 @@
+meta {
+  name: GetTeamMatchHistory
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/football/stats/team/form?leagueId=safr&teamIds=7409|7410&count=5
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: safr
+  teamIds: 7409|7410
+  count: 5
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Get
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/locker?userId=00e20e52-f115-4b62-b89d-c39f071d5920
+  body: none
+  auth: bearer
+}
+
+params:query {
+  userId: 00e20e52-f115-4b62-b89d-c39f071d5920
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

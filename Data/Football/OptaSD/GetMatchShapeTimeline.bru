@@ -1,0 +1,22 @@
+meta {
+  name: GetMatchShapeTimeline
+  type: http
+  seq: 42
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/shapetimeline?eventId=9hylklqfuaia7h3kucopc2ej8&isInVenue=true&isHome=false&isInPoss=true
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 9hylklqfuaia7h3kucopc2ej8
+  isInVenue: true
+  isHome: false
+  isInPoss: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

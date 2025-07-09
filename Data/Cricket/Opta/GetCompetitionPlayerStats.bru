@@ -1,0 +1,20 @@
+meta {
+  name: GetCompetitionPlayerStats
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/cricket/opta/competitionstats/cricketer?playerId=11718&competitionId=2940
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 11718
+  competitionId: 2940
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

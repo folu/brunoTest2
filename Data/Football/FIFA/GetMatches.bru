@@ -1,0 +1,32 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/football/fifa/matches?seasonId=283693&tournamentId=516&endDate=2023-05-01&groupByDate=true&startDate=2021-09-05&batchSize=2&language=en-GB&groupByDate=true&groupOrderDirection=asc
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 283693
+  tournamentId: 516
+  endDate: 2023-05-01
+  groupByDate: true
+  startDate: 2021-09-05
+  batchSize: 2
+  language: en-GB
+  groupByDate: true
+  groupOrderDirection: asc
+  ~startDate: 2019-03-06
+  ~endDate: 2019-03-09
+  ~tournamentStage: 282687
+  ~: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Referer: sajnahjdom/test
+}

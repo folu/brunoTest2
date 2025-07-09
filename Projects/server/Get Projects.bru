@@ -1,0 +1,15 @@
+meta {
+  name: Get Projects
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/server/projects
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

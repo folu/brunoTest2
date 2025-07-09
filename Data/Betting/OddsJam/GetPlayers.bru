@@ -1,0 +1,21 @@
+meta {
+  name: GetPlayers
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/players?sport=football&leagueId=NFL&teamId=727B3B3C78E8
+  body: none
+  auth: none
+}
+
+params:query {
+  sport: football
+  leagueId: NFL
+  teamId: 727B3B3C78E8
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,24 @@
+meta {
+  name: GetSeasonPlayTimeRanking
+  type: http
+  seq: 34
+}
+
+get {
+  url: {{api}}/data/football/optasd/season/playtimeranking?tournamentId=emq4j56v2j9tf3jgzfksznms4&seasonId=2020&collectionPath=/collections/2021/football/english premier league/crests.json&requestedStat=numberOfDelaysRestartedWithKickOffGoal&direction=desc
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: emq4j56v2j9tf3jgzfksznms4
+  seasonId: 2020
+  collectionPath: /collections/2021/football/english premier league/crests.json
+  requestedStat: numberOfDelaysRestartedWithKickOffGoal
+  direction: desc
+  ~teamid: 2021-08-01
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

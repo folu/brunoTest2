@@ -1,0 +1,36 @@
+meta {
+  name: DownloadImage
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/AssetProvider/22FFF094-FF53-4758-A804-4CB96837A21F/downloadImage?imageId=1188083641&userId=00e20e52-f115-4b62-b89d-c39f071d5920&ApplicationId=B9727238-1B6B-4416-B6FB-FCFB35F22534
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  imageId: 1188083641
+  userId: 00e20e52-f115-4b62-b89d-c39f071d5920
+  ApplicationId: B9727238-1B6B-4416-B6FB-FCFB35F22534
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

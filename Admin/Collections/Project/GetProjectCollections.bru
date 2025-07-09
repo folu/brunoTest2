@@ -1,0 +1,19 @@
+meta {
+  name: GetProjectCollections
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/admin/collections/projects/4174/list
+  body: none
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

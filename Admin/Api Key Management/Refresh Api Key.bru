@@ -1,0 +1,28 @@
+meta {
+  name: Refresh Api Key
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{api}}/apikeymanagement/refresh?id=postman&type=OAUTHKEY
+  body: json
+  auth: none
+}
+
+params:query {
+  id: postman
+  type: OAUTHKEY
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "Type": "OAUTHKEY",
+  	"Id": "postman"
+  }
+}

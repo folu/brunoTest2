@@ -1,0 +1,20 @@
+meta {
+  name: Metrics
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/locker/users/metrics
+  body: none
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+}
+
+auth:bearer {
+  token: {{token}}
+}

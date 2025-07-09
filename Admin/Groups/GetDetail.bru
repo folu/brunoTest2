@@ -1,0 +1,26 @@
+meta {
+  name: GetDetail
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/admin/groups/61d257ad-3b91-43d2-b939-5a839830fbed
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "UserId": "19c87481-5514-4d78-b1db-4d339950691a",
+      "Id": "g2363570",
+      "Language": "en",
+      //"EventTypes": "yellow",
+      "GamedayProjectId": 160,
+      "VideoTemplateId": 450
+  }
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Get Tournaments
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/golf/europeantour/tournaments?year=2018
+  body: none
+  auth: none
+}
+
+params:query {
+  year: 2018
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

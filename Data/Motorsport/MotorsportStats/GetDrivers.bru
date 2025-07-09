@@ -1,0 +1,19 @@
+meta {
+  name: GetDrivers
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/motorsport/motorsportstats/drivers?seasonId=e11717ed-2179-4250-88ba-7c7a79f7c3c0
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: e11717ed-2179-4250-88ba-7c7a79f7c3c0
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

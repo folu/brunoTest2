@@ -1,0 +1,42 @@
+meta {
+  name: GetAllProjectMetrics
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/teammetrics/get-all-project-metrics?userId=a635fb66-cf7d-4bdd-993d-920329610c4a&startDate=2025-01-01&endDate=2025-01-31
+  body: json
+  auth: oauth2
+}
+
+params:query {
+  userId: a635fb66-cf7d-4bdd-993d-920329610c4a
+  startDate: 2025-01-01
+  endDate: 2025-01-31
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+  ~Cache-Control: no-store
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

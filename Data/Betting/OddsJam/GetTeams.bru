@@ -1,0 +1,20 @@
+meta {
+  name: GetTeams
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/teams?sport=football&leagueId=NFL
+  body: none
+  auth: none
+}
+
+params:query {
+  sport: football
+  leagueId: NFL
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

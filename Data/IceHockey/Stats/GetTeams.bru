@@ -1,0 +1,23 @@
+meta {
+  name: GetTeams
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/teams?competitionId=nhl&seasonId=2022&collectionPath=/collections/projects/5264/icehockeytest.json
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  seasonId: 2022
+  collectionPath: /collections/projects/5264/icehockeytest.json
+  ~teamId: 4954
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

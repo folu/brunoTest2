@@ -1,0 +1,23 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/cricket/opta/match/stats?leagueId=C2&eventId=46036&includeMatchEvents=true
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: C2
+  eventId: 46036
+  includeMatchEvents: true
+  ~teamId: 10470g1063790
+  ~leagueId: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

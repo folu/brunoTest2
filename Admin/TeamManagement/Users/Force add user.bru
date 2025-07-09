@@ -1,0 +1,22 @@
+meta {
+  name: Force add user
+  type: http
+  seq: 22
+}
+
+post {
+  url: {{api}}/teammanagement/companies/05c079ef-951f-4da7-8137-637ca455715f/force-add
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "Email": "matthew.chamberlain@statsperform.com",
+      "InitialProjectIds": [ 3770 ]
+  }
+}

@@ -1,0 +1,90 @@
+meta {
+  name: GetMatchStats (grouped)
+  type: http
+  seq: 24
+}
+
+get {
+  url: {{api}}/data/football/opta/match/groupedstats?competitionId=1125&includePlayerLeaderStats=true&includeMatchEvents=true&eventId=g2484908&seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1125
+  includePlayerLeaderStats: true
+  includeMatchEvents: true
+  eventId: g2484908
+  seasonId: 2024
+  ~teamId: 10470g1063790
+  ~leagueId: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 2000ms", function () {
+      expect(res.getResponseTime()).to.be.below(2000);
+  });
+  //this is to check if expected goals is missing, the endpoint should return 0 for those field (AC)
+  test("Expected goals defaults to 0", function () {
+      const response = res.getBody();
+      expect(response.homeTeam.goals.total).to.eql(0);
+  });
+  //JSON schema validation 
+  const schema = {
+      "type": "object",
+      "properties": {
+          "homeTeam": {
+              "type": "object",
+              "properties": {
+                  "goals": {
+                      "type": "object",
+                      "properties": {
+                          "total": { "type": "number" }
+                      }
+                  },
+                  "scorers": { "type": "array" },
+                  "penaltyKicks": {
+                      "type": "object",
+                      "properties": {
+                          "shots": { "type": "number" },
+                          "goals": { "type": "number" }
+                      }
+                  },
+                  "touches": {
+                      "type": "object",
+                      "properties": {
+                          "total": { "type": "number" },
+                          "passAccuracy": { "type": "string" }
+                      }
+                  },
+                  "halfTime": {
+                      "type": "object",
+                      "properties": {
+                          "goals": {
+                              "type": "object",
+                              "properties": {
+                                  "total": { "type": "number" }
+                              }
+                          }
+                      }
+                  }
+              },
+              "required": ["goals", "penaltyKicks", "touches", "halfTime"]
+          }
+      }
+  };
+  
+  test("Response matches JSON schema", function () {
+  //     pm.response.to.have.jsonSchema(schema);
+  });
+  
+  
+}

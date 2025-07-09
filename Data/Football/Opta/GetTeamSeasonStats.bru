@@ -1,0 +1,21 @@
+meta {
+  name: GetTeamSeasonStats
+  type: http
+  seq: 52
+}
+
+get {
+  url: {{api}}/data/football/opta/team/stats?leagueId=8&seasonId=2019&teamIds=t90
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 8
+  seasonId: 2019
+  teamIds: t90
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

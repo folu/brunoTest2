@@ -1,0 +1,21 @@
+meta {
+  name: GetTeams
+  type: http
+  seq: 44
+}
+
+get {
+  url: {{api}}/data/football/opta/teams?seasonId=2020&competitionId=8
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2020
+  competitionId: 8
+  ~teamId: t90
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,49 @@
+meta {
+  name: GetMatches - Test Automation
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/football/optasd/matches?tournamentId=8l3o9v8n8tva0bb2cds2dhatw&seasonId=2020&startDate=2021-08-01&language=en-op&collectionPath=/collections/2021/football/english premier league/crests.json
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 8l3o9v8n8tva0bb2cds2dhatw
+  seasonId: 2020
+  startDate: 2021-08-01
+  language: en-op
+  collectionPath: /collections/2021/football/english premier league/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test('Status code is 200', function () {
+      expect(res.getStatus()).to.equal(200);
+  })
+  
+  test('Response is an array', function () {
+      expect(res.getBody()).to.be.an('array').that.is.not.empty;
+  })
+  
+  test("Each team has name, id, crest and brand info", function () {
+      expect(res.getBody()).to.be.an("array").that.is.not.empty;
+      res.getBody().forEach(match => {
+          ["homeTeam", "awayTeam", "targetTeam"].forEach(teamKey => {
+              const team = match[teamKey];
+              expect(team).to.have.property("name");
+              expect(team).to.have.property("id");
+              expect(team).to.have.property("crest");
+              expect(team).to.have.property("brand");
+              expect(team.brand).to.have.all.keys("shortname", "displayname", "abbreviation", "crest");
+          });
+      });
+  });
+  
+  
+}

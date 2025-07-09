@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchInsights
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/basketball/stats/match/insights?matchId=2484889
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 2484889
+  ~endDate: 2019-10-16
+  ~tournamentId: cbk
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

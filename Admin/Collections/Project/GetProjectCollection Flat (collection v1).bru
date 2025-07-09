@@ -1,0 +1,23 @@
+meta {
+  name: GetProjectCollection Flat (collection v1)
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/admin/collections/projects/5264/flat?name=crests
+  body: none
+  auth: bearer
+}
+
+params:query {
+  name: crests
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,21 @@
+meta {
+  name: GetPlayerSeasonStats
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/basketball/autostats/player/seasonstats?playerId=1391531&tournamentId=fiba_asia
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 1391531
+  tournamentId: fiba_asia
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

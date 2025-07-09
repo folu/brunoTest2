@@ -1,0 +1,20 @@
+meta {
+  name: GetUsersWithSameEmail
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/admin/user/management/users-with-same-email?userId=auth0|65f4329ac0912636c1de50fa&email=matty@13strides.com
+  body: none
+  auth: none
+}
+
+params:query {
+  userId: auth0|65f4329ac0912636c1de50fa
+  email: matty@13strides.com
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

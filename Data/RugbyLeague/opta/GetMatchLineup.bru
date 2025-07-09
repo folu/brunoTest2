@@ -1,0 +1,23 @@
+meta {
+  name: GetMatchLineup
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/rugbyleague/opta/match/lineups/?matchId=127166&tournamentId=1&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 127166
+  tournamentId: 1
+  seasonId: 2022
+  ~playerBatchCount: 8
+  ~take: 15
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

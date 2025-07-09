@@ -1,0 +1,21 @@
+meta {
+  name: GetSquadplayers
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/cricket/opta/squadplayers?feedType=c40m&teamIds=10|5|4
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: c40m
+  teamIds: 10|5|4
+  ~groupByTeam: false
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

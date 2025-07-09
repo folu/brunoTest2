@@ -1,0 +1,26 @@
+meta {
+  name: GetMatchTouches
+  type: http
+  seq: 43
+}
+
+get {
+  url: {{api}}/data/football/opta/match/touches?leagueId=5&eventId=g2336384&seasonId=2022&teamId=t149&feedType=f24&opponentBoxOnly=true
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 5
+  eventId: g2336384
+  seasonId: 2022
+  teamId: t149
+  feedType: f24
+  opponentBoxOnly: true
+  ~playerId: p59966
+  ~shotsOnly: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

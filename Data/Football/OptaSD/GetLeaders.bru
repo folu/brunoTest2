@@ -1,0 +1,23 @@
+meta {
+  name: GetLeaders
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/leaders?leagueId=80foo89mm28qjvyhjzlpwj28k&seasonId=2021&locale=ru-ru&categoryId=Goals&collectionPath=custom/football/okko/crests.json
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 80foo89mm28qjvyhjzlpwj28k
+  seasonId: 2021
+  locale: ru-ru
+  categoryId: Goals
+  collectionPath: custom/football/okko/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

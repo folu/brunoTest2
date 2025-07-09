@@ -1,0 +1,59 @@
+meta {
+  name: render graphic
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{render-api}}/render/server/graphic
+  body: json
+  auth: oauth2
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+body:json {
+  {
+      "assetId": 26733,
+      "userId": "00e20e52-f115-4b62-b89d-c39f071d5920",
+      "input": [
+          {
+              "id": "Quote1",
+              "text": "Demo text",
+              "type": 1
+          },
+          {
+              "id": "test",
+              "src": "https://playingsurface1.blob.core.windows.net/uploads/members/19c87481-5514-4d78-b1db-4d339950691a/arsenal-2021-22-quote-insta-_background_ab96b636-c737-4626-8049-66810ef3a554.png?790816",
+              "top": "0px",
+              "left": "0px",
+              "width": 250,
+              "type": 2
+          }
+      ],
+      "debug": true
+  }
+  
+}

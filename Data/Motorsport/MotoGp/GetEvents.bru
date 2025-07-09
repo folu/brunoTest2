@@ -1,0 +1,21 @@
+meta {
+  name: GetEvents
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/motorsport/motogp/events?seriesId=3
+  body: none
+  auth: none
+}
+
+params:query {
+  seriesId: 3
+  ~from: 2019-05-10
+  ~to: 2019-12-30
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

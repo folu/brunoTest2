@@ -1,0 +1,21 @@
+meta {
+  name: GetSquads
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/football/uefa/squads?competitionId=1&seasonId=2021&teamId=52757
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1
+  seasonId: 2021
+  teamId: 52757
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

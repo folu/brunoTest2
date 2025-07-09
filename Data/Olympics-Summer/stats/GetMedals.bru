@@ -1,0 +1,24 @@
+meta {
+  name: GetMedals
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/olympics/stats/medals?seasonId=2016&teamId=8705|8630 |8621|8547&disciplineId=AT&gender=W&alltime=true
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2016
+  teamId: 8705|8630 |8621|8547
+  disciplineId: AT
+  gender: W
+  alltime: true
+  ~orderbymost: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

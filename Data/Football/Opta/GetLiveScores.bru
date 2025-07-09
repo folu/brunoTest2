@@ -1,0 +1,26 @@
+meta {
+  name: GetLiveScores
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{api}}/data/football/opta/matches/live?seasonId=2021&tournamentId=8&matchDay=11&collectionPath=custom/football/okko/crests.json&language=en&orderDirection=desc&groupbyDate=true
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2021
+  tournamentId: 8
+  matchDay: 11
+  collectionPath: custom/football/okko/crests.json
+  language: en
+  orderDirection: desc
+  groupbyDate: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Referer: sajnahjdom/test
+}

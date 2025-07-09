@@ -1,0 +1,25 @@
+meta {
+  name: UpdateTeamsFromOptaTranslations
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{api}}/admin/collections/translations/update-teams-from-opta-translations?collectionPath=global/football/translation/gameday-teams.json&seasonId=2023&competitionId=3
+  body: json
+  auth: bearer
+}
+
+params:query {
+  collectionPath: global/football/translation/gameday-teams.json
+  seasonId: 2023
+  competitionId: 3
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

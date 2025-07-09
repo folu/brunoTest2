@@ -1,0 +1,21 @@
+meta {
+  name: GetFormation
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/football/stats/formation?eventId=2147383&leagueId=fran
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2147383
+  leagueId: fran
+  ~endDate: 2019-03-09
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

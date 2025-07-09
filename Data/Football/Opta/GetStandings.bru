@@ -1,0 +1,22 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 56
+}
+
+get {
+  url: {{api}}/data/football/opta/standings?leagueId=104&includeTeamForm=true&seasonId=2023
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 104
+  includeTeamForm: true
+  seasonId: 2023
+  ~amountOfBatches: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

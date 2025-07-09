@@ -1,0 +1,22 @@
+meta {
+  name: GetLeader
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{api}}/data/cricket/opta/player/leaders?leagueId=2679&teamid=216
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 2679
+  teamid: 216
+  ~ranking: Player Dismissals As WicketKeeper
+  ~amountOfBatches: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

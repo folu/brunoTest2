@@ -1,0 +1,42 @@
+meta {
+  name: GetMatches - Test Automation
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{api}}/data/football/opta/matches?startDate=2025-01-01&endDate=2025-12-01&seasonId=2025&tournamentId=380
+  body: none
+  auth: none
+}
+
+params:query {
+  startDate: 2025-01-01
+  endDate: 2025-12-01
+  seasonId: 2025
+  tournamentId: 380
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Referer: sajnahjdom/test
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Validate groupName is present for tournament 380", function () {
+      const data = res.getBody();
+  
+      data.forEach(item => {
+          // groupName is only expected for Gold Cup (knockout stage tournaments)
+          if (item.groupName !== undefined) {
+              expect(item).to.have.property("groupName");
+              expect(item.groupName).to.be.a("string").and.not.empty;
+          }
+      });
+  });
+  
+}

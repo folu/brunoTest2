@@ -1,0 +1,19 @@
+meta {
+  name: GetWinProbability
+  type: http
+  seq: 24
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/winProbability?eventId=2449046
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2449046
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

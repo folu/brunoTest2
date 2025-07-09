@@ -1,0 +1,22 @@
+meta {
+  name: GetManhatten
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{api}}/data/cricket/opta/manhatten?matchid=57108&isBarChartData=true&totalOvers=20
+  body: none
+  auth: none
+}
+
+params:query {
+  matchid: 57108
+  isBarChartData: true
+  totalOvers: 20
+  ~splitByInning: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,20 @@
+meta {
+  name: GetTouches
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/football/stats/touches?leagueId=safr&eventId=2130401
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: safr
+  eventId: 2130401
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

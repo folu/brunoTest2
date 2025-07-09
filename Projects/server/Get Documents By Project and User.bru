@@ -1,0 +1,19 @@
+meta {
+  name: Get Documents By Project and User
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/server/projects/user/00e20e52-f115-4b62-b89d-c39f071d5920/doucments?projectId=3770
+  body: none
+  auth: none
+}
+
+params:query {
+  projectId: 3770
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

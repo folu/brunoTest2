@@ -1,0 +1,23 @@
+meta {
+  name: Update your subscription states for the specified content provider
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{receiver-api}}/ContentProviders
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: text/plain
+}
+
+body:json {
+  {
+    "companyId": "11a1d2fb-90dd-1c59-d83b-23cd67aa6d85",
+    "isEnabled": false
+  }
+}

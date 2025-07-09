@@ -1,0 +1,19 @@
+meta {
+  name: GetUserByEmail
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/admin/user/management/user-by-email?email=Matthew.Chamberlain@statsperform.com
+  body: none
+  auth: none
+}
+
+params:query {
+  email: Matthew.Chamberlain@statsperform.com
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

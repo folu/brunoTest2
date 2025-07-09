@@ -1,0 +1,20 @@
+meta {
+  name: GetReferees
+  type: http
+  seq: 41
+}
+
+get {
+  url: {{api}}/data/football/opta/referees?competitionId=8&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  seasonId: 2022
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerSeasonScreens
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/basketball/autostats/player/screens?filterByPlayer=1391548&tournamentId=fiba_asia
+  body: none
+  auth: none
+}
+
+params:query {
+  filterByPlayer: 1391548
+  tournamentId: fiba_asia
+  ~language: en
+  ~eventId: 2463043
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Edit Group
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{api}}/admin/groups/db2573c9-d9bb-472b-9ae1-840501707a61
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "name": "Test group 2025 updated",
+      "description": "Test group description"
+  }
+}

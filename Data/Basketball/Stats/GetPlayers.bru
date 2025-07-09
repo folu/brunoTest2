@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayers
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{api}}/data/basketball/stats/players?tournamentId=nba&teamId=5
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: nba
+  teamId: 5
+  ~teamId: t90
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

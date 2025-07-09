@@ -1,0 +1,81 @@
+meta {
+  name: GetMatchPlayerIndex - Test Automation
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/match/playerindex?matchId=945053,945051,945052,945048,945049,945050&numberOfPlayers=5
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 945053,945051,945052,945048,945049,945050
+  numberOfPlayers: 5
+  ~seasonId: 
+  ~eventId: 
+  ~positionId: 6
+  ~categoryId: offensiveindex
+  ~teamId: 19568
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response has correct structure", function () {
+      var response = res.getBody();
+      expect(response).to.be.an('array');
+  
+      // Detailed structure checks
+      response.forEach((entry) => {
+          // Check player structure
+          expect(entry).to.have.property('player');
+          expect(entry.player).to.have.all.keys('id', 'firstName', 'lastName', 'fullName', 'position', 'teamId', 'captainText');
+  
+          // team structure
+          expect(entry).to.have.property('team');
+          expect(entry.team).to.have.all.keys('id', 'pbgId', 'name', 'crest', 'crestName');
+  
+          //match and stats
+          expect(entry).to.have.property('matchId');
+          expect(entry).to.have.property('stat');
+          expect(entry).to.have.property('optaRank');
+          expect(entry).to.have.property('optaRankOrdinal');
+      });
+  });
+  
+  test("Player and team IDs are unique and correctly formatted", function () {
+      let players = {};
+      let teams = {};
+      var response = res.getBody();
+  
+      response.forEach((entry) => {
+          // Check player ID uniqueness
+          if (players[entry.player.id]) {
+              expect.fail("Duplicate player ID found: " + entry.player.id);
+          } else {
+              players[entry.player.id] = true;
+              expect(entry.player.id).to.match(/^\d+$/, "Player ID should be numeric");
+          }
+  
+          // Check team ID uniqueness and format
+          if (teams[entry.team.id]) {
+              expect.fail("Duplicate team ID found: " + entry.team.id);
+          } else {
+              teams[entry.team.id] = true;
+              expect(entry.team.id).to.match(/^\d+$/, "Team ID should be numeric");
+          }
+      });
+  });
+  
+  
+  
+  
+}

@@ -1,0 +1,22 @@
+meta {
+  name: GetMatchInsightsAutomated
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{api}}/data/football/opta/match/automatedinsights?tournamentId=10&seasonId=2019&language=de&eventId=g1064077
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 10
+  seasonId: 2019
+  language: de
+  eventId: g1064077
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

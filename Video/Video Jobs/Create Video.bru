@@ -1,0 +1,57 @@
+meta {
+  name: Create Video
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{api}}/video/create
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "Id": "45868d83-890d-414a-9ac8-b94562668e16",
+      "AssetId": -1,
+      "ProjectId": -1,
+      "SourceFolder": null,
+      "Name": "Matty Test",
+      "Output": {
+          "OutputType": 1,
+          "MaxLength": null,
+          "Width": 1920,
+          "Height": 1080
+      },
+      "Audio": null,
+      "Scenes": [{
+          "Type": 1,
+          "DefaultElementTime": null,
+          "BackgroundColor": null,
+          "Elements": [{
+              "Length": null,
+              "Name": "frame_0",
+              "Src": "https://playingsurface1.blob.core.windows.net/ps-widgets/bayern/frame1.png",
+              "ElementTime": 5000
+          }, {
+              "Length": null,
+              "Name": "frame_1",
+              "Src": "https://playingsurface1.blob.core.windows.net/ps-widgets/bayern/frame2.png",
+              "ElementTime": 3000
+          }, {
+              "Length": null,
+              "Name": "frame_2",
+              "Src": "https://playingsurface1.blob.core.windows.net/ps-widgets/bayern/frame3.png",
+              "ElementTime": 1000
+          }],
+          "Overlays": null
+      }],
+      "Timeline": null,
+      "UserId": "85e87cb9-6d21-4a79-ab60-0be2bb2144b6"
+  }
+}

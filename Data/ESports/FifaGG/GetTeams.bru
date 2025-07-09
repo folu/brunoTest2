@@ -1,0 +1,20 @@
+meta {
+  name: GetTeams
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/esports/fifagg/teams?tournamentId=7f62d8da-f1cb-4f3b-b64d-c251acee8d9e
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 7f62d8da-f1cb-4f3b-b64d-c251acee8d9e
+  ~teamId: 14810
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

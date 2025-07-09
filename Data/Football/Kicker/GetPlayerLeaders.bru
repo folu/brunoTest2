@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerLeaders
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/football/kicker/player/leaders?leagueId=1&categoryId=2&seasonId=0&timeframe=1
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 1
+  categoryId: 2
+  seasonId: 0
+  timeframe: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

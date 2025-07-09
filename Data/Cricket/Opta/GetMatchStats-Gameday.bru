@@ -1,0 +1,24 @@
+meta {
+  name: GetMatchStats-Gameday
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/cricket/opta/match/stats?eventId=50838&seasonId=2023&includeMatchEvents=true&locale=en-op
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 50838
+  seasonId: 2023
+  includeMatchEvents: true
+  locale: en-op
+  ~leagueId: C2
+  ~teamId: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

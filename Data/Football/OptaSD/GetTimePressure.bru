@@ -1,0 +1,20 @@
+meta {
+  name: GetTimePressure
+  type: http
+  seq: 46
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/timepressure?eventId=g2376866&isInVenue=true
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: g2376866
+  isInVenue: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

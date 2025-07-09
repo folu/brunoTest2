@@ -1,0 +1,15 @@
+meta {
+  name: Get Tag Options
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/server/projects/tag-options
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

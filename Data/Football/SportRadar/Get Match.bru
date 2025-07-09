@@ -1,0 +1,23 @@
+meta {
+  name: Get Match
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/football/sportradar/match/stats?leagueId=safr&teamId=10470&eventId=2068665
+  body: none
+  auth: apikey
+}
+
+params:query {
+  leagueId: safr
+  teamId: 10470
+  eventId: 2068665
+}
+
+auth:apikey {
+  key: x-api-key
+  value: {{apiKey}}
+  placement: header
+}

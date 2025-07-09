@@ -1,0 +1,21 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/baseball/mlb/standings?startDate=2021-05-01&endDate=2021-05-18&competitionId=1
+  body: none
+  auth: none
+}
+
+params:query {
+  startDate: 2021-05-01
+  endDate: 2021-05-18
+  competitionId: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

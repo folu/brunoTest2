@@ -1,0 +1,22 @@
+meta {
+  name: GetMatchDrivePlays
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/match/driveplays?eventId=2656517&driveId=8&leagueId=nfl
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2656517
+  driveId: 8
+  leagueId: nfl
+  ~includeMatchEvents: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

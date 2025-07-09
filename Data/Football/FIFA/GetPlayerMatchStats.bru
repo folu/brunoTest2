@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerMatchStats
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/football/fifa/player/matchstats?matchId=128083&playerId=229397
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 128083
+  playerId: 229397
+  ~competitionId: 8
+  ~seasonId: 2019
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

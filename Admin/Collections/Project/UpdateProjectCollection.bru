@@ -1,0 +1,57 @@
+meta {
+  name: UpdateProjectCollection
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{api}}/admin/collections/projects/4174?name=testexternalcollection
+  body: json
+  auth: bearer
+}
+
+params:query {
+  name: testexternalcollection
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "id": "9bc04b7e-f7cf-41bd-b5ec-9c67b7d2ba8c",
+      "items": [
+          {
+              "fields": {
+                  "name": "Matty",
+                  "image": "/assets/toolkit/cerezo%20osaka/diagonal-players/10.png",
+                  "anyotherfieldname": "123"
+              }
+          },
+          {
+              "fields": {
+                  "name": "Matty2",
+                  "image": "/assets/toolkit/cerezo%20osaka/diagonal-players/13.png",
+                  "anyotherfieldname": "456"
+              }
+          }
+      ],
+      "meta": {},
+      "createdDate": "2020-09-17T00:27:41.0366922Z",
+      "modifiedDate": "2021-02-24T15:12:25.3792359Z",
+      "sort": {
+          "direction": "desc"
+      },
+      "grouping": {
+          "type": 1,
+          "baseGroupName": "custom"
+      },
+      "distinctByField": "name",
+      "path": "projects/4174/testexternalcollection.json"
+  }
+}

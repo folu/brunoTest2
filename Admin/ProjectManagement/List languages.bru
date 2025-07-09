@@ -1,0 +1,21 @@
+meta {
+  name: List languages
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/project-management/list/languages
+  body: none
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

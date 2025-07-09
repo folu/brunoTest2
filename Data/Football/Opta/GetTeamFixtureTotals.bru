@@ -1,0 +1,21 @@
+meta {
+  name: GetTeamFixtureTotals
+  type: http
+  seq: 47
+}
+
+get {
+  url: {{api}}/data/football/opta/team/fixturetotals?leagueId=6&seasonId=2023&teamId=t3107
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 6
+  seasonId: 2023
+  teamId: t3107
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

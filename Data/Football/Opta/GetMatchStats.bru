@@ -1,0 +1,25 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 23
+}
+
+get {
+  url: {{api}}/data/football/opta/match/stats?competitionId=1&includeMatchEvents=true&eventId=g2292921&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1
+  includeMatchEvents: true
+  eventId: g2292921
+  seasonId: 2022
+  ~teamId: 10470g1063790
+  ~leagueId: 
+  ~includePlayerLeaderStats: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

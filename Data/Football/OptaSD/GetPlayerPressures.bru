@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerPressures
+  type: http
+  seq: 22
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/pressures?seasonId=2022&tournamentId=80foo89mm28qjvyhjzlpwj28k&eventId=7katrhxuegesndba2en673mz8&playerId=2nzefp5pwvldt2ttmxfeakamt
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2022
+  tournamentId: 80foo89mm28qjvyhjzlpwj28k
+  eventId: 7katrhxuegesndba2en673mz8
+  playerId: 2nzefp5pwvldt2ttmxfeakamt
+  ~language: en-en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

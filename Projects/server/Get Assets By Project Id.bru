@@ -1,0 +1,23 @@
+meta {
+  name: Get Assets By Project Id
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/server/projects/:projectId/assets?includeInactive=false
+  body: none
+  auth: none
+}
+
+params:query {
+  includeInactive: false
+}
+
+params:path {
+  projectId: 4481
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,20 @@
+meta {
+  name: Upload Image
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{api}}/imageupload
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:multipart-form {
+  file: @file(/C:/Users/matty/Pictures/logos/ps_logo_blue.jpg)
+  userId: 19c87481-5514-4d78-b1db-4d339950691a
+}

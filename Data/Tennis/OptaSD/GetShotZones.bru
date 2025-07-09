@@ -1,0 +1,22 @@
+meta {
+  name: GetShotZones
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/match/shotzones?eventId=76yico77xty96qbev6gum1pn8
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 76yico77xty96qbev6gum1pn8
+  ~includeServes: 
+  ~shotType: 
+  ~zone: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

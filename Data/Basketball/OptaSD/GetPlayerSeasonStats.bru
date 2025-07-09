@@ -1,0 +1,21 @@
+meta {
+  name: GetPlayerSeasonStats
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/basketball/optasd/player/seasonstats?tournamentId=d17vu4esjy1nwsl5glovzjvo4&teamId=dpl09q0dsbpkgnwsve17hdl4x&playerId=eabnxvklrv39302h53ogp4ve1
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: d17vu4esjy1nwsl5glovzjvo4
+  teamId: dpl09q0dsbpkgnwsve17hdl4x
+  playerId: eabnxvklrv39302h53ogp4ve1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

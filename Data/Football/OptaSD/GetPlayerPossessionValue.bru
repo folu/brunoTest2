@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerPossessionValue
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/possessionvalue?tournamentId=1jt5mxgn4q5r6mknmlqv5qjh0&seasonId=2023&playerId=4txjdaqveermfryvbfrr4taf7
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1jt5mxgn4q5r6mknmlqv5qjh0
+  seasonId: 2023
+  playerId: 4txjdaqveermfryvbfrr4taf7
+  ~eventId: 2023-10-23
+  ~collectionPath: 2023-10-30
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

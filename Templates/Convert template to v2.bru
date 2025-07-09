@@ -1,0 +1,577 @@
+meta {
+  name: Convert template to v2
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{api}}/templates/convert/v2
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: bearer {{token}}
+}
+
+body:json {
+  {
+    "Name": "absa-premiership-2019-log-standings-",
+    "Backgrounds": "absa-premiership-2019/log-standings/backgrounds",
+    "Previews": "absa-premiership-2019/log-standings/previews/",
+    "Choices": "absa-premiership-2019/log-standings/choices/",
+    "Height": 1000,
+    "Width": 1770,
+    "XScaling": 0.4124,
+    "YScaling": 0.4124,
+    "FontScaling": 0.4124,
+    "hastablecontrols": true,
+    "TextAttributes": [
+      {
+        "AllowResize": true,
+        "NumberOfLines": 1,
+        "ResizeAtCharacter": 14,
+        "CharacterLimit": 30,
+        "AllowColorSelection": false,
+        "DefaultColor": {
+          "Color": "225,184,90"
+        },
+        "HexColor": "#6d162a",
+        "HexColorGradient": "#ca2038",
+        "Name": "TitleBig",
+        "DefaultText": "Log Standings",
+        "Layouts": [
+          {
+            "LayoutId": 1,
+            "Top": 98,
+            "Left": 443,
+            "Height": 200,
+            "Width": 886,
+            "OffsetY": 0,
+            "OffsetX": 0,
+            "FontFamily": "Brush-Up",
+            "FontSize": 129,
+            "FontSizeSmall": 129,
+            "ResizeAtCharater": 14,
+            "TextAlignment": "center",
+            "PDFFont": "Microsoft Sans Serif, 50pt",
+            "Padding": "0 10px 0 0",
+            "Case": 0,
+            "Rotation": -3,
+            "TextFormat": {
+              "FormatFlags": 0,
+              "Alignment": 1,
+              "LineAlignment": 0,
+              "HotkeyPrefix": 0,
+              "Trimming": 1,
+              "DigitSubstitutionMethod": 0,
+              "DigitSubstitutionLanguage": 0
+            }
+          }
+        ]
+      }
+    ],
+    "GraphAttributes": [],
+    "Images": [],
+    "Scores": [],
+    "Collections": [
+      {
+        "QuantityOfCollection": 8,
+        "RowHeightModifier": 54,
+        "RowHeightStartPosition": 0,
+        "ColumnWidthModifier": 0,
+        "ColumnWidthStartPosition": 0,
+        "Source": [
+          {
+            "Items": {
+              "Badge": "/assets/Toolkit/absa-prem/2019/crests/2019/AMAZULU.png",
+              "Team": "TeamName",
+              "Played": 0,
+              "Won": 0,
+              "Drawn": 0,
+              "Lost": 0,
+              "GF": 0,
+              "GA": 0,
+              "GD": 0,
+              "Points": 0
+            }
+          },
+          {
+            "Items": {
+              "Badge": "/assets/Toolkit/absa-prem/2019/crests/2019/AMAZULU.png",
+              "Team": "TeamName",
+              "Played": 0,
+              "Won": 0,
+              "Drawn": 0,
+              "Lost": 0,
+              "GF": 0,
+              "GA": 0,
+              "GD": 0,
+              "Points": 0
+            }
+          },
+          {
+            "Items": {
+              "Badge": "/assets/Toolkit/absa-prem/2019/crests/2019/AMAZULU.png",
+              "Team": "TeamName",
+              "Played": 0,
+              "Won": 0,
+              "Drawn": 0,
+              "Lost": 0,
+              "GF": 0,
+              "GA": 0,
+              "GD": 0,
+              "Points": 0
+            }
+          },
+          {
+            "Items": {
+              "Badge": "/assets/Toolkit/absa-prem/2019/crests/2019/AMAZULU.png",
+              "Team": "TeamName",
+              "Played": 0,
+              "Won": 0,
+              "Drawn": 0,
+              "Lost": 0,
+              "GF": 0,
+              "GA": 0,
+              "GD": 0,
+              "Points": 0
+            }
+          },
+          {
+            "Items": {
+              "Badge": "/assets/Toolkit/absa-prem/2019/crests/2019/AMAZULU.png",
+              "Team": "TeamName",
+              "Played": 0,
+              "Won": 0,
+              "Drawn": 0,
+              "Lost": 0,
+              "GF": 0,
+              "GA": 0,
+              "GD": 0,
+              "Points": 0
+            }
+          },
+          {
+            "Items": {
+              "Badge": "/assets/Toolkit/absa-prem/2019/crests/2019/AMAZULU.png",
+              "Team": "TeamName",
+              "Played": 0,
+              "Won": 0,
+              "Drawn": 0,
+              "Lost": 0,
+              "GF": 0,
+              "GA": 0,
+              "GD": 0,
+              "Points": 0
+            }
+          },
+          {
+            "Items": {
+              "Badge": "/assets/Toolkit/absa-prem/2019/crests/2019/AMAZULU.png",
+              "Team": "TeamName",
+              "Played": 0,
+              "Won": 0,
+              "Drawn": 0,
+              "Lost": 0,
+              "GF": 0,
+              "GA": 0,
+              "GD": 0,
+              "Points": 0
+            }
+          },
+          {
+            "Items": {
+              "Badge": "/assets/Toolkit/absa-prem/2019/crests/2019/AMAZULU.png",
+              "Team": "TeamName",
+              "Played": 0,
+              "Won": 0,
+              "Drawn": 0,
+              "Lost": 0,
+              "GF": 0,
+              "GA": 0,
+              "GD": 0,
+              "Points": 0
+            }
+          }
+        ],
+        "Template": [
+          {
+            "Type": 2,
+            "Color": "#ffffff",
+            "Defaults": "AMAZULU,BAROKA FC,BIDVEST WITS,BLACK LEOPARDS,BLOEM CELTIC,CAPE TOWN CITY,CHIPPA UNITED,FREE STATE STARS,GOLDEN ARROWS,HIGHLANDS PARK,KAIZER CHIEFS,MAMELODI SUNDOWNS,MARITZBURG UNITED,ORLANDO PIRATES,POLOKWANE CITY,SUPERSPORT,blank",
+            "Child": null,
+            "HasParent": false,
+            "Name": "Badge",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 331,
+                "Left": 226,
+                "Height": 49,
+                "Width": 49,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 84,
+                "FontSizeSmall": 84,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "left",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 0,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": "0",
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "Team",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 346,
+                "Left": 316,
+                "Height": 0,
+                "Width": 237,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 27,
+                "FontSizeSmall": 27,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": "0 0 15px 0",
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "Played",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 336,
+                "Left": 504,
+                "Height": 0,
+                "Width": 239,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 41,
+                "FontSizeSmall": 41,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": 0,
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "Won",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 336,
+                "Left": 632,
+                "Height": 0,
+                "Width": 239,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 41,
+                "FontSizeSmall": 41,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": 0,
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "Drawn",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 336,
+                "Left": 758,
+                "Height": 0,
+                "Width": 239,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 41,
+                "FontSizeSmall": 41,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": 0,
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "Lost",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 336,
+                "Left": 884,
+                "Height": 0,
+                "Width": 239,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 41,
+                "FontSizeSmall": 41,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": 0,
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "GF",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 336,
+                "Left": 1011,
+                "Height": 0,
+                "Width": 239,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 41,
+                "FontSizeSmall": 41,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": 0,
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "GA",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 336,
+                "Left": 1137,
+                "Height": 0,
+                "Width": 239,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 41,
+                "FontSizeSmall": 41,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": 0,
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "GD",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 336,
+                "Left": 1257,
+                "Height": 0,
+                "Width": 239,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 41,
+                "FontSizeSmall": 41,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": 0,
+                "Rotation": 0
+              }
+            ]
+          },
+          {
+            "Type": 0,
+            "Color": "#ffffff",
+            "Defaults": null,
+            "Child": null,
+            "HasParent": false,
+            "Name": "Points",
+            "Layouts": [
+              {
+                "LayoutId": 1,
+                "Top": 336,
+                "Left": 1377,
+                "Height": 0,
+                "Width": 239,
+                "OffsetY": 0,
+                "OffsetX": 0,
+                "FontFamily": "Brush-Up",
+                "FontSize": 41,
+                "FontSizeSmall": 41,
+                "ResizeAtCharater": 0,
+                "TextAlignment": "center",
+                "PDFFont": "Microsoft Sans Serif, 16pt",
+                "Case": 0,
+                "TextFormat": {
+                  "FormatFlags": 0,
+                  "Alignment": 1,
+                  "LineAlignment": 0,
+                  "HotkeyPrefix": 0,
+                  "Trimming": 1,
+                  "DigitSubstitutionMethod": 0,
+                  "DigitSubstitutionLanguage": 0
+                },
+                "Padding": 0,
+                "Rotation": 0
+              }
+            ]
+          }
+        ],
+        "Name": "Table",
+        "InterfaceType": 1,
+        "FeedAttributes": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerSeasonStats
+  type: http
+  seq: 35
+}
+
+get {
+  url: {{api}}/data/football/opta/player/seasonstats?competitionId=8&seasonId=2019&playerId=p102057&teamId=t39
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  seasonId: 2019
+  playerId: p102057
+  teamId: t39
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

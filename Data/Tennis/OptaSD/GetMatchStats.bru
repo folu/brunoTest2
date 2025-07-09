@@ -1,0 +1,24 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/match/stats?tournamentId=17hk6gxngx71jdbpbf5ok2gwk&eventId=45ldbagemzwu71pnhu5gqzmdw
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 17hk6gxngx71jdbpbf5ok2gwk
+  eventId: 45ldbagemzwu71pnhu5gqzmdw
+  ~endDate: 
+  ~year: 
+  ~includeDoubles: 
+  ~filterBySurface: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

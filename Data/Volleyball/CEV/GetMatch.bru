@@ -1,0 +1,19 @@
+meta {
+  name: GetMatch
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/volleyball/cev/match?matchId=31988
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 31988
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

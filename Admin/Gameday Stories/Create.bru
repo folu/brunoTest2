@@ -1,0 +1,26 @@
+meta {
+  name: Create
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{api}}/admin/gameday/stories/create
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "UserId": "19c87481-5514-4d78-b1db-4d339950691a",
+      "Id": "g2363570",
+      "Language": "en",
+      //"EventTypes": "yellow",
+      "GamedayProjectId": 160,
+      "VideoTemplateId": 450
+  }
+}

@@ -1,0 +1,22 @@
+meta {
+  name: GetFormation-Predicted
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/football/optasd/predicted-formation?eventId=g2292963&homeOrAway=home&leagueId=8&language=ar
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: g2292963
+  homeOrAway: home
+  leagueId: 8
+  language: ar
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

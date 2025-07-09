@@ -1,0 +1,27 @@
+meta {
+  name: GetLineups
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/football/fifa/match/lineups?seasonId=255711&tournamentId=17&tournamentStage=285063&matchId=400235458&language=en-GB
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 255711
+  tournamentId: 17
+  tournamentStage: 285063
+  matchId: 400235458
+  language: en-GB
+  ~startDate: 2019-03-06
+  ~endDate: 2019-03-09
+  ~startDate: 1900-05-01
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Referer: sajnahjdom/test
+}

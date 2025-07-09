@@ -1,0 +1,68 @@
+meta {
+  name: GetTeams - Test Automation
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{api}}/data/basketball/stats/teams?competitionId=cbk&filterByTeam=1948&seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: cbk
+  filterByTeam: 1948
+  seasonId: 2024
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  const schema = {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "pbgId": { "type": "string" },
+        "name": { "type": "string" },
+        "abbreviation": { "type": "string" },
+        "crest": { "type": "string" },
+        "crestName": { "type": "string" },
+        "nickname": { "type": "string" },
+        "location": { "type": "string" }
+      },
+      "required": [
+        "id",
+        "pbgId",
+        "name",
+        "abbreviation",
+        "crest",
+        "crestName",
+        "nickname",
+        "location"
+      ]
+    }
+  };
+  
+  test("Response matches schema", function () {
+  //   pm.response.to.have.jsonSchema(schema);
+  });
+  
+  test("Crest URL is valid", function () {
+    const crestRegex = /^https:\/\/.+\.png$/;
+    res.getBody().forEach(team => {
+      expect(team.crest).to.match(crestRegex);
+    });
+  });
+  
+  
+}

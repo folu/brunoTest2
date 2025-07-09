@@ -1,0 +1,69 @@
+meta {
+  name: GetPlayerTournamentStats
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/player/tournamentstats?seasonId=2023&tournamentId=7kvrgebhddi26hgqrutbe3nys&playerId=uyuz4x49b3vg92vhi7lzl6vf
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2023
+  tournamentId: 7kvrgebhddi26hgqrutbe3nys
+  playerId: uyuz4x49b3vg92vhi7lzl6vf
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 1000ms", function () {
+      expect(res.getResponseTime()).to.be.below(1000);
+  });
+  
+  test("Response structure is correct", function () {
+      let jsonData = res.getBody();
+      //player details
+      expect(jsonData).to.have.property("player");
+      expect(jsonData.player).to.have.property("firstName");
+      expect(jsonData.player).to.have.property("lastName");
+      expect(jsonData.player).to.have.property("id");
+      expect(jsonData.player).to.have.property("name");
+      //key statistics
+      expect(jsonData).to.have.property("totalGamesPlayed");
+      expect(jsonData).to.have.property("firstReturnPointsTotal");
+      expect(jsonData).to.have.property("aces");
+      expect(jsonData).to.have.property("doubleFaults");
+  });
+  
+  test("Stat fields are not null or invalid", function () {
+      let jsonData = res.getBody();
+      
+      // this checks only the numeric fields
+      expect(jsonData.totalGamesPlayed).to.be.a("number").and.to.be.above(0);
+      expect(jsonData.aces).to.be.a("number").and.to.be.above(0);
+      expect(jsonData.doubleFaults).to.be.a("number").and.to.be.above(0);
+      expect(jsonData.totalPoints).to.be.a("number").and.to.be.above(0);
+  });
+  test("Percentage fields are valid", function () {
+      let jsonData = res.getBody();
+      //this is only for % fields
+      expect(jsonData.firstServePercentage).to.match(/^\d+(\.\d+)?%$/);
+      expect(jsonData.totalPointsPercentageWon).to.match(/^\d+(\.\d+)?%$/);
+  });
+  
+  test("Aces stat is correctly mapped", function () {
+      let jsonData = res.getBody();
+      expect(jsonData.aces).to.equal(54.0);
+  });
+  
+  
+}

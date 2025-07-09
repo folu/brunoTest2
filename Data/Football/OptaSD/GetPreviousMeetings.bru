@@ -1,0 +1,22 @@
+meta {
+  name: GetPreviousMeetings
+  type: http
+  seq: 32
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/previousmeetings?matchId=71pif9hi2vwzp6q0xzilyxst0&collectionPath=/collections/2021/football/english premier league/crests.json&language=th-th
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 71pif9hi2vwzp6q0xzilyxst0
+  collectionPath: /collections/2021/football/english premier league/crests.json
+  language: th-th
+  ~tournamentId: 23
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

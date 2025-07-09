@@ -1,0 +1,22 @@
+meta {
+  name: GetEvents
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/esports/fifagg/events
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+  ~to: 2022-08-30
+  ~from: 2022-06-01
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,20 @@
+meta {
+  name: GetStatLeaders
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/football/genius/player/leaders?leagueId=258&categoryId=sYellowCards
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 258
+  categoryId: sYellowCards
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

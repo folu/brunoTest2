@@ -1,0 +1,20 @@
+meta {
+  name: GetMatch
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/match?eventId=9226444&leagueId=494
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 9226444
+  leagueId: 494
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: GetLeagues
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/football/optasd/leagues
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

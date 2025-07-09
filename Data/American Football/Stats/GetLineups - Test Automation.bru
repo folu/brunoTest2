@@ -1,0 +1,81 @@
+meta {
+  name: GetLineups - Test Automation
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/match/lineups?eventId=2656732&tournamentId=nfl
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2656732
+  tournamentId: nfl
+  ~seasonId: 38471
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Home and Away team details are correct", function () {
+      const jsonData = res.getBody();
+  
+      // home team
+      expect(jsonData.match.homeTeam.name).to.eql("Baltimore Ravens");
+      expect(jsonData.match.homeTeam.abbreviation).to.eql("Bal");
+      expect(jsonData.match.homeTeam).to.have.property("crest");
+      expect(jsonData.match.homeTeam.crest).to.match(/^https?:\/\/.+/);
+  
+      // away team
+      expect(jsonData.match.awayTeam.name).to.eql("Las Vegas Raiders");
+      expect(jsonData.match.awayTeam.abbreviation).to.eql("LV");
+      expect(jsonData.match.awayTeam).to.have.property("crest");
+      expect(jsonData.match.awayTeam.crest).to.match(/^https?:\/\/.+/);
+  });
+  
+  test("Schema is valid", function () {
+      const schema = {
+          type: "object",
+          properties: {
+              match: {
+                  type: "object",
+                  properties: {
+                      id: { type: "string" },
+                      date: { type: "string" },  //string instead of date, because of date format
+                      utcDate: { type: "string" },
+                      venue: { type: "string" },
+                      homeTeam: {
+                          type: "object",
+                          properties: {
+                              id: { type: "string" },
+                              name: { type: "string" }
+                          },
+                          required: ["id", "name"]
+                      },
+                      awayTeam: {
+                          type: "object",
+                          properties: {
+                              id: { type: "string" },
+                              name: { type: "string" }
+                          },
+                          required: ["id", "name"]
+                      }
+                  },
+                  required: ["id", "date", "utcDate", "venue", "homeTeam", "awayTeam"]
+              }
+          },
+          required: ["match"]
+      };
+  
+  //     pm.response.to.have.jsonSchema(schema);
+  });
+  
+}

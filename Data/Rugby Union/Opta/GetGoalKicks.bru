@@ -1,0 +1,22 @@
+meta {
+  name: GetGoalKicks
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/match/goalkicks?competitionId=210&teamId=850&matchId=101595&points=true
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 210
+  teamId: 850
+  matchId: 101595
+  points: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

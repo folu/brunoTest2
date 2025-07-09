@@ -1,0 +1,20 @@
+meta {
+  name: Render via proxy
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{receiver-api}}/render/server/html?width=1080&height=1920
+  body: text
+  auth: none
+}
+
+params:query {
+  width: 1080
+  height: 1920
+}
+
+body:text {
+  <div id="render-text-only" style="width: 1080px; height: 1920px; position: relative;"><div class="sp-text s-UKFWS5CwkySY" style="left: 195.1145038167939px; top: 681.5267175572519px; position: absolute; transform: translate(0px, 0px) rotate(0deg); width: 687.0229007633588px; height: 274.80916030534354px; padding: 0px; color: #fff; background-color: transparent; font-size: 87.93893129770993px; font-family: 'bebas neue'; border-radius: 0px;z-index: 40;display: flex; align-items: center; justify-content:center; align-items:center"><div spellcheck="false" class="s-UKFWS5CwkySY" style="touch-action: none;">MATTY</div> </div> <!--<TextElement>--></div>
+}

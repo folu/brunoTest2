@@ -1,0 +1,25 @@
+meta {
+  name: GetMatchInsightsBetting
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/baseball/stats/match/bettingInsights?filterByMetric=300&filterByGrouping=3&filterByMarket=11&matchId=2412973
+  body: none
+  auth: none
+}
+
+params:query {
+  filterByMetric: 300
+  filterByGrouping: 3
+  filterByMarket: 11
+  matchId: 2412973
+  ~filterByTeam: 230
+  ~filterByPlayer: 399579
+  ~tournamentId: mlb
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

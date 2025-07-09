@@ -1,0 +1,29 @@
+meta {
+  name: Update Api Key
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{api}}/apikeymanagement
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "Type": "OAUTHKEY",
+  	"Id": "matty-test",
+  	"Name": "matty test updated name",
+  	"Deleted": false,
+  	"Active": true,
+  	"RedirectUris" :  ["http://localhost:3000/redirecttest"],
+      "PostLogoutUris": ["http://localhost:3000/postlogouttest"]
+  }
+  
+}

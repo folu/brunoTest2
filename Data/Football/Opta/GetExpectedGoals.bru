@@ -1,0 +1,31 @@
+meta {
+  name: GetExpectedGoals
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/football/opta/expectedgoals?matchId=g2258208&seasonId=2021&leagueId=626&feedType=f70&teamId=t7649
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: g2258208
+  seasonId: 2021
+  leagueId: 626
+  feedType: f70
+  teamId: t7649
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Returns success and a json object", function () {
+  //     pm.response.to.not.be.error;
+  //     pm.response.to.be.withBody;
+  //      pm.response.to.be.json;
+  });
+}

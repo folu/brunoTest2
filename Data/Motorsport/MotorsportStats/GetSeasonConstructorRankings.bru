@@ -1,0 +1,20 @@
+meta {
+  name: GetSeasonConstructorRankings
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/motorsport/motorsportstats/seasonconstructorrankings?seasonId=9de96368-3bb0-4480-9284-fe38b117fb60&seriesId=a33f8b4a-2b22-41ce-8e7d-0aea08f0e176
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 9de96368-3bb0-4480-9284-fe38b117fb60
+  seriesId: a33f8b4a-2b22-41ce-8e7d-0aea08f0e176
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

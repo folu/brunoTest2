@@ -1,0 +1,21 @@
+meta {
+  name: GetStandings Local
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/football/opta/seasonstandings?leagueId=104&seasonId=2020
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 104
+  seasonId: 2020
+  ~amountOfBatches: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

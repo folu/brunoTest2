@@ -1,0 +1,24 @@
+meta {
+  name: GetMatchBallData
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/data/cricket/opta/match/balls?feedType=C24&matchId=30124&groupByOver=true&compId=751&inningId=1
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: C24
+  matchId: 30124
+  groupByOver: true
+  compId: 751
+  inningId: 1
+  ~competitionId: 751
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

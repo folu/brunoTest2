@@ -1,0 +1,41 @@
+meta {
+  name: Get Test Graphic
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/admin/autopost/test-graphic?language=1&sport=football&provider=Opta&compId=8&matchId=g2367909&eventType=firsthalfkickoff&projectId=161&seasonId=2023
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  language: 1
+  sport: football
+  provider: Opta
+  compId: 8
+  matchId: g2367909
+  eventType: firsthalfkickoff
+  projectId: 161
+  seasonId: 2023
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

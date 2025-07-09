@@ -1,0 +1,20 @@
+meta {
+  name: GetWinProbability
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/basketball/stats/winProbability?eventId=2619104
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2619104
+  ~seasonId: 2022
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

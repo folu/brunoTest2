@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerSeasonStats
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/football/uefa/player/seasonstats?competitionId=1&seasonId=2020&teamId=1652&playerId=250029885
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1
+  seasonId: 2020
+  teamId: 1652
+  playerId: 250029885
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

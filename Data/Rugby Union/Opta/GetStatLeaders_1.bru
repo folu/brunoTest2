@@ -1,0 +1,21 @@
+meta {
+  name: GetStatLeaders_1
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/player/leaders?leagueId=203&categoryId=Carries&seasonId=2021
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 203
+  categoryId: Carries
+  seasonId: 2021
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

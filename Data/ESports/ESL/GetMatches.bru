@@ -1,0 +1,23 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/esports/esl/matches?groupByDate=true&competitionId=275&roundId=16117, 16119
+  body: none
+  auth: none
+}
+
+params:query {
+  groupByDate: true
+  competitionId: 275
+  roundId: 16117, 16119
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

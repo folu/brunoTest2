@@ -1,0 +1,24 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/football/opta/match/stats?competitionId=1&eventId=g2177575&seasonId=2020&includePlayerLeaderStats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1
+  eventId: g2177575
+  seasonId: 2020
+  includePlayerLeaderStats: true
+  ~teamId: 10470g1063790
+  ~leagueId: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

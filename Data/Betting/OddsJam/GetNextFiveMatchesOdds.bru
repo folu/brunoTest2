@@ -1,0 +1,27 @@
+meta {
+  name: GetNextFiveMatchesOdds
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/next-five-matches-odds?sport=basketball&leagueId=nba&sportbooks=bet365&market=Moneyline&endDate=2025-03-31
+  body: none
+  auth: none
+}
+
+params:query {
+  sport: basketball
+  leagueId: nba
+  sportbooks: bet365
+  market: Moneyline
+  endDate: 2025-03-31
+  ~eventId: 33857-28585-2024-10-01
+  ~playerId: 68735EA1FD1F
+  ~teamId: 727B3B3C78E8
+  ~startDate: 2024-09-20
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

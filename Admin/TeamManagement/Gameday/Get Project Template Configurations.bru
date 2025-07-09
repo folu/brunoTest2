@@ -1,0 +1,15 @@
+meta {
+  name: Get Project Template Configurations
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/teammanagement/gameday/projects/164/template-configs
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

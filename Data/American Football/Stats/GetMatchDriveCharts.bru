@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchDriveCharts
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/match/drivecharts?eventId=2444173&leagueId=cfb
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2444173
+  leagueId: cfb
+  ~includeMatchEvents: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

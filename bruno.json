@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "PressBox Graphics",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

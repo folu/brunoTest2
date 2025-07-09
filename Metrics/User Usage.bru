@@ -1,0 +1,63 @@
+meta {
+  name: User Usage
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/metrics/usage/user?userId=00e20e52-f115-4b62-b89d-c39f071d5920
+  body: json
+  auth: oauth2
+}
+
+params:query {
+  userId: 00e20e52-f115-4b62-b89d-c39f071d5920
+  ~to: 
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+body:json {
+  {
+      "assetId": 26732,
+      "input": [
+          {
+              "Id": "Hashtag",
+              "Text": "Matty",
+              "Type": 0
+          },
+          {
+              "Id": "title",
+              "Text": "Matty Title",
+              "Type": 0
+          },
+          {
+              "Id": "background",
+              "src": "https://psbase.azureedge.net/uploads/members/00e20e52-f115-4b62-b89d-c39f071d5920/bbc-sport-key-moment-square-0af86a8b-e8e6-4483-bd6b-c477f4fa9d50_background.png?310070",
+              "Type": 1
+          }
+      ]
+  }
+}

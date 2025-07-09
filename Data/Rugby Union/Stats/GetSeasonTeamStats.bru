@@ -1,0 +1,23 @@
+meta {
+  name: GetSeasonTeamStats
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/seasonstats/team?tournamentId=121&seasonId=2015&teamId=1255
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 121
+  seasonId: 2015
+  teamId: 1255
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

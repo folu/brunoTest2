@@ -1,0 +1,42 @@
+meta {
+  name: Overview
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/apikeymetrics?FromDate=2022-01-01&ToDate=2023-01-01
+  body: json
+  auth: oauth2
+}
+
+params:query {
+  FromDate: 2022-01-01
+  ToDate: 2023-01-01
+  ~BreakdownGranularity: 1h
+  ~ApiKeys: bb7pQ5xGhAM4xWdj7A,bb7pQ5xGhAM4xWdj7A
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

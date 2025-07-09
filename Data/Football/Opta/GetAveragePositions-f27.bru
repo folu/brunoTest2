@@ -1,0 +1,25 @@
+meta {
+  name: GetAveragePositions-f27
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/football/opta/match/averageposition?leagueId=3&eventId=g2041912&seasonId=2020&teamId=t114&feedtype=f27&getShirtNumbers=true
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 3
+  eventId: g2041912
+  seasonId: 2020
+  teamId: t114
+  feedtype: f27
+  getShirtNumbers: true
+  ~includeSubs: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,21 @@
+meta {
+  name: GetWinProbability
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/basketball/optasd/winprobability?eventId=ew3qp06g055ssw9xocweohus4
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: ew3qp06g055ssw9xocweohus4
+  ~endDate: 2019-10-16
+  ~eventId: 2619104
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

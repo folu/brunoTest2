@@ -1,0 +1,15 @@
+meta {
+  name: GetLockerCollection
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/collections/locker/224
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,39 @@
+meta {
+  name: GetSeasonTeamRanking - Test Automation
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/motorsport/optasd/seasonTeamRankings?seasonId=dwao58byqnsc9whiusz45ht2i
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: dwao58byqnsc9whiusz45ht2i
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  let jsonData = res.getBody();
+  
+  test("Rankings contain 10 teams", function () {
+      expect(jsonData.rankings.length).to.eql(10);
+  });
+  
+  jsonData.rankings.forEach((item, index) => {
+      test(`Team ${index + 1} has name, position, and points`, function () {
+          expect(item.team.name).to.be.a("string");
+          expect(item.position).to.match(/^\d+$/);
+          expect(item.points).to.match(/^\d+(\.\d{3})?$/);
+      });
+  });
+}

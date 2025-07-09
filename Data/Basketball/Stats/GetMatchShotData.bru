@@ -1,0 +1,22 @@
+meta {
+  name: GetMatchShotData
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/data/basketball/stats/match/shots?eventId=2657778&filterByPeriod=0&filterByPlayer=937647&tournamentId=nba
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2657778
+  filterByPeriod: 0
+  filterByPlayer: 937647
+  tournamentId: nba
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

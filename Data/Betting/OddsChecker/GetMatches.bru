@@ -1,0 +1,19 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/betting/oddschecker/matches?leagueId=9961
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 9961
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

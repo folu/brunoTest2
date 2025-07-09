@@ -1,0 +1,29 @@
+meta {
+  name: test connection
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{api}}/social/test-connection
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+  
+      "ApplicationId": "B9727238-1B6B-4416-B6FB-FCFB35F22534",
+      "NetworkId": "199BB571-0E5D-415F-A307-04A355589533",
+      "Props": {
+          "baseUrl": "https://studio-int.monterosa.cloud",
+          "brandId": "1a9a09b1-d169-4226-9506-f30dfefb2642",
+          "bearerToken": "FcSuwxBjGi17T8WsdXgJYeufvnpwrA-i"
+      }
+  }
+}

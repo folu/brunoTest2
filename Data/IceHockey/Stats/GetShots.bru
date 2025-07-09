@@ -1,0 +1,24 @@
+meta {
+  name: GetShots
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/shots?competitionId=nhl&eventId=2367460&playerId=831092&teamId=4954&period=3
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  eventId: 2367460
+  playerId: 831092
+  teamId: 4954
+  period: 3
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

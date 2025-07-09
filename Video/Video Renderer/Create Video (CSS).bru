@@ -1,0 +1,33 @@
+meta {
+  name: Create Video (CSS)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{api}}/video/create-css-animation
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "projectId": 5608,
+      "assetId": 57142,
+      "userId": "19c87481-5514-4d78-b1db-4d339950691a",
+      "graphicHtmlPath": "http://playingsurface1.blob.core.windows.net/uploads/members/19c87481-5514-4d78-b1db-4d339950691a/lfp-broadcast-2023-player-focus-stats--414677f3-1b3c-43cf-a9e6-c8cfb1d025e3.html",
+      "graphicThumbnailPath": "http://playingsurface1.blob.core.windows.net/uploads/members/19c87481-5514-4d78-b1db-4d339950691a/thumbnails/lfp-broadcast-2023-player-focus-stats--414677f3-1b3c-43cf-a9e6-c8cfb1d025e3.png",
+      "animationScriptPath": "https://playingsurface1dev.blob.core.windows.net/pbg-animation/57142.js",
+      "output": {
+          "width": 1920,
+          "height": 1080,
+          "format": "webm",
+          "fps": 25
+      }
+  }
+  
+}

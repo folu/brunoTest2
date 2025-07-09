@@ -1,0 +1,15 @@
+meta {
+  name: GetLeagueBySport
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/football/stats/leagues
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

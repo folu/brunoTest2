@@ -1,0 +1,112 @@
+meta {
+  name: GetPlayerShapes - Test Automation
+  type: http
+  seq: 43
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/shapes?eventId=8w62opn09mplufepdpf4rgx04&playerId=cionsifzpx5rhc8es29wv6i95&isInVenue=false
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 8w62opn09mplufepdpf4rgx04
+  playerId: cionsifzpx5rhc8es29wv6i95
+  isInVenue: false
+  ~roundValuesTo: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response schema is valid", function() {
+    var schema = {
+      "type": "object",
+      "required": ["player", "shapes"],
+      "properties": {
+        "player": {
+          "type": "object",
+          "required": ["id", "firstName", "lastName", "fullName", "position", "teamId"],
+          "properties": {
+            "id": { "type": "string" },
+            "firstName": { "type": "string" },
+            "lastName": { "type": "string" },
+            "fullName": { "type": "string" },
+            "position": { "type": "string" },
+            "teamId": { "type": "string" }
+          }
+        },
+        "shapes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["rank", "roleId", "roleDescription", "averageFitScore", "coordinates", "outcome"],
+            "properties": {
+              "rank": { "type": "number" },
+              "roleId": { "type": "string" },
+              "roleDescription": { "type": "string" },
+              "averageFitScore": { "type": "number" },
+              "coordinates": {
+                "type": "object",
+                "required": ["x", "y"],
+                "properties": {
+                  "x": { "type": "number" },
+                  "y": { "type": "number" }
+                }
+              },
+              "outcome": {
+                "type": "object",
+                "required": ["goals", "openPlayCross", "xg", "xt", "touches", "lbp", "midfieldLbp", "defensiveLbp", "shots", "shotsOnFocus", "highPressureMade", "highPressureMadePerPressureMade", "highPressureMadePerPressureMadeRounded", "xtRemoved"],
+                "properties": {
+                  "goals": { "type": "number" },
+                  "openPlayCross": { "type": "number" },
+                  "xg": { "type": "number" },
+                  "xt": { "type": "number" },
+                  "touches": { "type": "number" },
+                  "lbp": { "type": "number" },
+                  "midfieldLbp": { "type": "number" },
+                  "defensiveLbp": { "type": "number" },
+                  "shots": { "type": "number" },
+                  "shotsOnFocus": { "type": "number" },
+                  "highPressureMade": { "type": "number" },
+                  "highPressureMadePerPressureMade": { "type": "number" },
+                  "highPressureMadePerPressureMadeRounded": { "type": "number" },
+                  "xtRemoved": { "type": "number" }
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+  
+  //   pm.response.to.have.jsonSchema(schema);
+  });
+  
+  test("Player information is correct", function() {
+    var jsonData = res.getBody();
+    expect(jsonData.player.id).to.eql("cionsifzpx5rhc8es29wv6i95");
+    expect(jsonData.player.fullName).to.eql("Vítor Machado Ferreira");
+    expect(jsonData.player.teamName).to.eql("Paris Saint-Germain");
+    expect(jsonData.player.position).to.eql("Centre Midfielder");
+  });
+  
+  test("Role and statistical data are correct", function() {
+    var jsonData = res.getBody();
+    jsonData.shapes.forEach(function(shape) {
+      expect(shape.roleId).to.be.a("string");
+      expect(shape.averageFitScore).to.be.a("number");
+      expect(shape.outcome.xg).to.be.a("number");
+      expect(shape.outcome.touches).to.be.a("number");
+      expect(shape.outcome.shots).to.be.a("number");
+    });
+  });
+  
+}

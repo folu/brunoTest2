@@ -1,0 +1,19 @@
+meta {
+  name: Get Storage Assets
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/admin/assets/lists/storage/assets
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

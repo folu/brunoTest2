@@ -1,0 +1,20 @@
+meta {
+  name: Render via proxy
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{api}}/receiver/invite?userId=00e20e52-f115-4b62-b89d-c39f071d5920&receiverEmail=matty@13strides.com
+  body: none
+  auth: none
+}
+
+params:query {
+  userId: 00e20e52-f115-4b62-b89d-c39f071d5920
+  receiverEmail: matty@13strides.com
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

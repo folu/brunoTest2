@@ -1,0 +1,20 @@
+meta {
+  name: GetPlayersOnTeam
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/team/players?teamId=3049&freeAgents=false
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 3049
+  freeAgents: false
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

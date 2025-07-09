@@ -1,0 +1,27 @@
+meta {
+  name: GetAveragePositions
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/football/opta/match/averageposition?leagueId=24&seasonId=2022&eventId=g2295766&teamId=t149&getShirtNumbers=true&includeSubs=true&onlyActivePlayers=false&MaintainStartingOrder=true
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 24
+  seasonId: 2022
+  eventId: g2295766
+  teamId: t149
+  getShirtNumbers: true
+  includeSubs: true
+  onlyActivePlayers: false
+  MaintainStartingOrder: true
+  ~playerId: p59966
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

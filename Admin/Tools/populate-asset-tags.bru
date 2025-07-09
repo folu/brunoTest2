@@ -1,0 +1,26 @@
+meta {
+  name: populate-asset-tags
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/admin-tools/find-replace?from=\"seasonId\": \"2019\",&to=\"seasonId\":\"2020\",&trailRun=true&assetId=36150
+  body: none
+  auth: bearer
+}
+
+params:query {
+  from: \"seasonId\": \"2019\",
+  to: \"seasonId\":\"2020\",
+  trailRun: true
+  assetId: 36150
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

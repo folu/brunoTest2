@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamRankings
+  type: http
+  seq: 51
+}
+
+get {
+  url: {{api}}/data/football/opta/team/rankings?leagueId=11&seasonId=2019&teamId=t106
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 11
+  seasonId: 2019
+  teamId: t106
+  ~categoryId: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamPressures
+  type: http
+  seq: 47
+}
+
+get {
+  url: {{api}}/data/football/optasd/team/pressures?seasonId=2022&tournamentId=80foo89mm28qjvyhjzlpwj28k&eventId=7l349e6uxkopqw9i97byd0j6c&teamId=7vn2i2kd35zuetw6b38gw9jsz
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2022
+  tournamentId: 80foo89mm28qjvyhjzlpwj28k
+  eventId: 7l349e6uxkopqw9i97byd0j6c
+  teamId: 7vn2i2kd35zuetw6b38gw9jsz
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

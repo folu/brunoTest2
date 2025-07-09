@@ -1,0 +1,26 @@
+meta {
+  name: OptaMappings
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/admin-tools/opta-mapping?optasdId=8l3o9v8n8tva0bb2cds2dhatw&optaId=8&seasonId=2021&asInsert=true
+  body: none
+  auth: bearer
+}
+
+params:query {
+  optasdId: 8l3o9v8n8tva0bb2cds2dhatw
+  optaId: 8
+  seasonId: 2021
+  asInsert: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,81 @@
+meta {
+  name: GetPlayerLastFiveGames -  Test Automation
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{api}}/data/baseball/stats/player/lastFiveGames?playerId=549847&seasonId=2024&competitionId=mlb
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 549847
+  seasonId: 2024
+  competitionId: mlb
+  ~language: en
+  ~collectionPath: 
+  ~eventTypeId: regular season
+  ~games: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 3000ms", function () {
+      expect(res.getResponseTime()).to.be.below(3000);
+  });
+  
+  test("Player and team details are correct", function () {
+      const jsonData = res.getBody();
+  
+      //player details
+      expect(jsonData.player.fullName).to.eql("Aaron Judge");
+      expect(jsonData.player.id).to.eql("549847");
+  
+      // team details
+      expect(jsonData.team.abbreviation).to.eql("NYY");
+      expect(jsonData.team.name).to.eql("New York Yankees");
+      expect(jsonData.team).to.have.property("crest");
+      expect(jsonData.team.crest).to.match(/^https?:\/\/.+/); // crest url is valid
+  });
+  
+  test("Response contains data for 5 games", function () {
+      const jsonData = res.getBody();
+      expect(jsonData.gameStats.length).to.eql(5);
+  });
+  
+  test("Roll up batting stats match the sum of individual games", function () {
+      const jsonData = res.getBody();
+  
+      // roll up totals from the response
+      const totals = jsonData.totals.batting;
+  
+      // totals
+      let atBats = 0;
+      let hits = 0;
+      let homeRuns = 0;
+  
+      jsonData.gameStats.forEach(game => {
+          atBats += game.stats.batting.atBats;
+          hits += game.stats.batting.hits;
+          homeRuns += game.stats.batting.homeRun;
+      });
+  
+      // compare with the totals from the response
+      expect(totals.atBats).to.eql(atBats);
+      expect(totals.hits).to.eql(hits);
+      expect(totals.homeRun).to.eql(homeRuns);
+  });
+  
+  // //pm.test("Invalid playerId returns 400", function () {
+  //    // pm.response.to.have.status(400);});
+  
+}

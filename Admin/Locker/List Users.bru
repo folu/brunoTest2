@@ -1,0 +1,21 @@
+meta {
+  name: List Users
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/locker/users
+  body: none
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

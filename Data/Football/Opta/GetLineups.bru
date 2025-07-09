@@ -1,0 +1,21 @@
+meta {
+  name: GetLineups
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/data/football/opta/match/lineups?tournamentId=8&seasonId=2022&matchId=g2292921
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 8
+  seasonId: 2022
+  matchId: g2292921
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

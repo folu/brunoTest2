@@ -1,0 +1,25 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/matches?groupbydate=true&tournamentId=3us70c00uexdabblw9a7eucr8&startDate=2022-01-01
+  body: none
+  auth: none
+}
+
+params:query {
+  groupbydate: true
+  tournamentId: 3us70c00uexdabblw9a7eucr8
+  startDate: 2022-01-01
+  ~endDate: 
+  ~year: 
+  ~includeDoubles: 
+  ~filterBySurface: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

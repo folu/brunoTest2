@@ -1,0 +1,27 @@
+meta {
+  name: GetMatchLeaders
+  type: http
+  seq: 25
+}
+
+get {
+  url: {{api}}/data/football/opta/match/leaders?tournamentId=8&seasonId=2019&category=total_scoring_att&eventId=g1059811&numOfResults=10&SortOrder=desc
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 8
+  seasonId: 2019
+  category: total_scoring_att
+  eventId: g1059811
+  numOfResults: 10
+  SortOrder: desc
+  ~teamId: 10470g1063790
+  ~leagueId: 
+  ~includePlayerLeaderStats: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

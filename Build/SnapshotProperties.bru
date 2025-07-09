@@ -1,0 +1,15 @@
+meta {
+  name: SnapshotProperties
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{api}}/admin/build/snapshots
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

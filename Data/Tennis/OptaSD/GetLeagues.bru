@@ -1,0 +1,19 @@
+meta {
+  name: GetLeagues
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/leagues
+  body: none
+  auth: none
+}
+
+params:query {
+  ~null: 9jugfp4gjm7kjc6q7lr2b2as4
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,25 @@
+meta {
+  name: GetPasses
+  type: http
+  seq: 26
+}
+
+get {
+  url: {{api}}/data/football/opta/match/passes?leagueId=8&eventId=g1059982&seasonId=2019&teamId=t3&playerId=p59966
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 8
+  eventId: g1059982
+  seasonId: 2019
+  teamId: t3
+  playerId: p59966
+  ~feedType: f24
+  ~shotsOnly: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

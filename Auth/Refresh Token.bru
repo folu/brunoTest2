@@ -1,0 +1,38 @@
+meta {
+  name: Refresh Token
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{host}}/connect/token
+  body: formUrlEncoded
+  auth: oauth2
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+body:form-urlencoded {
+  grant_type: refresh_token
+  refresh_token: CfDJ8Cn-eXc5-7JJqqgVimgvJ4qnj3NIWVVVIRnRSMY5AUumIXnJ0QzM3hxUT9LiqlxG2VgkKFoH2bGb1kjXHhAPqiMbFThROG_1FJzvRhzDvgZnh8afjmOBWaohKICAY2FFcovWj9rNFW6n-QXCizx_hc4evc-Agx70DQZY4I4WWlt6ZamePW2xFKMr6jWPElLy7qf9inY4X0i8Czt7wwpUjRH8cGVAZ2JyAzY1cwXsC3qnhkI2tGnIsLyLkgku0eWQiVYCXct-M-ypI7-rb912qCJFrtQrp3E7IZKfVJbY3tCFWiMMGoKE1Nby41Nk4r4bpFdHBAovK_55PBxKXOYXy02EupKNpHTbungj7rYWrCDnaU0D3eMLKOoT0Swy1ADRHyund2rWyufItul2gYyIoeEuRfZfUeXfrWr7X3KORik-cQfyQ3WLp9QJ1wsgeoHkmGvar0ifAk978xN4enQegfDn0EuVjylbiqRge-aLzPzhzf6ZR5ng1aGcuERiFTLgLwmHulhRLOM3NQGX5eP8tBlAPoSScbMmHuWa_YqNjVV2f04GC1sg3AfA1jD4MqrhR1SJOARvOOEkUki0cwiQlRwNBO-A_1ociJLFrJCBVxZ6R_HpdONdF88gsbI7VrkjOvGpqvZZfMDw_bvIxCPJN0rHZDDnGC9JabbvSRkIwlS0o8IS60CAoeIzTAAQH3CRNfJQA2FQHcH1WvZrihtATUJapFmof7bx8SRRlOoZSms2lzdV-tPkID-x-fA0LS1CMgf_ILGR8qfHEQ5WcstL4XDg2wGMht6xfC0GnTvDs2CjwZiSmHxGGWt7Hiw57Ic_3MdHGDf8Ztjt0j483kM-nh28ohjtgmse4WyuWeItxHDj9baVYVVhVjDxZmDR_68t9F3DPpgxxAw5jrx5HYtkpxKY3U9N8zR594dvvAazFfGa7P4y_h97hsW18krFOiNs4Ww0nte0a5Gpf-5fomr0ghSZ7ca_eehpjwh24aTEJozZ7iTsUCbyxaZOQzE193y8_sPQRbu4eFcB28pvTh2xPVk3DwVDBDH-bhuMmNH0H3XiIhvJff9bMNHzxNZlyYqGeyqnvG-oAkpa3x07-nYK9Z3erAo1fZBTPO9UVZaWnU2NGrO4I1C486Y-U4-G35fEO4PEdxxSCI7vXQAle3ItHWZTVV0FsWRS1DODMsSRAHIyNwajKStbr-Dzajtf-0LP5Fy_MK9hh4UOznaX5c3c_2ywfJ_0GbMNRPIY7azVh22rYAkx14k4_EDNz69XfRQvl7DGrGD4ctmD_-YBOVWAeumm6cD2qWplVrbrY6ynH-ewzqS4hFH1Rvi8Cfyg49df8MXNBp_4c79ZAW_tqw7E0hRY-zpDcrTpYCEElgC552GVnPJVZM0xkROFe8s6fErUkhyDMWTX_iI6ZbmGEI15SFpkyo2Zmtkr5jPl66RHAu0OCaW6dC1qDX6jWSEHZCJMfZe7v62H_PcSRmsEAK9rI5ydGHAc2ftxMpMJ5IEG8FmtEYNDDie3HE-Asw9xwnvX3OWlviujF90BtC3fWfs0CLsibg
+  client_id: uefa
+  client_secret: 391db93c-b7a0-4a80-860b-2d5d359082d1
+  scope: graphics
+}

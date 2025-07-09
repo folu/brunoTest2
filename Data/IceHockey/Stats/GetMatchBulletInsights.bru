@@ -1,0 +1,20 @@
+meta {
+  name: GetMatchBulletInsights
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/match/bulletInsights?competitionId=nhl&eventId=2367460
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  eventId: 2367460
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

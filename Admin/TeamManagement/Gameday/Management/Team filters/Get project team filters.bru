@@ -1,0 +1,15 @@
+meta {
+  name: Get project team filters
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/teammanagement/gameday/projects/49/teams
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

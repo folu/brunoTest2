@@ -1,0 +1,22 @@
+meta {
+  name: GetEvents
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/olympics/stats/events?seasonId=2016&language=en&disciplineId=AT
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2016
+  language: en
+  disciplineId: AT
+  ~date: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

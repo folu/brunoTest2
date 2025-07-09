@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/football/statscore/match/stats?eventId=3065486
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 3065486
+  ~teamId: 10470g1063790
+  ~leagueId: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

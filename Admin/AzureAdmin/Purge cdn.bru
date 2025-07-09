@@ -1,0 +1,30 @@
+meta {
+  name: Purge cdn
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{api}}/admin/azureadmin/purge-cdn
+  body: json
+  auth: bearer
+}
+
+params:query {
+  ~: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  [
+          "/toolkit/_assetthumbnails/30397.png"
+      ]
+  
+}

@@ -1,0 +1,20 @@
+meta {
+  name: Update-All
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{api}}/admin/collections/ingestion/update-all?sport=football&year=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  sport: football
+  year: 2024
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

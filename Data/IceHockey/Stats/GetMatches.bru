@@ -1,0 +1,29 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/matches?competitionId=nhl&startDate=2024-04-01&endDate=2024-04-08&collectionPath=/collections/projects/6062/nhl2.json
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  startDate: 2024-04-01
+  endDate: 2024-04-08
+  collectionPath: /collections/projects/6062/nhl2.json
+  ~amountofbatches: 5
+  ~batchcount: 5
+  ~groupByDate: true
+  ~lookahead: 7
+  ~orderDirection: asc
+  ~groupOrderDirection: desc
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

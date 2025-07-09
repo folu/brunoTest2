@@ -1,0 +1,26 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/matches?groupByGameweek=true&competitionId=421&from=2024-09-01&to=2025-01-06&seasonId=2025
+  body: none
+  auth: none
+}
+
+params:query {
+  groupByGameweek: true
+  competitionId: 421
+  from: 2024-09-01
+  to: 2025-01-06
+  seasonId: 2025
+  ~groupbydate: true
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

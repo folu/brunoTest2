@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerCareerStats
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/cricket/opta/player/careerstats?feedType=c5&matchId=4&seasonId=2022&competitionId=3020&playerId=6813
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: c5
+  matchId: 4
+  seasonId: 2022
+  competitionId: 3020
+  playerId: 6813
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

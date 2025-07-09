@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerMatchRadarStats
+  type: http
+  seq: 31
+}
+
+get {
+  url: {{api}}/data/football/opta/player/matchstats/radar?competitionId=8&seasonId=2019&playerId=p50232|p166640|p101537&matchId=g1059811&requestedStats=total_pass|open_play_pass|accurate_pass|attempts_conceded_ibox|touches|ball_recovery|duel_lost
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  seasonId: 2019
+  playerId: p50232|p166640|p101537
+  matchId: g1059811
+  requestedStats: total_pass|open_play_pass|accurate_pass|attempts_conceded_ibox|touches|ball_recovery|duel_lost
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

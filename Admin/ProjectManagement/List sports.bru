@@ -1,0 +1,25 @@
+meta {
+  name: List sports
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/project-management/list/sports?returnAsInt=false
+  body: none
+  auth: bearer
+}
+
+params:query {
+  returnAsInt: false
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,28 @@
+meta {
+  name: Get Video Job
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/server/videoV2/get-video-job?jobId=e0c00d9f-8217-49b0-6638-08dc20d8a059
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  jobId: e0c00d9f-8217-49b0-6638-08dc20d8a059
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  File: @file(/C:/Users/Matty/Desktop/D9J7E_RW4AA6dag.mp4)
+}

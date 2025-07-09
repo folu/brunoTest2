@@ -1,0 +1,26 @@
+meta {
+  name: sdapi-teams
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/admin-tools/sdapi-teams?tmcl=e92gbrj61ynfxw5znu9ds5atw&seasonId=2024&tournamentStage=e9mazw9rp35ywp1i9pnnq47pw
+  body: none
+  auth: bearer
+}
+
+params:query {
+  tmcl: e92gbrj61ynfxw5znu9ds5atw
+  seasonId: 2024
+  tournamentStage: e9mazw9rp35ywp1i9pnnq47pw
+  ~seas: 8
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

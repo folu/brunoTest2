@@ -1,0 +1,22 @@
+meta {
+  name: Get Tournaments
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/football/sportradar/matches?tournamentId=sr:tournament:215&filterToTeam=sr:competitor:2442
+  body: none
+  auth: apikey
+}
+
+params:query {
+  tournamentId: sr:tournament:215
+  filterToTeam: sr:competitor:2442
+}
+
+auth:apikey {
+  key: x-api-key
+  value: {{apiKey}}
+  placement: header
+}

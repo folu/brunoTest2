@@ -1,0 +1,74 @@
+meta {
+  name: GetPlayersOnTeam - Test Automation
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/baseball/stats/team/players?seasonId=2024&leagueId=kbo&teamId=12376
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2024
+  leagueId: kbo
+  teamId: 12376
+  ~positionsFilter: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 4000ms", function () {
+      expect(res.getResponseTime()).to.be.below(4000);
+  });
+  
+  test("Each player has required fields", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(player => {
+          expect(player).to.have.property("id");
+          expect(player).to.have.property("firstName");
+          expect(player).to.have.property("lastName");
+          expect(player).to.have.property("fullName");
+          expect(player).to.have.property("position");
+          expect(player).to.have.property("nationality");
+          expect(player).to.have.property("shirtNumber");
+          expect(player).to.have.property("teamId");
+          expect(player).to.have.property("teamName");
+          expect(player).to.have.property("captainText");
+      });
+  });
+  
+  test("Field data types are correct", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(player => {
+          expect(player.id).to.be.a("string");
+          expect(player.firstName).to.be.a("string");
+          expect(player.lastName).to.be.a("string");
+          expect(player.fullName).to.be.a("string");
+          expect(player.position).to.be.a("string");
+          expect(player.nationality).to.be.a("string");
+          expect(player.shirtNumber).to.be.a("string");
+          expect(player.teamId).to.be.a("string");
+          expect(player.teamName).to.be.a("string");
+          expect(player.captainText).to.be.a("string");
+      });
+  });
+  
+  test("No boolean fields contain null", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(player => {
+          if (player.hasOwnProperty("isCaptain")) {
+              expect(player.isCaptain).to.be.a("boolean");
+          }
+      });
+  });
+  
+}

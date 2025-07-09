@@ -1,0 +1,23 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/standings?competitionId=nhl
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  ~groupByConference: true
+  ~groupByDivision: true
+  ~seasonId: 2022
+  ~: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

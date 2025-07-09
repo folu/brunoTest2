@@ -1,0 +1,42 @@
+meta {
+  name: UpdateRegistrationConfig
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{api}}/registration/config
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+          "clientName": "test",
+          "config": {
+              "form": {
+                  "editEmail": true
+              },
+              "groups": [
+                  "e46fb5ca-769e-4c48-a591-0415daa7d514"
+              ],
+              "team": {
+                  "includes": [
+                      {
+                          "id": "035f5423-71db-43a4-956d-86f9c82412b5",
+                          "displayName": "Erith Town"
+                      }
+                  ],
+                  "excludes": [
+                      "67604f7e-fbc3-4d42-ae37-fce378fbafad"
+                  ]
+              }
+          },
+          "description": "Register on behalf of test client and start creating graphics for campaign X!!!!",
+          "clientDisplayName": "test99"
+      }
+}

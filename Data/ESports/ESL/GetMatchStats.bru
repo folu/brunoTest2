@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/esports/esl/match/stats?matchId=33809&roundId=14021&competitionId=242
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 33809
+  roundId: 14021
+  competitionId: 242
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

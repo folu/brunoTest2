@@ -1,0 +1,15 @@
+meta {
+  name: GetGroups
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/teammanagement/groups
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

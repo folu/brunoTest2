@@ -1,0 +1,40 @@
+meta {
+  name: Get feed items for the logged in user with page filtering
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{receiver-api}}/feeds?page=1&pageSize=20
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  page: 1
+  pageSize: 20
+}
+
+headers {
+  Accept: text/plain
+  ~Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2Y2xFRnFacVNVeWlpSG16UEQ5dyJ9.eyJodHRwczovL2lzZi5zY291dDcuY29tX1VzZXJJZCI6ImF1dGgwfDYyNGMzYjUwYmJhZTA3MDA2ZmIzMDE5ZCIsImh0dHBzOi8vaXNmLnNjb3V0Ny5jb21fVXNlcm5hbWUiOiJncmFwaGljc0BwcmVzc2JveC5jb20iLCJodHRwczovL3JlY2VpdmVyL2VtYWlsIjoiZ3JhcGhpY3NAcHJlc3Nib3guY29tIiwiaHR0cHM6Ly9yZWNlaXZlci9lbWFpbF92ZXJpZmllZCI6ZmFsc2UsImh0dHBzOi8vcmVjZWl2ZXIvbmFtZSI6ImdyYXBoaWNzQHByZXNzYm94LmNvbSIsImh0dHBzOi8vcmVjZWl2ZXIvcGJnX2lkIjpbIjNmNDc1MGRkLTRlYTEtNDgyOC1iZTVkLTI1MjU3MWRmMDcwZSJdLCJpc3MiOiJodHRwczovL3N0YXRzcGVyZm9ybW5vbnByb2QudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYyNGMzYjUwYmJhZTA3MDA2ZmIzMDE5ZCIsImF1ZCI6WyJodHRwczovL3JlY2VpdmVyIiwiaHR0cHM6Ly9zdGF0c3BlcmZvcm1ub25wcm9kLnVzLmF1dGgwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2NDk0MjA5OTAsImV4cCI6MTY0OTUwNzM5MCwiYXpwIjoid2R3dzlwUnFGeHN6bkhhd2JZU2VuQmpPcFFMTkxqZ3YiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIHJlY2VpdmVyIn0.bZfJw2qfxtPfUyY5CatzsoJmU_v52WOEbyqU7c0V7CRQld341q388DKaihKmgTqTNJ3Z31AK294QH37Bacp6u8SjRMA1mfPOtNTx2N-VC7uXTFq4OCZ9oFbUlM9GGRR6JPjfhHuTHlFBfb5-_DBP5EueAvCEuzfu-s66Tz1jxNJp6mFYqTQVwUQdKsxOfCf19aArjC1MTibQmP01UQA-GOfIAJlIG31DgZETi9XBhxWyJkghg45LcA2h6b1zmQeotGMX4Gj9rviri0OUCp-gME8r2kjsy-uqD0_ECZFfQ7rjTsGZ__KUk664JNMBrz1_ijMSFUgmY1x2LdGZ6jcBQA
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: http://localhost:53507/
+  authorization_url: https://statsperformnonprod.us.auth0.com/authorize
+  access_token_url: https://statsperformnonprod.us.auth0.com/oauth/token
+  refresh_token_url: 
+  client_id: wdww9pRqFxsznHawbYSenBjOpQLNLjgv
+  client_secret: 
+  scope: openid profile offline_access receiver
+  state: 
+  pkce: false
+  credentials_placement: body
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

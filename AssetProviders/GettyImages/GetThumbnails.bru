@@ -1,0 +1,27 @@
+meta {
+  name: GetThumbnails
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/AssetProvider/79e0b509-0f28-452d-8f81-409755758dda/getThumbnails?applicationId=B9727238-1B6B-4416-B6FB-FCFB35F22534&SearchTerm=messi&UserId=19c87481-5514-4d78-b1db-4d339950691a&page=1
+  body: json
+  auth: none
+}
+
+params:query {
+  applicationId: B9727238-1B6B-4416-B6FB-FCFB35F22534
+  SearchTerm: messi
+  UserId: 19c87481-5514-4d78-b1db-4d339950691a
+  page: 1
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+         {"SearchTerm": "dog",
+         "UserId": "00e20e52-f115-4b62-b89d-c39f071d5920"}
+}

@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerSeasonCourtLocations
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/basketball/autostats/player/courtlocations?filterByTeam=23526&filterByPlayer=1134618&tournamentId=fiba_asia&eventId=2463122
+  body: none
+  auth: none
+}
+
+params:query {
+  filterByTeam: 23526
+  filterByPlayer: 1134618
+  tournamentId: fiba_asia
+  eventId: 2463122
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

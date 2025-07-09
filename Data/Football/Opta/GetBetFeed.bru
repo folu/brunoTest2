@@ -1,0 +1,21 @@
+meta {
+  name: GetBetFeed
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/football/opta/match/betfeed?leagueId=24&eventId=g2295585&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 24
+  eventId: g2295585
+  seasonId: 2022
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

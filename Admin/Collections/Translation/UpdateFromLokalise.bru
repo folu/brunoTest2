@@ -1,0 +1,23 @@
+meta {
+  name: UpdateFromLokalise
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{api}}/admin/collections/translations/update-from-lokalise?collectionPath=global/football/translation/player-match-stats.json
+  body: json
+  auth: bearer
+}
+
+params:query {
+  collectionPath: global/football/translation/player-match-stats.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

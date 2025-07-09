@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerCareerStats
+  type: http
+  seq: 25
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/careerstats?playerId=2im16cd31tgg3yac3c8c18jbp&includeMembershipStats=true&IncludeFriendlyGames=true&includeYouthStats=false
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 2im16cd31tgg3yac3c8c18jbp
+  includeMembershipStats: true
+  IncludeFriendlyGames: true
+  includeYouthStats: false
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

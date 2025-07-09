@@ -1,0 +1,27 @@
+meta {
+  name: GetMatchBulletInsights
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/match/bulletInsights?eventId=2656860&leagueId=nfl
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2656860
+  leagueId: nfl
+  ~includeMatchEvents: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+docs {
+  There are two types of insights on NFL
+  - This one Bullets
+  - InPlay uses LiveInsights
+}

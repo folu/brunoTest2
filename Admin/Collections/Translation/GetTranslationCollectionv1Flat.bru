@@ -1,0 +1,26 @@
+meta {
+  name: GetTranslationCollectionv1Flat
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/admin/collections/translations/flat?sport=football&words=goals&languages=fr,en,nl&collectionName=mattytest1
+  body: none
+  auth: bearer
+}
+
+params:query {
+  sport: football
+  words: goals
+  languages: fr,en,nl
+  collectionName: mattytest1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

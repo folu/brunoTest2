@@ -1,0 +1,19 @@
+meta {
+  name: Get recent graphics since
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/admin/autopost/recent-graphics-latest
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~since: 2019-09-18
+}
+
+auth:bearer {
+  token: {{token}}
+}

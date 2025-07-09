@@ -1,0 +1,20 @@
+meta {
+  name: GetUsersInRoles
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{api}}/teammanagement/usersinroles?roles=agent,groupowner&groupByRole=true
+  body: none
+  auth: none
+}
+
+params:query {
+  roles: agent,groupowner
+  groupByRole: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

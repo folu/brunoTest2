@@ -1,0 +1,19 @@
+meta {
+  name: GetMatch
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/baseball/mlb/match?eventId=634295
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 634295
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

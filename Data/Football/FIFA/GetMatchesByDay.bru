@@ -1,0 +1,26 @@
+meta {
+  name: GetMatchesByDay
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/football/fifa/matches/byday?seasonId=285514&tournamentId=521&date=2022-09-02T00:00:00&language=en-GB
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 285514
+  tournamentId: 521
+  date: 2022-09-02T00:00:00
+  language: en-GB
+  ~groupByDate: true
+  ~startDate: 2021-08-01
+  ~tournamentStage: 282687
+  ~batchSize: 9
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

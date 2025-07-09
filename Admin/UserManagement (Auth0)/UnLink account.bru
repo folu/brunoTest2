@@ -1,0 +1,34 @@
+meta {
+  name: UnLink account
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{api}}/admin/user/management/unlink-account
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  // {
+  //     "UserId": "auth0|66337ca36ed5a9f809f80011",
+  //     "AccountToRemoveId": "FIFA|KA_xFldVea2jth2E_Z-RyXKYRG43eQVWB24iGXFJhic"
+      // "provider": "oidc"
+  // }
+  
+  //{
+  //    "UserId": "auth0|65f43474ae1054593a8e4c93",
+  //    "AccountToRemoveId": "FIFA|5yDUp5B3XPyoUsrZcu9K0-ejbwgVXnhWK85MaYye5dQ",
+  //    "provider": "auth0"
+  //}
+  {
+      "UserId": "oidc|FIFA|5yDUp5B3XPyoUsrZcu9K0-ejbwgVXnhWK85MaYye5dQ",
+      "AccountToRemoveId": "65f43474ae1054593a8e4c93",
+      "provider": "auth0"
+  }
+}

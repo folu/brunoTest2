@@ -1,0 +1,21 @@
+meta {
+  name: album
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://api.smugmug.com/api/v2/album!search?Text=memories&Scope=/api/v2/user/kevinallinson
+  body: none
+  auth: none
+}
+
+params:query {
+  Text: memories
+  Scope: /api/v2/user/kevinallinson
+}
+
+headers {
+  Accept: application/json
+  ~Content-Type: application/json
+}

@@ -1,0 +1,27 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/football/fifa/standings?seasonId=288282&leagueId=520&tournamentStage=288289&groupByGroup=true&locale=en-gb
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 288282
+  leagueId: 520
+  tournamentStage: 288289
+  groupByGroup: true
+  locale: en-gb
+  ~startDate: 2019-03-06
+  ~endDate: 2019-03-09
+  ~startDate: 1900-05-01
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Referer: sajnahjdom/test
+}

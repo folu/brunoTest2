@@ -1,0 +1,22 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/football/uefa/standings?leagueId=1&seasonId=2020&groupByGroup=true
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 1
+  seasonId: 2020
+  groupByGroup: true
+  ~amountOfBatches: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

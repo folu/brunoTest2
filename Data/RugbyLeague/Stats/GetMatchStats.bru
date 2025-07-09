@@ -1,0 +1,24 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/rugbyleague/stats/match/stats?leagueId=1&includeMatchEvents=true&eventId=20231112320&seasonId=2023
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 1
+  includeMatchEvents: true
+  eventId: 20231112320
+  seasonId: 2023
+  ~groupbydate: true
+  ~startDate: 2022-01-01
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

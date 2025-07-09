@@ -1,0 +1,143 @@
+meta {
+  name: build html
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/render/server/36615/html
+  body: json
+  auth: oauth2
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+body:json {
+  {
+      "assetId": 25126,
+      "graphicId": 1026947,
+      "userId": "00e20e52-f115-4b62-b89d-c39f071d5920",
+      "input": [{
+  
+              "Text": "Starting Team",
+              "Id": "Title",
+              "Type": 1
+          },
+          {
+              "Items": [{
+                  "name": "Aston Villa",
+                  "displayname": "Aston Villa",
+                  "nickname": "",
+                  "image": "https://live.playingsurface.net/assets/Toolkit/bbcsport/pl/logos/48x48/avl.png"
+              }],
+              "Id": "Colours",
+              "Type": 3
+          },
+          {
+              "Items": [{
+                      "LeagueA": "1",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "2",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "3",
+                      "NameSurname": "Name Surname (C)"
+                  },
+                  {
+                      "LeagueA": "4",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "5",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "6",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "7",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "8",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "9",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "10",
+                      "NameSurname": "Name Surname"
+                  },
+                  {
+                      "LeagueA": "11",
+                      "NameSurname": "Name Surname"
+                  }
+              ],
+              "Id": "LineUp",
+              "Type": 3
+          }
+      ],
+      "debug": true,
+      "options": {
+          "theme": 0,
+          "layout": 1,
+          "dynamicTheme": {
+              "name": "dynamic theme",
+              "source": [{
+                      "items": {
+                          "name": "Title",
+                          "color": "pink",
+                          "background-color": "white"
+                      }
+                  },
+                  {
+                      "items": {
+                          "color": "pink",
+                          "name": "LineUp__LeagueA"
+                      }
+                  },
+                  {
+                      "items": {
+                          "background-color": "black",
+                          "name": "bg2__color"
+                      }
+                  }
+              ]
+          },
+          "cropOptions": [{
+              "x": 0,
+              "y": 0,
+              "width": 200,
+              "height": 200
+          }]
+      }
+  }
+}

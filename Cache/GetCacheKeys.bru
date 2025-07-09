@@ -1,0 +1,19 @@
+meta {
+  name: GetCacheKeys
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/cache/keys?orderBySize=true
+  body: none
+  auth: none
+}
+
+params:query {
+  orderBySize: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

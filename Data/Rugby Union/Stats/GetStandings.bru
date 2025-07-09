@@ -1,0 +1,20 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/teams?competitionId=503&seasonId=2020
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 503
+  seasonId: 2020
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

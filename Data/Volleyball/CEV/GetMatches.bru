@@ -1,0 +1,22 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/volleyball/cev/matches?tournamentId=1052&startDate=2019-05-10&endDate=2019-12-30&filterByTeam=10846
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1052
+  startDate: 2019-05-10
+  endDate: 2019-12-30
+  filterByTeam: 10846
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

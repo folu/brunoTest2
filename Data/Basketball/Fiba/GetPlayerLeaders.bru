@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerLeaders
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/basketball/fiba/player/leaders?categoryId=Scorer&tournamentId=6d03455f-8313-4e81-ab6f-839eed6c1071
+  body: none
+  auth: none
+}
+
+params:query {
+  categoryId: Scorer
+  tournamentId: 6d03455f-8313-4e81-ab6f-839eed6c1071
+  ~language: en
+  ~groupByConference: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

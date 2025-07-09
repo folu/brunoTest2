@@ -1,0 +1,20 @@
+meta {
+  name: GetSeasonDriverRanking
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/motorsport/motorsportstats/seasonconstructorrankings?seasonId=90b2dd43-2903-44f4-a4bd-ca6f69feb9d4&seriesId=a485d01c-f907-4ff7-83db-ca1c90cc28a1
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 90b2dd43-2903-44f4-a4bd-ca6f69feb9d4
+  seriesId: a485d01c-f907-4ff7-83db-ca1c90cc28a1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,23 @@
+meta {
+  name: GetTeamsSplits
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/teams/splits?competitionId=nhl&seasonId=2022&teamId=4954
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  seasonId: 2022
+  teamId: 4954
+  ~eventTypeId: 1
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,64 @@
+meta {
+  name: GetMatchAttackingZones - Test Automation
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{api}}/data/football/opta/match/attackingzones?leagueId=5&eventId=g2437093&seasonId=2023&teamId=t43&filterByPeriod=1
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 5
+  eventId: g2437093
+  seasonId: 2023
+  teamId: t43
+  filterByPeriod: 1
+  ~teamId: 10470g1063790
+  ~feedtype: f24
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  //There are 5 different periods
+  let jsonData = res.getBody();
+  let filterByPeriod = req.getUrl().query.get("filterByPeriod");
+  
+  test("Validate filterByPeriod returns correct data", function () {
+      expect(filterByPeriod).to.be.oneOf(["1", "2", "3", "4", "5"]);
+  });
+  
+  
+  test("Data is returned for the correct period", function () {
+      switch (filterByPeriod) {
+          case "1": // First half
+          case "2": // Second half
+              expect(jsonData.eventId).to.exist;
+              expect(jsonData.teamId).to.exist;
+              expect(jsonData.left).to.be.a("number");
+              expect(jsonData.center).to.be.a("number");
+              expect(jsonData.right).to.be.a("number");
+              break;
+          case "3": // Extra time 1st half
+          case "4": // Extra time 2nd half
+          case "5": // Penalty shootout
+              expect(jsonData.eventId).to.exist;
+              expect(jsonData.teamId).to.exist;
+              break;
+          default:
+              expect(false).to.be.true; 
+      }
+  });
+  
+  
+  
+}

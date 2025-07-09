@@ -1,0 +1,21 @@
+meta {
+  name: PlayerTournamentStats
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/esports/esl/players/tournamentstats?roundId=14274&teamId=14810&playerId=49808
+  body: none
+  auth: none
+}
+
+params:query {
+  roundId: 14274
+  teamId: 14810
+  playerId: 49808
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

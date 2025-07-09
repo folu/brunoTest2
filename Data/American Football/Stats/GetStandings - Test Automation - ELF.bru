@@ -1,0 +1,117 @@
+meta {
+  name: GetStandings - Test Automation - ELF
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/standings?competitionId=cfb&conferenceId=1
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: cfb
+  conferenceId: 1
+  ~language: en
+  ~groupByConference: true
+  ~groupByDivision: true
+  ~teamId: 3487
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test('Status code is 200', function () {
+      expect(res.getStatus()).to.equal(200);
+  })
+  
+  test('Response has all required keys', function () {
+      let jsonData = res.getBody();
+      jsonData.forEach(teamData => {
+          expect(teamData).to.have.property('team');
+          expect(teamData).to.have.property('conference');
+          expect(teamData).to.have.property('conferenceName');
+          expect(teamData).to.have.property('pointsFor');
+          expect(teamData).to.have.property('pointsAgainst');
+          expect(teamData).to.have.property('wins');
+          expect(teamData).to.have.property('losses');
+          expect(teamData).to.have.property('percentage');
+          expect(teamData).to.have.property('streak');
+          expect(teamData).to.have.property('homeRecord');
+          expect(teamData).to.have.property('awayRecord');
+      });
+  })
+  
+  test('Streak type matches streak count', function () {
+      let jsonData = res.getBody();
+      jsonData.forEach(teamData => {
+          expect([
+              'W',
+              'L'
+          ]).to.include(teamData.streakType);
+          expect(Number.isInteger(teamData.streak)).to.be.true;
+          expect(teamData.streak).to.be.at.least(0);
+      });
+  })
+  
+  test('Response contains conference and division fields', function () {
+      let jsonData = res.getBody();
+      jsonData.forEach(team => {
+          expect(team).to.have.property('conferenceName');
+          expect(team).to.have.property('conferenceShortName');
+          expect(team).to.have.property('division');
+      });
+  })
+  
+  test('Conference short name is not empty for teams with a conference', function () {
+      let jsonData = res.getBody();
+      jsonData.forEach(team => {
+          if (team.conferenceName) {
+              expect(team.conferenceShortName).to.be.a('string').and.to.have.length.above(0);
+          }
+      });
+  })
+  
+  test('Conference ranks should not have gaps or duplicates', function () {
+      let jsonData = res.getBody();
+      let ranks = jsonData.map(team => team.conferenceRank).sort((a, b) => a - b);
+      for (let i = 1; i < ranks.length; i++) {
+          expect(ranks[i]).to.be.at.least(ranks[i - 1]);
+          expect(ranks[i]).to.be.at.most(ranks[i - 1] + 1);
+      }
+  })
+  
+  test('Home and away records contain expected fields', function () {
+      let jsonData = res.getBody();
+      jsonData.forEach(team => {
+          expect(team).to.have.property('homeRecord');
+          expect(team.homeRecord).to.have.property('wins');
+          expect(team.homeRecord).to.have.property('losses');
+          expect(team.homeRecord).to.have.property('percentage');
+          expect(team).to.have.property('awayRecord');
+          expect(team.awayRecord).to.have.property('wins');
+          expect(team.awayRecord).to.have.property('losses');
+          expect(team.awayRecord).to.have.property('percentage');
+      });
+  })
+  
+  test('First team should have gamesBehind = 0', function () {
+      let jsonData = res.getBody();
+      let firstTeam = jsonData.find(team => team.conferenceRank === 1);
+      expect(firstTeam.gamesBehind).to.eql(0);
+  })
+  
+  test("All teams belong to conference 1", function () {
+      const teams = res.getBody();
+      const expectedConferenceId = "1";
+  
+      teams.forEach((team, i) => {
+          expect(team.conference, `Team at index ${i} is not in conference ${expectedConferenceId}`).to.eql(expectedConferenceId);
+      });
+  });
+  
+  
+}

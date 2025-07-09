@@ -1,0 +1,25 @@
+meta {
+  name: getTeams
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/matches?groupbydate=true&competitionId=210&from=2023-01-01&to=2024-01-01&seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  groupbydate: true
+  competitionId: 210
+  from: 2023-01-01
+  to: 2024-01-01
+  seasonId: 2024
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

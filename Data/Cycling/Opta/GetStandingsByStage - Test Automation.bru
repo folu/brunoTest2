@@ -1,0 +1,24 @@
+meta {
+  name: GetStandingsByStage - Test Automation
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/cycling/opta/standings-stage?eventId=90823&stageId=2&classificationType=1&take=10&batchSize=5
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 90823
+  stageId: 2
+  classificationType: 1
+  take: 10
+  batchSize: 5
+  ~amountOfBatches: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

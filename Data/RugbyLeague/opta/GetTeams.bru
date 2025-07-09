@@ -1,0 +1,22 @@
+meta {
+  name: GetTeams
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/rugbyleague/opta/teams?competitionId=1&seasonId=2025&teamIds=800
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1
+  seasonId: 2025
+  teamIds: 800
+  ~collectionPath: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

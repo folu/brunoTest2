@@ -1,0 +1,31 @@
+meta {
+  name: Clone video
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{api}}/locker
+  body: json
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "name" : "mattytest",
+      "userid": "00e20e52-f115-4b62-b89d-c39f071d5920",
+      "parentid": 1,
+      "path": "mattytemp/..",
+      "thumbpath": "mattytemp/thumbs/.."
+  }
+}

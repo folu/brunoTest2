@@ -1,0 +1,15 @@
+meta {
+  name: Returns a list of all projects the logged in user has access to
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{receiver-api}}/Projects
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: text/plain
+}

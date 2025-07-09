@@ -1,0 +1,20 @@
+meta {
+  name: GetMatchBulletInsights
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/basketball/stats/match/bulletInsights?eventId=2484889&competitionId=nba
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2484889
+  competitionId: nba
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,21 @@
+meta {
+  name: AssignCompanies
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{api}}/admin/groups/db2573c9-d9bb-472b-9ae1-840501707a61/assigned/companies
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  [
+      "181B6B14-AD87-4063-AF52-0B8DE2C83724"
+  ]
+}

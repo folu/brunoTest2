@@ -1,0 +1,25 @@
+meta {
+  name: GetDefensiveCoverage
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/football/opta/match/defensivecoverage?leagueId=3&eventId=g2041912&seasonId=2020&teamId=t114
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 3
+  eventId: g2041912
+  seasonId: 2020
+  teamId: t114
+  ~playerId: p59966
+  ~feedType: f24
+  ~shotsOnly: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

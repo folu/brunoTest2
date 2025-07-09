@@ -1,0 +1,22 @@
+meta {
+  name: Assign Story Gameday Project
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{api}}/admin/gameday/stories/assign-story-gameday-project
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "GamedayProjectId": 128,
+      "VideoTemplateId": 450
+  }
+}

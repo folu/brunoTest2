@@ -1,0 +1,21 @@
+meta {
+  name: GetTournamentPlayers
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/tournament/players?seasonId=bihlpcatrk45hxoye65ejz27d&type=single&tournamentId=typjj9clhaswf6brkd3b0650
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: bihlpcatrk45hxoye65ejz27d
+  type: single
+  tournamentId: typjj9clhaswf6brkd3b0650
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

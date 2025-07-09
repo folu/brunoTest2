@@ -1,0 +1,22 @@
+meta {
+  name: Getlineups
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/basketball/stats/match/lineups?eventId=2877414&tournamentId=nba&seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2877414
+  tournamentId: nba
+  seasonId: 2024
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

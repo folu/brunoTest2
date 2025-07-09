@@ -1,0 +1,22 @@
+meta {
+  name: GetEvent
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/esports/fifagg/event?id=0b6c0716-c279-4dea-ac4b-b9ba8cb345b6
+  body: none
+  auth: none
+}
+
+params:query {
+  id: 0b6c0716-c279-4dea-ac4b-b9ba8cb345b6
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+  ~id: 63e05223-229b-48d3-b9cc-33ac2fd627a2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

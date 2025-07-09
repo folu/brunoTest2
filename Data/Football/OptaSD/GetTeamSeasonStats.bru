@@ -1,0 +1,23 @@
+meta {
+  name: GetTeamSeasonStats
+  type: http
+  seq: 48
+}
+
+get {
+  url: {{api}}/data/football/optasd/team/stats?seasonId=2020&leagueId=c0r21rtokgnbtc0o2rldjmkxu&teamIds=3e1v5aemi3afarlqm4raxf7fc
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2020
+  leagueId: c0r21rtokgnbtc0o2rldjmkxu
+  teamIds: 3e1v5aemi3afarlqm4raxf7fc
+  ~matchId: 89hk3hcr8fybrdw47t1bngs9g
+  ~locale: el-gr
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Get User History
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/server/history/user/graphics?userId=19c87481-5514-4d78-b1db-4d339950691a
+  body: none
+  auth: none
+}
+
+params:query {
+  userId: 19c87481-5514-4d78-b1db-4d339950691a
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

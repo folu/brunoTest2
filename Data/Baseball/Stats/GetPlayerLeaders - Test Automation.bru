@@ -1,0 +1,52 @@
+meta {
+  name: GetPlayerLeaders - Test Automation
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/data/baseball/stats/player/leaders?categoryId=123&teamId=234&seasonId=2019&includeNonQualifiers=true
+  body: none
+  auth: none
+}
+
+params:query {
+  categoryId: 123
+  teamId: 234
+  seasonId: 2019
+  includeNonQualifiers: true
+  ~amountOfBatches: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test('Status code is 200', function () {
+      expect(res.getStatus()).to.equal(200);
+  })
+  
+  test('Each player entry has required fields', function () {
+      const players = res.getBody().value;
+      players.forEach((p, index) => {
+          expect(p).to.have.property('player');
+          expect(p).to.have.property('team');
+          expect(p).to.have.property('rank');
+          expect(p).to.have.property('stat');
+      });
+  })
+  
+  const players = res.getBody().value;
+  test('At least 5 players returned', function () {
+      expect(players.length).to.be.at.least(5);
+  })
+  
+  test("Player ranks are in asc order", function () {
+      for (let i = 1; i < players.length; i++) {
+          expect(players[i].rank, `Rank not ascending at index ${i}`).to.be.above(players[i - 1].rank);
+      }
+  });
+  
+  
+}

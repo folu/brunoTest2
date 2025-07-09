@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerMatchStats
+  type: http
+  seq: 30
+}
+
+get {
+  url: {{api}}/data/football/opta/player/matchstats?competitionId=8&seasonId=2019&playerId=p50232&matchId=g1059811
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  seasonId: 2019
+  playerId: p50232
+  matchId: g1059811
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

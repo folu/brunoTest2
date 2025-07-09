@@ -1,0 +1,48 @@
+meta {
+  name: GetSeasonDriversRanking - Test Automation
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/motorsport/optasd/seasonDriverRankings?seasonId=dwao58byqnsc9whiusz45ht2i
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: dwao58byqnsc9whiusz45ht2i
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  
+  let jsonData = res.getBody();
+  
+  test("Rankings array exists", function () {
+      expect(jsonData.rankings).to.be.an("array");
+  });
+  
+  
+  test("Rankings contain 23 drivers", function () {
+      expect(jsonData.rankings.length).to.eql(23);
+  });
+  
+  
+  jsonData.rankings.forEach((item, index) => {
+      test(`Driver ${index + 1} has fullName, position, and points`, function () {
+          expect(item.driver.fullName).to.be.a("string");
+          expect(item.position).to.match(/^\d+$/);
+          expect(item.seasonPoints).to.match(/^\d+(\.\d{3})?$/);
+          expect(item.driver.teamName).to.be.a("string");
+      });
+  });
+  
+}

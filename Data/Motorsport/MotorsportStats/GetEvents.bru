@@ -1,0 +1,23 @@
+meta {
+  name: GetEvents
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/motorsport/motorsportstats/events?seriesId=a33f8b4a-2b22-41ce-8e7d-0aea08f0e176&seasonId=e11717ed-2179-4250-88ba-7c7a79f7c3c0
+  body: none
+  auth: none
+}
+
+params:query {
+  seriesId: a33f8b4a-2b22-41ce-8e7d-0aea08f0e176
+  seasonId: e11717ed-2179-4250-88ba-7c7a79f7c3c0
+  ~from: 2019-05-10
+  ~to: 2020-04-01
+  ~sessionList: Grid,1st Practice,2nd Practice,3rd Practice,4th Practice,Race
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

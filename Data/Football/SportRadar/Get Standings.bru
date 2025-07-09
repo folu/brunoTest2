@@ -1,0 +1,21 @@
+meta {
+  name: Get Standings
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/football/sportradar/standings?leagueId=sr:tournament:215
+  body: none
+  auth: apikey
+}
+
+params:query {
+  leagueId: sr:tournament:215
+}
+
+auth:apikey {
+  key: x-api-key
+  value: {{apiKey}}
+  placement: header
+}

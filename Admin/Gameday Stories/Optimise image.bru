@@ -1,0 +1,32 @@
+meta {
+  name: Optimise image
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/admin/gameday/stories/image/optimise?imageUrl=https://playingsurface1.blob.core.windows.net/uploads/members/75f14d05-6cba-4207-ba24-cc9d2753021e/pbg-24-internal-project-head-to-head--112e78ff-0df1-46b5-b1e7-e0285d49f5b1.png&width=150&height=265
+  body: json
+  auth: none
+}
+
+params:query {
+  imageUrl: https://playingsurface1.blob.core.windows.net/uploads/members/75f14d05-6cba-4207-ba24-cc9d2753021e/pbg-24-internal-project-head-to-head--112e78ff-0df1-46b5-b1e7-e0285d49f5b1.png
+  width: 150
+  height: 265
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "UserId": "19c87481-5514-4d78-b1db-4d339950691a",
+      "Id": "g2363570",
+      "Language": "en",
+      //"EventTypes": "yellow",
+      "GamedayProjectId": 160,
+      "VideoTemplateId": 450
+  }
+}

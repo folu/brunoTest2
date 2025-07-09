@@ -1,0 +1,15 @@
+meta {
+  name: Get Rolling Assets
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/server/videoV2/projects/user/00e20e52-f115-4b62-b89d-c39f071d5920/rollingassets
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

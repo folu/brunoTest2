@@ -1,0 +1,23 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{api}}/data/cricket/opta/standings?feedType=C11&leagueId=2181&groupByGroup=true
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: C11
+  leagueId: 2181
+  groupByGroup: true
+  ~teamIds: 3|7|10
+  ~amountOfBatches: 10
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

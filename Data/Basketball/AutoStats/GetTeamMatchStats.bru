@@ -1,0 +1,23 @@
+meta {
+  name: GetTeamMatchStats
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/basketball/autostats/team/matchstats?eventId=2458033&teamId=24233&tournamentId=fiba_asia
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2458033
+  teamId: 24233
+  tournamentId: fiba_asia
+  ~language: en
+  ~seasonId: 2022
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

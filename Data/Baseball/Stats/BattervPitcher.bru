@@ -1,0 +1,22 @@
+meta {
+  name: BattervPitcher
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{api}}/data/baseball/stats/player/battervpitcher?batterId=1119325&pitcherId=1056094
+  body: none
+  auth: none
+}
+
+params:query {
+  batterId: 1119325
+  pitcherId: 1056094
+  ~seasonId: 2024
+  ~accept: json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

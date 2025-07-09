@@ -1,0 +1,36 @@
+meta {
+  name: Update upcoming matches
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/admin/autopost/update/matches?to=2019-11-20&from=2019-11-18
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  to: 2019-11-20
+  from: 2019-11-18
+  ~: 
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

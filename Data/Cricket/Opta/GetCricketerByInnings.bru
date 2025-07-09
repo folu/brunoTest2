@@ -1,0 +1,21 @@
+meta {
+  name: GetCricketerByInnings
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{api}}/data/cricket/opta/innings/cricketer?feedType=c2&matchId=46036&innings=1
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: c2
+  matchId: 46036
+  innings: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

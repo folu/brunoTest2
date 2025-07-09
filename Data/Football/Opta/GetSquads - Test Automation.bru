@@ -1,0 +1,39 @@
+meta {
+  name: GetSquads - Test Automation
+  type: http
+  seq: 54
+}
+
+get {
+  url: {{api}}/data/football/opta/squads?competitionId=21&teamId=t120&seasonId=2024&collectionPath=custom/football/premierleague/crests.json
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 21
+  teamId: t120
+  seasonId: 2024
+  collectionPath: custom/football/premierleague/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  //check the format in the ACs
+  //if a known name exists, firsName should be empty, lastName & fullName should contain the known name
+  test("Manager name follows expected format", function () {
+      let response = res.getBody();
+      let manager = response[0].manager;  
+  
+      expect(manager.firstName).to.equal("", "Expected firstName to be empty");
+      expect(manager.lastName).to.equal("Sérgio Conceição", "Expected lastName to be known name");
+      expect(manager.fullName).to.equal("Sérgio Conceição", "Expected fullName to match known name");
+  });
+  
+}

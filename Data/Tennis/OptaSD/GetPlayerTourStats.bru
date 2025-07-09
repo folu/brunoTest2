@@ -1,0 +1,21 @@
+meta {
+  name: GetPlayerTourStats
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/player/tourstats?seasonId=2023&tourId=68i76ou8n1cj2aequseoq08pg&playerId=8exjg3dp3yd4dmmpoe3y04x8m
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2023
+  tourId: 68i76ou8n1cj2aequseoq08pg
+  playerId: 8exjg3dp3yd4dmmpoe3y04x8m
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

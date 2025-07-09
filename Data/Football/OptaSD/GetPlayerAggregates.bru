@@ -1,0 +1,24 @@
+meta {
+  name: GetPlayerAggregates
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/aggregates?eventId=amz0d5eiyyfv5pdo4r5asdmac&teamId=28teusnamw1ujgh5di1auf2f7&playerId=7csd9e4ga2p90zyawcpgdc82x
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: amz0d5eiyyfv5pdo4r5asdmac
+  teamId: 28teusnamw1ujgh5di1auf2f7
+  playerId: 7csd9e4ga2p90zyawcpgdc82x
+  ~seasonId: 2021
+  ~comeptitionId: 88uv51hj9upft1fpg33qbwob8
+  ~language: en-gb
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

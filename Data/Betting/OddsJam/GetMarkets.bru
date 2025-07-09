@@ -1,0 +1,22 @@
+meta {
+  name: GetMarkets
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/markets?eventId=27927-82789-23-38&sport=football&league=NFL&sportbooks=bet365
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 27927-82789-23-38
+  sport: football
+  league: NFL
+  sportbooks: bet365
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

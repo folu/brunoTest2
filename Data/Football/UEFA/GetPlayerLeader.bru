@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerLeader
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/football/uefa/player/leaders?leagueId=1&seasonId=2020&categoryId=goals
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 1
+  seasonId: 2020
+  categoryId: goals
+  ~playerId: 2019-10-30
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,19 @@
+meta {
+  name: GetLeagues
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/cricket/opta/leagues?filter=c1m
+  body: none
+  auth: none
+}
+
+params:query {
+  filter: c1m
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

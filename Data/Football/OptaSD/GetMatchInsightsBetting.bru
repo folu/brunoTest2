@@ -1,0 +1,27 @@
+meta {
+  name: GetMatchInsightsBetting
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/bettinginsights?tournamentId=1sc9sn2keddyalfj2z0wy77ys&seasonId=2021&language=en-en&eventId=2229281&eventIdSource=opta
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1sc9sn2keddyalfj2z0wy77ys
+  seasonId: 2021
+  language: en-en
+  eventId: 2229281
+  eventIdSource: opta
+  ~includeMatchEvents: true
+  ~eventId: evazyz74jbbdix2ck2om4a2ac
+  ~locale: en-op
+  ~collectionPath: /collections/custom/football/canalplus/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

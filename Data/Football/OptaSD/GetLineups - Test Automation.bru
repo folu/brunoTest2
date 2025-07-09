@@ -1,0 +1,95 @@
+meta {
+  name: GetLineups - Test Automation
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/lineups?tournamentId=88uv51hj9upft1fpg33qbwob8&seasonId=2021&matchId=as18ozkemunvvv4acz5hqn4t0
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 88uv51hj9upft1fpg33qbwob8
+  seasonId: 2021
+  matchId: as18ozkemunvvv4acz5hqn4t0
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("All players have shortFirstName and shortLastName", function () {
+      let jsonData = res.getBody();
+      let teams = ["homeTeam", "awayTeam"];
+      
+      teams.forEach(team => {
+          if (jsonData[team] && jsonData[team].starting) {
+              jsonData[team].starting.forEach(player => {
+                  expect(player).to.have.property("shortFirstName");
+                  expect(player).to.have.property("shortLastName");
+                  expect(player.shortFirstName).to.not.be.undefined;
+                  expect(player.shortLastName).to.not.be.undefined;
+              });
+          }
+      });
+  });
+  
+  test("First name should be empty if a known name is used", function () {
+      let jsonData = res.getBody();
+      let teams = ["homeTeam", "awayTeam"];
+      
+      teams.forEach(team => {
+          if (jsonData[team] && jsonData[team].starting) {
+              jsonData[team].starting.forEach(player => {
+                  if (player.firstName === "") {
+                      expect(player.lastName).to.not.be.empty;
+                      expect(player.fullName).to.not.be.empty;
+                  }
+              });
+          }
+      });
+  });
+  
+  test("shortLastName should contain only a single surname (except known cases)", function () {
+      let jsonData = res.getBody();
+      let teams = ["homeTeam", "awayTeam"];
+  
+      let knownExceptions = ["Goulart Pereira", "de Oliveira Cardoso"]; 
+      let failingPlayers = [];
+  
+      teams.forEach(team => {
+          if (jsonData[team] && jsonData[team].starting) {
+              jsonData[team].starting.forEach(player => {
+                  let lastNameWords = player.shortLastName.split(" ");
+                  if (!knownExceptions.includes(player.shortLastName) && lastNameWords.length > 2) {
+                      failingPlayers.push({
+                          id: player.id,
+                          fullName: player.fullName,
+                          shortLastName: player.shortLastName
+                      });
+                  }
+              });
+          }
+      });
+  
+      // log failing cases
+      if (failingPlayers.length > 0) {
+          console.log("⚠️ Players with incorrect shortLastName format:", failingPlayers);
+      }
+  
+      failingPlayers.forEach(player => {
+          expect(player.shortLastName.split(" ").length).to.be.at.most(2);
+      });
+  });
+  
+  
+  
+  
+}

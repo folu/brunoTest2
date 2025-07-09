@@ -1,0 +1,61 @@
+meta {
+  name: GetMatches - Test Automation
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/matches?startDate=2024-09-01&leagueId=cfb&GroupByGameweek=true&BatchSize=10&AmountOfBatches=200
+  body: none
+  auth: none
+}
+
+params:query {
+  startDate: 2024-09-01
+  leagueId: cfb
+  GroupByGameweek: true
+  BatchSize: 10
+  AmountOfBatches: 200
+  ~endDate: 2024-02-05
+  ~IncludePlayerStatLeaders: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  let jsonData = res.getBody();
+  
+  test("All matches are grouped by correct week", function () {
+      jsonData.forEach(group => {
+          let week = group.week;
+          expect(group).to.have.property("items");
+          group.items.forEach(matchList => {
+              matchList.forEach(match => {
+                  expect(match.gameWeek).to.eql(week);
+              });
+          });
+      });
+  });
+  
+  test("Basic match structure", function () {
+      jsonData.forEach(group => {
+          group.items.forEach(matchList => {
+              matchList.forEach(match => {
+                  expect(match).to.have.property("homeTeam");
+                  expect(match).to.have.property("awayTeam");
+                  expect(match).to.have.property("homeScore");
+                  expect(match).to.have.property("awayScore");
+                  expect(match).to.have.property("date");
+                  expect(match).to.have.property("utcDate");
+              });
+          });
+      });
+  });
+  
+}

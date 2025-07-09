@@ -1,0 +1,22 @@
+meta {
+  name: GetTeams
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/teams?seasonId=38471&competitionId=494
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 38471
+  competitionId: 494
+  ~teamId: t90
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

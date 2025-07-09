@@ -1,0 +1,21 @@
+meta {
+  name: Add project permission
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{api}}/teammanagement/gameday/projectpermission/49/project/link
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  [
+      1
+  ]
+}

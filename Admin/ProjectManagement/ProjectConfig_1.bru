@@ -1,0 +1,47 @@
+meta {
+  name: ProjectConfig_1
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{api}}/project-management?projectId=5264
+  body: json
+  auth: bearer
+}
+
+params:query {
+  projectId: 5264
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "project": {
+          "pid": 5264,
+          "title": "Matty Test 3",
+          "description": "updated",
+          "active": true,
+          "owner": "05c079ef-951f-4da7-8137-637ca455715f",
+          "createdDate": "2021-12-15T14:28:39.17",
+          "parentId": 3770,
+          "thumbnail": "https://psbase.azureedge.net/toolkit/_projectlogolibrary/5264.png",
+          "assetCount": 0,
+          "childProjectCount": 0
+      },
+      "config": {
+          "projectId": 5264,
+          "dataProvider": "OPTA",
+          "sport": "Soccer",
+          "primaryLanguage": "English"
+      }
+  }
+}

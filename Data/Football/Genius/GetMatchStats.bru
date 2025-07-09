@@ -1,0 +1,20 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/football/genius/match/stats?eventId=26521
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 26521
+  ~teamId: 10470g1063790
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

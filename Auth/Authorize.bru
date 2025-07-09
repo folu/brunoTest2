@@ -1,0 +1,42 @@
+meta {
+  name: Authorize
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/connect/authorize?response_type=code&client_id={{client_id}}&client_secret={{client_secret}}&scope=offline_access graphics roles&redirect_uri=https://oauth.pstmn.io/v1/callback
+  body: formUrlEncoded
+  auth: oauth2
+}
+
+params:query {
+  response_type: code
+  client_id: {{client_id}}
+  client_secret: {{client_secret}}
+  scope: offline_access graphics roles
+  redirect_uri: https://oauth.pstmn.io/v1/callback
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: http://localhost:53507/callback
+  authorization_url: {{host}}/connect/authorize
+  access_token_url: {{host}}/connect/token
+  refresh_token_url: 
+  client_id: uefa
+  client_secret: 391db93c-b7a0-4a80-860b-2d5d359082d1
+  scope: offline_access graphics roles
+  state: 
+  pkce: false
+  credentials_placement: body
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

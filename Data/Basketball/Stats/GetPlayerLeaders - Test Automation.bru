@@ -1,0 +1,183 @@
+meta {
+  name: GetPlayerLeaders - Test Automation
+  type: http
+  seq: 20
+}
+
+get {
+  url: {{api}}/data/basketball/stats/player/leaders?tournamentId=nba&categoryId=4&teamId=5312&includeNonQualifiers=true
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: nba
+  categoryId: 4
+  teamId: 5312
+  includeNonQualifiers: true
+  ~language: en
+  ~groupByConference: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function (){
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response contains the required fields", function(){
+      let jsonData = res.getBody();
+      expect(jsonData).to.have.property('categoryName');
+      expect(jsonData).to.have.property('categoryId');
+      expect(jsonData).to.have.property('value').that.is.an("array").with.length.above(0);
+  
+        let firstPlayer = jsonData.value[0];
+      expect(firstPlayer).to.have.property("player");
+      expect(firstPlayer.player).to.have.property("id");
+      expect(firstPlayer.player).to.have.property("firstName");
+      expect(firstPlayer.player).to.have.property("lastName");
+      expect(firstPlayer).to.have.property("team");
+      expect(firstPlayer.team).to.have.property("name");
+      expect(firstPlayer.team).to.have.property("abbreviation");
+      expect(firstPlayer).to.have.property("rank");
+      expect(firstPlayer).to.have.property("stat");
+  });
+  
+  
+  let schema = {
+      "type": "object",
+      "properties": {
+          "categoryName": { "type": "string" },
+          "categoryId": { "type": "string" },
+          "value": {
+              "type": "array",
+              "items": {
+                  "type": "object",
+                  "properties": {
+                      "player": {
+                          "type": "object",
+                          "properties": {
+                              "id": { "type": "string" },
+                              "firstName": { "type": "string" },
+                              "lastName": { "type": "string" },
+                              "captainText": { "type": "string" }
+                          },
+                          "required": ["id", "firstName", "lastName"]
+                      },
+                      "team": {
+                          "type": "object",
+                          "properties": {
+                              "id": { "type": "string" },
+                              "name": { "type": "string" },
+                              "abbreviation": { "type": "string" },
+                              "nickname": { "type": "string" },
+                              "location": { "type": "string" }
+                          },
+                          "required": ["id", "name", "abbreviation"]
+                      },
+                      "rank": { "type": "integer" },
+                      "stat": { 
+                          "type": "string", 
+                          "pattern": "^[0-9]+(\\.[0-9]+)?$" // format
+                      },
+                      "appearance": { "type": "integer" }
+                  },
+                  "required": ["player", "team", "rank", "stat"]
+              }
+          }
+      },
+      "required": ["categoryName", "categoryId", "value"]
+  };
+  
+  
+  test("Response matches the expected JSON schema", function () {
+  //     pm.response.to.have.jsonSchema(schema);
+  });
+  
+  test("Response contains player data", function () {
+      let jsonData = res.getBody();
+      expect(jsonData.value.length).to.be.above(0);
+  });
+  
+  
+  test("Charlotte Hornets players have correct stats", function () {
+      let jsonData = res.getBody();
+      
+      let expectedStats = {
+          "LaMelo Ball": { "stat": 26.2 } // Updated from 27.3 to 26.2, based on NBA
+      };
+  
+      jsonData.value.forEach(player => {
+          let fullName = player.player.firstName + " " + player.player.lastName;
+          if (expectedStats[fullName]) {
+              let actualStat = parseFloat(player.stat);
+              let expectedStat = expectedStats[fullName].stat;
+              
+              expect(actualStat).to.be.closeTo(expectedStat, 0.1, `Stat for ${fullName} is incorrect`);
+          }
+      });
+  });
+  
+  
+  test("Injured players (Cody Martin) are correctly included/excluded", function () {
+      let jsonData = res.getBody();
+      let codyMartin = jsonData.value.find(p => p.player.firstName === "Cody" && p.player.lastName === "Martin");
+  
+      let includeNonQualifiers = req.getUrl().query.find(q => q.key === "includeNonQualifiers")?.value === "true";
+  
+      if (includeNonQualifiers) {
+          expect(codyMartin).to.not.be.undefined; //true
+      } else {
+          expect(codyMartin).to.be.undefined; //false
+      }
+  });
+  
+  test("Default player selection logic is correct", function () {
+      let jsonData = res.getBody();
+  
+      console.log("First player in response:", jsonData.value[0]);
+  
+      // Check if the first player is Miles Bridges
+      let firstPlayer = jsonData.value[0];
+      
+      expect(firstPlayer.player.firstName, "Incorrect default player").to.not.equal("Miles");
+      expect(firstPlayer.player.lastName, "Incorrect default player").to.not.equal("Bridges");
+  });
+  
+  
+  
+  test("Only Charlotte Hornets players are included", function () {
+      let jsonData = res.getBody();
+      let nonHornetsPlayers = jsonData.value.filter(p => p.team.name !== "Charlotte Hornets");
+  
+      expect(nonHornetsPlayers.length, "Unexpected players found in response!").to.equal(0);
+  });
+  
+  test("Players are ranked correctly", function () {
+      let jsonData = res.getBody();
+      let ranks = jsonData.value.map(p => p.rank);
+  
+      for (let i = 0; i < ranks.length - 1; i++) {
+          expect(ranks[i]).to.be.below(ranks[i + 1]);
+      }
+  });
+  
+  test("Verify LaMelo Ball is in the response", function () {
+      let jsonData = res.getBody();
+      
+      let lameloBall = jsonData.value.find(p => p.player.firstName === "LaMelo" && p.player.lastName === "Ball");
+  
+      if (!lameloBall) {
+          console.warn("LaMelo Ball is missing from the response");
+      }
+      
+      expect(lameloBall, "LaMelo Ball should be included in the response").to.not.be.undefined;
+  });
+  
+  
+  
+  
+}

@@ -1,0 +1,19 @@
+meta {
+  name: active-networks
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/social/active-networks?applicationId=B9727238-1B6B-4416-B6FB-FCFB35F22534
+  body: none
+  auth: none
+}
+
+params:query {
+  applicationId: B9727238-1B6B-4416-B6FB-FCFB35F22534
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,61 @@
+meta {
+  name: default sticker
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{receiver-api}}/datasticker
+  body: json
+  auth: oauth2
+}
+
+params:query {
+  ~projectId: 4268
+}
+
+headers {
+  Accept: text/plain
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: pbm://authenticate.statsperform.com/android/com.statsperform.pressbox.graphics.mobile
+  authorization_url: https://authenticate.statsperform.com/authorize
+  access_token_url: {{host}}/connect/token
+  refresh_token_url: 
+  client_id: pLGtbqorIzjG93MoAtEB9CrYgdTUoZ38
+  client_secret: {{client_secret}}
+  scope: pbgm offline_access profile openid
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+body:json {
+  {
+      "path": "data-stickers/global/football/yellowcard.html",
+      "width": 300,
+      "height": 300,
+      "projectStyle": {
+          "primary": "red",
+          "secondary": "yellow"
+      },
+      "dataSource": {
+          "type": "match/stats_event",
+          "sport": "football",
+          "provider": "opta",
+          "leagueId": "8",
+          "seasonId": "2022",
+          "matchId": "g2292810",
+          "eventId": "g2292810",
+          "language": "es"
+      },
+      "responseType": 2
+  }
+}

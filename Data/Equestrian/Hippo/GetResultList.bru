@@ -1,0 +1,19 @@
+meta {
+  name: GetResultList
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/equestrian/hippo/events
+  body: none
+  auth: none
+}
+
+params:query {
+  ~year: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

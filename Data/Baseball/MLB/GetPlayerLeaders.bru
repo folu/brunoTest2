@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerLeaders
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/baseball/stats/player/leaders?categoryId=123&teamId=234&seasonId=2019
+  body: none
+  auth: none
+}
+
+params:query {
+  categoryId: 123
+  teamId: 234
+  seasonId: 2019
+  ~amountOfBatches: 2
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

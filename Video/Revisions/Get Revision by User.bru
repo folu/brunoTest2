@@ -1,0 +1,19 @@
+meta {
+  name: Get Revision by User
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/videorevision/267?id=g9999998
+  body: none
+  auth: none
+}
+
+params:query {
+  id: g9999998
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

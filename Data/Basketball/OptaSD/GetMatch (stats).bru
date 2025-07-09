@@ -1,0 +1,22 @@
+meta {
+  name: GetMatch (stats)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/basketball/optasd/matches?tournamentId=nba&startDate=2019-10-10&groupByDate=true
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: nba
+  startDate: 2019-10-10
+  groupByDate: true
+  ~endDate: 2019-10-16
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,24 @@
+meta {
+  name: GetPlayers
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/basketball/fiba/player/stats?scopeId=b8c9e567-8591-49a5-88c8-f51785442a9d&playerId=071f55c8-04be-44f5-acde-58d6e31809f0&scope=Game
+  body: none
+  auth: none
+}
+
+params:query {
+  scopeId: b8c9e567-8591-49a5-88c8-f51785442a9d
+  playerId: 071f55c8-04be-44f5-acde-58d6e31809f0
+  scope: Game
+  ~language: en
+  ~groupByConference: true
+  ~teamId: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

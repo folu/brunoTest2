@@ -1,0 +1,39 @@
+meta {
+  name: Force Add Receivers
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{api}}/server/receiver/force-add-users
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "InvitedByUserId": "00e20e52-f115-4b62-b89d-c39f071d5920",
+      "Emails" : [
+          "mark.finn@13strides.com",
+          "sarah@13strides.com",
+          "kev+gamebeats@13strides.com",
+          "123123@13strides.com",
+          "notreal@13strides.com",
+          "motorsporttest@13strides.com",
+          "theFACup@13strides.com",
+          "jon+test@13strides.com",
+          "matty@13strides.com",
+          "kevTesting@13strides.com",
+          "testRaynor@13strides.com",
+          "13strides_yog",
+          "notrealuser@13strides.com",
+          "demouser@13strides.com",
+          "brisbane@13strides.com"
+      ],
+      "CompanyId": "05c079ef-951f-4da7-8137-637ca455715f"
+  }
+}

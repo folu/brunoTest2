@@ -1,0 +1,20 @@
+meta {
+  name: Get MFL Mappings
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/admin/data/optasd-mappings?matchIds=g2372091|g2371543&teamIds=2623|24
+  body: none
+  auth: none
+}
+
+params:query {
+  matchIds: g2372091|g2371543
+  teamIds: 2623|24
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

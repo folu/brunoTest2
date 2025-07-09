@@ -1,0 +1,24 @@
+meta {
+  name: Add team ids
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{api}}/admin-tools/generatethemes?csvFilePath=toolkit/mattytest/efl/output.csv&themeTemplateFilePath=toolkit/mattytest/efl/themetemplate.json
+  body: none
+  auth: bearer
+}
+
+params:query {
+  csvFilePath: toolkit/mattytest/efl/output.csv
+  themeTemplateFilePath: toolkit/mattytest/efl/themetemplate.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

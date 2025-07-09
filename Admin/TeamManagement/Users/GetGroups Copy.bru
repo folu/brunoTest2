@@ -1,0 +1,25 @@
+meta {
+  name: GetGroups Copy
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{api}}/data/football/opta/../../football/opta/match/averageposition/../../../../../teammanagement/groups?eventId=g2278411&leagueId=4&seasonId=2022&teamId=t632&markStartAndEnd=true
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: g2278411
+  leagueId: 4
+  seasonId: 2022
+  teamId: t632
+  markStartAndEnd: true
+  ~type: football/opta/match/averageposition/../../../../../teammanagement/groups
+  ~provider: football/opta/../..
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

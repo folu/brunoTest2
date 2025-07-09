@@ -1,0 +1,39 @@
+meta {
+  name: Add Api Key
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{api}}/apikeymanagement
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  // {
+  //     "Type": "APIKEY",
+  //     "Id": "playing-surface-new",
+  // 	"Name": "Playing Surface New",
+  // 	"CreatedBy": "a635fb66-cf7d-4bdd-993d-920329610c4a",
+  //     "WhiteList": [
+  //   "*",
+  //   "localhost",
+  //   "213.143.30.170",
+  //   "94.245.88.135",
+  //   "94.245.88.217",
+  //   "94.245.88.231",
+  //   "94.245.88.250",
+  //   "13.69.191.70",
+  //   "13.69.191.111",
+  //   "13.69.191.119",
+  //   "13.69.191.124",
+  //   "168.63.72.211"
+  // ]
+  // }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Refresh cache
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{api}}/localisation/refresh-cache
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

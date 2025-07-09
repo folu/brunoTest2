@@ -1,0 +1,22 @@
+meta {
+  name: GetSeasonPrediction
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/americanfootball/optasd/season/prediction?leagueId=8ojmfn0iri1z6yvklj19cgd1w&orderByCategory=wins
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 8ojmfn0iri1z6yvklj19cgd1w
+  orderByCategory: wins
+  ~filterByConference: american football conference
+  ~filterByDivision: afc west
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

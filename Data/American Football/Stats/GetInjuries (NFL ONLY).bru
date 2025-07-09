@@ -1,0 +1,61 @@
+meta {
+  name: GetInjuries (NFL ONLY)
+  type: http
+  seq: 25
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/injuries?seasonId=2023&leagueId=nfl&from=2023-01-01&to=2024-08-09&language=en&teamId=339&playerId=448240
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2023
+  leagueId: nfl
+  from: 2023-01-01
+  to: 2024-08-09
+  language: en
+  teamId: 339
+  playerId: 448240
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 3000ms", function () {
+      expect(res.getResponseTime()).to.be.below(3000);
+  });
+  
+  test("Response structure is correct", function () {
+      let jsonData = res.getBody();
+      jsonData.forEach((item) => {
+          expect(item).to.have.property('id');
+          expect(item).to.have.property('description');
+          expect(item).to.have.property('startDate');
+          expect(item).to.have.property('player');
+          expect(item.player).to.have.property('id');
+          expect(item.player).to.have.property('firstName');
+          expect(item.player).to.have.property('lastName');
+          expect(item.player).to.have.property('positionAbbr');
+          expect(item).to.have.property('team');
+          expect(item.team).to.have.property('id');
+          expect(item.team).to.have.property('name');
+          expect(item.team).to.have.property('abbreviation');
+      });
+  });
+  
+  test("Correct data returned for a specific player", function () {
+      let jsonData = res.getBody();
+      let player = jsonData.find(p => p.player.id === "448240");
+      expect(player.player.fullName).to.eql("Travis Kelce");
+      expect(player.player.positionAbbr).to.eql("TE");
+  });
+  
+}

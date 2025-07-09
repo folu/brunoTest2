@@ -1,0 +1,21 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/matches?startDate=2019-10-07&leagueId=38471
+  body: none
+  auth: none
+}
+
+params:query {
+  startDate: 2019-10-07
+  leagueId: 38471
+  ~endDate: 2019-10-30
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

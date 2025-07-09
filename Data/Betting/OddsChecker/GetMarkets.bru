@@ -1,0 +1,19 @@
+meta {
+  name: GetMarkets
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/betting/oddschecker/markets?eventId=99588291
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 99588291
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

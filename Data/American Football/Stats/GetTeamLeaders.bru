@@ -1,0 +1,24 @@
+meta {
+  name: GetTeamLeaders
+  type: http
+  seq: 20
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/team/leaders?categoryId=1&leagueId=cfb&seasonId=2023
+  body: none
+  auth: none
+}
+
+params:query {
+  categoryId: 1
+  leagueId: cfb
+  seasonId: 2023
+  ~amountOfBatches: 3
+  ~conferenceId: 73
+  ~collectionPath: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

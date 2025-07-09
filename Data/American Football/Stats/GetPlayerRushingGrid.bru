@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerRushingGrid
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/player/rushingGrid?eventId=2656919&leagueId=nfl&minimumYards=50&filterByPlayer=746613
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2656919
+  leagueId: nfl
+  minimumYards: 50
+  filterByPlayer: 746613
+  ~FilterByTeam: 324
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

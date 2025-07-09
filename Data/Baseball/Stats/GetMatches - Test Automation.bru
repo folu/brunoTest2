@@ -1,0 +1,82 @@
+meta {
+  name: GetMatches - Test Automation
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/baseball/stats/matches?startDate=2024-03-20&endDate=2024-09-30&leagueId=mlb&collectionPath=/collections/projects/6194/mlb.json
+  body: none
+  auth: none
+}
+
+params:query {
+  startDate: 2024-03-20
+  endDate: 2024-09-30
+  leagueId: mlb
+  collectionPath: /collections/projects/6194/mlb.json
+  ~groupByDate: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test('Status code is 200', function () {
+      expect(res.getStatus()).to.equal(200);
+  })
+  
+  test('Custom branding is applied when collectionPath is provided', function () {
+      let response = res.getBody();
+      let match = response[0];
+      expect(match.homeTeam.brand).to.have.property('primary-colour');
+      expect(match.homeTeam.brand).to.have.property('secondary-colour');
+      expect(match.awayTeam.brand).to.have.property('primary-colour');
+      expect(match.awayTeam.brand).to.have.property('secondary-colour');
+  })
+  
+  test('Default branding is applied when collectionPath is missing', function () {
+      const response = res.getBody();
+      const match = response[0];
+      if (!match.homeTeam.brand['primary-colour']) {
+          expect(match.homeTeam.brand).to.not.have.property('primary-colour');
+          expect(match.homeTeam.brand).to.not.have.property('secondary-colour');
+          expect(match.awayTeam.brand).to.not.have.property('primary-colour');
+          expect(match.awayTeam.brand).to.not.have.property('secondary-colour');
+      } else {
+          console.log('Branding is present \u2014 skipping default branding test');
+      }
+  })
+  
+  test("Validate required and newly added fields", function () {
+      const response = res.getBody();
+      response.forEach((match, index) => {
+          const matchId = match.id || `index ${index}`;
+  
+  
+          expect(match, `Missing venueCity in match ${matchId}`).to.have.property("venueCity");
+  
+          if (!match.venueState && match.venueCity) {
+              console.warn(`venueState is missing in match ${matchId} — may be international`);
+          }
+          ["homeRecord", "awayRecord"].forEach((recordKey) => {
+              const record = match[recordKey];
+  
+              expect(record, `Missing ${recordKey} in match ${matchId}`).to.exist;
+              expect(record).to.have.property("wins");
+              expect(record).to.have.property("losses");
+              expect(record).to.have.property("ties");
+  
+              const total = record.wins + record.losses + record.ties;
+  
+          
+              if (total > 0) {
+                  expect(record, `Missing percentage in ${recordKey} of match ${matchId}`).to.have.property("percentage");
+              }
+          });
+      });
+  });
+  
+  
+}

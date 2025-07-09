@@ -1,0 +1,22 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/esports/fifagg/standings?roundId=87dbd270-af36-4b12-8312-2dd3bcabb0d7
+  body: none
+  auth: none
+}
+
+params:query {
+  roundId: 87dbd270-af36-4b12-8312-2dd3bcabb0d7
+  ~from: 2019-10-07
+  ~endDate: 2022-08-30
+  ~startDate: 2021-11-01
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

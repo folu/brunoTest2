@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchPressure
+  type: http
+  seq: 30
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/attackingthreat?eventId=4z5clcdm3s5tdlwd0z7hfh82c&eventTypes=goals&tournamentId
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 4z5clcdm3s5tdlwd0z7hfh82c
+  eventTypes: goals
+  tournamentId: null
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

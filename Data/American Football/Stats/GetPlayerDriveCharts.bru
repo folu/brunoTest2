@@ -1,0 +1,21 @@
+meta {
+  name: GetPlayerDriveCharts
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/player/drivecharts?eventId=2431133&leagueId=cfb
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2431133
+  leagueId: cfb
+  ~includeMatchEvents: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

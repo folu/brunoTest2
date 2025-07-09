@@ -1,0 +1,21 @@
+meta {
+  name: GetPlayersOnTeam
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/team/players/?teamId=2350&seasonId=2020&competitionId=242
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 2350
+  seasonId: 2020
+  competitionId: 242
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

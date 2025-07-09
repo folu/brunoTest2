@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayers
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/basketball/optasd/players?tournamentId=14is87fa6i6klyzgdz1gep5hw&teamId=f17gzvgc9wfqd8n3pmkfa70jo
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 14is87fa6i6klyzgdz1gep5hw
+  teamId: f17gzvgc9wfqd8n3pmkfa70jo
+  ~teamId: t90
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

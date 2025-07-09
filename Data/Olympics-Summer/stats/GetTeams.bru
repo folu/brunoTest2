@@ -1,0 +1,21 @@
+meta {
+  name: GetTeams
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/olympics/stats/teams
+  body: none
+  auth: none
+}
+
+params:query {
+  ~seasonId: 2016
+  ~language: en
+  ~disciplineId: AT
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,19 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/football/kicker/match/stats?eventId=4660457
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 4660457
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,35 @@
+meta {
+  name: Update Video Job
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{api}}/videoV2/update-video-job
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+  ~: a
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+  	"JobId": "898a629e-57a6-42da-040e-08d7bab096e6",
+  	"UserID": "00e20e52-f115-4b62-b89d-c39f071d5920",
+  	"JobTitle": "Test Insert",
+  	"JobDescription": "Test Insert Desc",
+  	"VideoTemplateId": "0",
+  	"ThumbnailUri": "thumbnailuri",
+  	"JobFilename": "requestedFileName.mp4",
+  	"Width": "800",
+  	"Height": "600"
+  }
+}

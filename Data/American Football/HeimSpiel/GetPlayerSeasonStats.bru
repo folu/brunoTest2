@@ -1,0 +1,20 @@
+meta {
+  name: GetPlayerSeasonStats
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/player/seasonstats?playerId=587808&seasonId=43850
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 587808
+  seasonId: 43850
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,165 @@
+meta {
+  name: GetPlayerMatchStats - Test Automation
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/player/matchstats?playerId=1440936&tournamentId=cfb&eventId=2647432
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 1440936
+  tournamentId: cfb
+  eventId: 2647432
+  ~teamId: 3497
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 3000ms", function () {
+      expect(res.getResponseTime()).to.be.below(3000);
+  });
+  
+  test("Player and team details are correct", function () {
+      const jsonData = res.getBody();
+  
+      //player details
+      expect(jsonData.player.fullName).to.eql("Brad Spence");
+      expect(jsonData.player.id).to.eql("1440936");
+  
+      //team details
+      expect(jsonData.team.name).to.eql("Arkansas Razorbacks");
+      expect(jsonData.team.abbreviation).to.eql("ARK");
+      expect(jsonData.team).to.have.property("crest");
+      expect(jsonData.team.crest).to.match(/^https?:\/\/.+/)
+  });
+  
+  //schema validation 
+  test("Schema is valid", function () {
+      const schema = {
+          type: "object",
+          properties: {
+              player: {
+                  type: "object",
+                  properties: {
+                      id: { type: "string" },
+                      firstName: { type: "string" },
+                      lastName: { type: "string" },
+                      fullName: { type: "string" },
+                      captainText: { type: "string" }
+                  },
+                  required: ["id", "firstName", "lastName", "fullName", "captainText"]
+              },
+              team: {
+                  type: "object",
+                  properties: {
+                      id: { type: "string" },
+                      pbgId: { type: "string" },
+                      name: { type: "string" },
+                      abbreviation: { type: "string" },
+                      crest: { type: "string" },
+                      crestName: { type: "string" },
+                      nickname: { type: "string" },
+                      location: { type: "string" },
+                      brand: {
+                          type: "object",
+                          properties: {
+                              crest: { type: "string" }
+                          },
+                          required: ["crest"]
+                      }
+                  },
+                  required: ["id", "pbgId", "name", "abbreviation", "crest", "crestName", "nickname", "location", "brand"]
+              },
+              receiving: {
+                  type: "object",
+                  properties: {
+                      yards: { type: "number" },
+                      attempts: { type: "number" },
+                      completions: { type: "number" },
+                      longest: { type: "string" },
+                      touchdowns: { type: "number" },
+                      successRateFraction: { type: "string" },
+                      successRatePercent: { type: "string" }
+                  },
+                  required: ["yards", "attempts", "completions", "longest", "touchdowns", "successRateFraction", "successRatePercent"]
+              },
+              passing: {
+                  type: "object",
+                  properties: {
+                      yards: { type: "number" },
+                      attempts: { type: "number" },
+                      completions: { type: "number" },
+                      touchdowns: { type: "number" },
+                      successRateFraction: { type: "string" },
+                      successRatePercent: { type: "string" }
+                  },
+                  required: ["yards", "attempts", "completions", "touchdowns", "successRateFraction", "successRatePercent"]
+              },
+              rushing: {
+                  type: "object",
+                  properties: {
+                      yards: { type: "number" },
+                      attempts: { type: "number" },
+                      completions: { type: "number" },
+                      longest: { type: "string" },
+                      touchdowns: { type: "number" },
+                      successRateFraction: { type: "string" },
+                      successRatePercent: { type: "string" }
+                  },
+                  required: ["yards", "attempts", "completions", "longest", "touchdowns", "successRateFraction", "successRatePercent"]
+              },
+              defense: {
+                  type: "object",
+                  properties: {
+                      interceptions: { type: "number" },
+                      passesDefended: { type: "number" },
+                      tackles: { type: "number" },
+                      touchdowns: { type: "number" },
+                      sacks: { type: "number" },
+                      forcedFumbles: { type: "number" },
+                      tacklesForLoss: { type: "number" }
+                  },
+                  required: ["interceptions", "passesDefended", "tackles", "touchdowns", "sacks", "forcedFumbles", "tacklesForLoss"]
+              },
+              fieldGoals: {
+                  type: "object",
+                  properties: {
+                      attempts: { type: "number" },
+                      made: { type: "number" },
+                      longest: { type: "string" },
+                      successRateFraction: { type: "string" },
+                      successRatePercent: { type: "string" }
+                  },
+                  required: ["attempts", "made", "longest", "successRateFraction", "successRatePercent"]
+              },
+              pointAfter: {
+                  type: "object",
+                  properties: {
+                      attempts: { type: "number" },
+                      made: { type: "number" },
+                      successRateFraction: { type: "string" },
+                      successRatePercent: { type: "string" }
+                  },
+                  required: ["attempts", "made", "successRateFraction", "successRatePercent"]
+              }
+          },
+          required: ["player", "team", "receiving", "passing", "rushing", "defense", "fieldGoals", "pointAfter"]
+      };
+  
+      const response = res.getBody();
+  
+      expect(tv4.validate(response, schema)).to.be.true;
+  });
+  
+}

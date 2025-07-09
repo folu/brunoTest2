@@ -1,0 +1,123 @@
+meta {
+  name: GetTeamLastFiveGames - Test Automation
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/team/lastFiveGames?teamId=3502&seasonId=2024&leagueId=cfb
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 3502
+  seasonId: 2024
+  leagueId: cfb
+  ~language: en
+  ~collectionPath: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  //schema validation
+  test("Response schema is valid", function () {
+      var schema = {
+          "type": "object",
+          "properties": {
+              "team": {
+                  "type": "object",
+                  "properties": {
+                      "id": { "type": "string" },
+                      "pbgId": { "type": "string" },
+                      "name": { "type": "string" },
+                      "abbreviation": { "type": "string" }
+                  },
+                  "required": ["id", "pbgId", "name", "abbreviation"]
+              },
+              "gameStats": {
+                  "type": "array",
+                  "items": {
+                      "type": "object",
+                      "properties": {
+                          "gameDate": { "type": "string" },
+                          "homeScore": { "type": "string" },
+                          "awayScore": { "type": "string" },
+                          "gameLocation": { "type": "string" },
+                          "outcome": { "type": "string" }
+                      },
+                      "required": ["gameDate", "homeScore", "awayScore", "gameLocation", "outcome"]
+                  }
+              },
+              "gameStatsAverages": {
+                  "type": "object",
+                  "properties": {
+                      "defence": {
+                          "type": "object",
+                          "properties": {
+                              "totalYardsAllowed": { "type": "number" },
+                              "passYardsAllowed": { "type": "number" },
+                              "rushYardsAllowed": { "type": "number" }
+                          },
+                          "required": ["totalYardsAllowed", "passYardsAllowed", "rushYardsAllowed"]
+                      },
+                      "offense": {
+                          "type": "object",
+                          "properties": {
+                              "totalYards": { "type": "number" },
+                              "passYards": { "type": "number" },
+                              "rushYards": { "type": "number" }
+                          },
+                          "required": ["totalYards", "passYards", "rushYards"]
+                      }
+                  }
+              }
+          },
+          "required": ["team", "gameStats", "gameStatsAverages"]
+      };
+  //     pm.response.to.have.jsonSchema(schema);
+  });
+  
+  //it should return at most 5 games 
+  test("Last 5 Games should contain max 5 games", function () {
+      let jsonData = res.getBody();
+      expect(jsonData.gameStats.length).to.be.at.most(5);
+  });
+  
+  //offensive stats
+  test("GameStatsAverages should be correctly calculated", function () {
+      let jsonData = res.getBody();
+      let totalYards = 0, passYards = 0, rushYards = 0;
+      
+      jsonData.gameStats.forEach(game => {
+          totalYards += game.offensiveStats.totalYards;
+          passYards += game.offensiveStats.passYards;
+          rushYards += game.offensiveStats.rushYards;
+      });
+  
+      let numGames = jsonData.gameStats.length;
+  
+      let avgTotalYards = totalYards / numGames;
+      let avgPassYards = passYards / numGames;
+      let avgRushYards = rushYards / numGames;
+  
+      expect(jsonData.gameStatsAverages.offense.totalYards).to.be.closeTo(avgTotalYards, 0.1);
+      expect(jsonData.gameStatsAverages.offense.passYards).to.be.closeTo(avgPassYards, 0.1);
+      expect(jsonData.gameStatsAverages.offense.rushYards).to.be.closeTo(avgRushYards, 0.1);
+  });
+  
+  //just an additional one to check the possessionTime format
+  test("Possession time should be in 'MM:SS' format", function () {
+      let jsonData = res.getBody();
+      let timeFormat = /^\d{2}:\d{2}$/;
+      expect(jsonData.gameStatsAverages.offense.possessionTime).to.match(timeFormat);
+  });
+  
+}

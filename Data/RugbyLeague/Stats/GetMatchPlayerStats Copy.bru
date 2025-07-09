@@ -1,0 +1,20 @@
+meta {
+  name: GetMatchPlayerStats Copy
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/rugbyleague/opta/player/matchstats?matchId=127166&playerId=21363
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 127166
+  playerId: 21363
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

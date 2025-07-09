@@ -1,0 +1,68 @@
+meta {
+  name: GetMatch - Test Automation
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/match?competitionId=nhl&eventId=2670965&includePlayerStatLeaders=true
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  eventId: 2670965
+  includePlayerStatLeaders: true
+  ~playByPlay: true
+  ~language: en
+  ~collectionPath: /collections/projects/5264/icehockeytest.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test('Status code is 200', function () {
+      expect(res.getStatus()).to.equal(200);
+  })
+  
+  test('Each player has valid TimeOnIce values', function () {
+      const players = res.getBody().homeBoxScore.playerSkaterStats;
+      players.forEach(p => {
+          expect(p.timeOnIce.minutes).to.be.a('number');
+          expect(p.timeOnIce.seconds).to.be.within(0, 59);
+      });
+  })
+  
+  test('Stat leaders have valueAsString in valid format', function () {
+      const leaders = res.getBody().homeTeam.playerStatLeaders;
+      const validFormat = /^(\d+:\d{2}|\d+(\.\d+)?|\d+)$/;
+      Object.values(leaders).forEach(stat => {
+          expect(stat).to.have.property('valueAsString');
+          expect(stat.valueAsString).to.match(validFormat);
+      });
+  })
+  
+  test('Each player has numeric PlusMinus', function () {
+      const players = res.getBody().homeBoxScore.playerSkaterStats;
+      players.forEach(p => {
+          expect(p.plusMinus).to.be.a('number');
+      });
+  })
+  
+  test('TimeOnIceSkaters leader is not a goalie', function () {
+      const leader = res.getBody().homeTeam.playerStatLeaders.timeOnIceSkaters;
+      expect(leader).to.have.property('firstName');
+      expect(leader).to.have.property('lastName');
+      expect(leader.fullName.toLowerCase()).to.not.include('goalie');
+  })
+  
+  test("Match contains venue location info", function () {
+      const match = res.getBody();
+      expect(match).to.have.any.keys("venueCity", "venueState");
+  });
+  
+  
+}

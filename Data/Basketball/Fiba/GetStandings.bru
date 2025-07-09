@@ -1,0 +1,22 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/basketball/fiba/standings?seasonId=2020&competitionId=6d03455f-8313-4e81-ab6f-839eed6c1071
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2020
+  competitionId: 6d03455f-8313-4e81-ab6f-839eed6c1071
+  ~language: en
+  ~groupByConference: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

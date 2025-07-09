@@ -1,0 +1,23 @@
+meta {
+  name: GetPlayerLastFiveStats
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/player/lastFiveStats?competitionId=nhl&playerId=831092&eventTypeId=1&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  playerId: 831092
+  eventTypeId: 1
+  seasonId: 2022
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

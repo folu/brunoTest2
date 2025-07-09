@@ -1,0 +1,20 @@
+meta {
+  name: GetLeagues
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/betting/oddschecker/leagues?sport=2
+  body: none
+  auth: none
+}
+
+params:query {
+  sport: 2
+  ~isLive: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

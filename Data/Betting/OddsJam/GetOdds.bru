@@ -1,0 +1,23 @@
+meta {
+  name: GetOdds
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/odds?eventId=27927-82789-23-38&teamId=727B3B3C78E8
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 27927-82789-23-38
+  teamId: 727B3B3C78E8
+  ~sportbooks: bet365,Barstool
+  ~playerId: 68735EA1FD1F
+  ~market: Moneyline
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

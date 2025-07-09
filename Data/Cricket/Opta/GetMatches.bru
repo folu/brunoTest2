@@ -1,0 +1,90 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/cricket/opta/matches?feedType=c1m&tournamentId=3362&startDate=2019-11-01&endDate=2024-07-30
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: c1m
+  tournamentId: 3362
+  startDate: 2019-11-01
+  endDate: 2024-07-30
+  ~filterByTeam: 11
+  ~groupByDate: true
+  ~groupByUtcDate: true
+  ~targetTeam: 11
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  var body = JSON.parse(responseBody);
+    tests["Count: "  + body.length] = true;
+  
+  test("Response status code is 200", function () {
+      expect(expect(res.getStatus()).to.equal(200));
+  });
+  
+  
+  test("Response Content-Type is application/json", function () {
+      expect(res.getHeader("Content-Type")).to.include("application/json");
+  });
+  
+  
+  test("Response has the required fields", function () {
+      const responseData = res.getBody();
+  
+      expect(responseData).to.be.an('array');
+      responseData.forEach(function (match) {
+          expect(match).to.have.property('id');
+          expect(match).to.have.property('eventType');
+          expect(match).to.have.property('date');
+          expect(match).to.have.property('utcDate');
+          expect(match).to.have.property('homeTeam');
+          expect(match).to.have.property('awayTeam');
+          expect(match).to.have.property('venue');
+          expect(match).to.have.property('championshipName');
+      });
+  });
+  
+  
+  test("Date is in a valid date format", function () {
+      const responseData = res.getBody();
+  
+      responseData.forEach(function (match) {
+          expect(match.date).to.match(/^\d{4}-\d{2}-\d{2}$/);
+      });
+  });
+  
+  
+  test("Home team and away team objects contain expected fields", function () {
+      const responseData = res.getBody();
+  
+      expect(responseData).to.be.an('array');
+  
+      responseData.forEach(function (match) {
+          expect(match.homeTeam).to.be.an('object');
+          expect(match.homeTeam.id).to.be.a('string');
+          expect(match.homeTeam.name).to.be.a('string');
+          expect(match.homeTeam.abbreviation).to.be.a('string');
+          expect(match.homeTeam.crest).to.be.a('string');
+          expect(match.homeTeam.nickname).to.be.a('string');
+  
+          expect(match.awayTeam).to.be.an('object');
+          expect(match.awayTeam.id).to.be.a('string');
+          expect(match.awayTeam.name).to.be.a('string');
+          expect(match.awayTeam.abbreviation).to.be.a('string');
+          expect(match.awayTeam.crest).to.be.a('string');
+          expect(match.awayTeam.nickname).to.be.a('string');
+      });
+  });
+  
+}

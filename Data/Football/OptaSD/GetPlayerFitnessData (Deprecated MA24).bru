@@ -1,0 +1,29 @@
+meta {
+  name: GetPlayerFitnessData (Deprecated MA24)
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/matchfitnessOV?playerId=mvezin3jbq5rhf826228rkve&tournamentId=722fdbecxzcq9788l6jqclzlw&seasonId=2023&eventId=4slb7teco29kpnf1ij126kxsk&inVenue=false
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: mvezin3jbq5rhf826228rkve
+  tournamentId: 722fdbecxzcq9788l6jqclzlw
+  seasonId: 2023
+  eventId: 4slb7teco29kpnf1ij126kxsk
+  inVenue: false
+  ~seasonId: 2021
+  ~comeptitionId: 88uv51hj9upft1fpg33qbwob8
+  ~language: en-gb
+  ~_lcl: EN
+  ~_rt: b
+  ~_fmt: json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

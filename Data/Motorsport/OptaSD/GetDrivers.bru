@@ -1,0 +1,19 @@
+meta {
+  name: GetDrivers
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/motorsport/optasd/drivers?seasonId=1azyuw7z49bvlqjhyws5byp2i
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 1azyuw7z49bvlqjhyws5byp2i
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Get Scorecard
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/golf/ladieseuropeantour/scorecard?eventId=2019060&playerId=200604&splitHoles=9
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2019060
+  playerId: 200604
+  splitHoles: 9
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

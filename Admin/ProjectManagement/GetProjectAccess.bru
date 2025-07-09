@@ -1,0 +1,26 @@
+meta {
+  name: GetProjectAccess
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/project-management/project-access?projectId=4947&userId=8681e028-b562-4a6d-b68c-c05ebbbd1f36
+  body: none
+  auth: bearer
+}
+
+params:query {
+  projectId: 4947
+  userId: 8681e028-b562-4a6d-b68c-c05ebbbd1f36
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

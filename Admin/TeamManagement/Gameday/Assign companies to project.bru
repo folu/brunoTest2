@@ -1,0 +1,22 @@
+meta {
+  name: Assign companies to project
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{api}}/teammanagement/gameday/projects/38/assign
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  [
+      "05c079ef-951f-4da7-8137-637ca455715f",
+      "093d6770-49e8-4426-9dea-8037cffe9f7c"
+  ]
+}

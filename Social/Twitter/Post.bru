@@ -1,0 +1,24 @@
+meta {
+  name: Post
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{api}}/social/post/{{twitter}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "networkId": "70B4A310-D7CF-444D-831A-CF83E505DB90",
+      "applicationId": "B9727238-1B6B-4416-B6FB-FCFB35F22534",
+      "connectionId": "1177d2c4-e5c5-492c-9528-23590e54c989",
+      "userId": "A635FB66-CF7D-4BDD-993D-920329610C4A",
+      "itemId": "100",
+      "text": "last api test before commit",
+      "url": "https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?t=st=1723643637~exp=1723647237~hmac=8f1337184502570435064e9a5072535b4bd19b4f9429928fc8b6194465fcd41c&w=1060",
+      "assetType": 1
+  }
+}

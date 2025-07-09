@@ -1,0 +1,27 @@
+meta {
+  name: Get Project By User
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/server/videoV2/projects/user/00e20e52-f115-4b62-b89d-c39f071d5920
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  ~jobId: ca298ae8-ce64-4b58-053f-08d7ca8beb03
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  File: @file(/C:/Users/Matty/Desktop/D9J7E_RW4AA6dag.mp4)
+}

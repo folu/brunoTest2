@@ -1,0 +1,15 @@
+meta {
+  name: Get Projects By Parent
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/projects?parentId=3770
+  body: multipartForm
+  auth: none
+}
+
+params:query {
+  parentId: 3770
+}

@@ -1,0 +1,105 @@
+meta {
+  name: GetTeamSeasonStats - Test Automation
+  type: http
+  seq: 23
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/team/seasonstats?teamId=345&leagueId=nfl
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 345
+  leagueId: nfl
+  ~seasonId: 2023
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 3000ms", function () {
+      expect(res.getResponseTime()).to.be.below(3000);
+  });
+  
+  test("Response structure is valid", function(){
+      const jsonData = res.getBody();
+      expect(jsonData).to.have.property("firstDowns");
+      expect(jsonData).to.have.property("plays");
+      expect(jsonData).to.have.property("redZoneEfficiency");
+      expect(jsonData).to.have.property("rushing");
+      expect(jsonData).to.have.property("passing");
+      expect(jsonData).to.have.property("punting");
+      expect(jsonData).to.have.property("penalties");
+      expect(jsonData).to.have.property("kickoffs");
+      expect(jsonData).to.have.property("kicking");
+      expect(jsonData).to.have.property("blockedKicks");
+      expect(jsonData).to.have.property("fumbles");
+      expect(jsonData).to.have.property("scoring");
+      expect(jsonData).to.have.property("penalties");
+      expect(jsonData).to.have.property("penalties");
+      expect(jsonData).to.have.property("generalTotals");
+  
+  });
+  
+  test("Validate response schema", function () {
+      var schema = {
+          "type": "object",
+          "properties": {
+              "gamesPlayed": { "type": "integer" },
+              "firstDowns": {
+                  "type": "object",
+                  "properties": {
+                      "total": { "type": "integer" },
+                      "rushing": { "type": "integer" },
+                      "passing": { "type": "integer" },
+                      "receiving": { "type": "integer" },
+                      "penalty": { "type": "integer" }
+                  },
+                  "required": ["total", "rushing", "passing", "receiving", "penalty"]
+              },
+              "firstDownsAgainst": {
+                  "type": "object",
+                  "properties": {
+                      "total": { "type": "integer" },
+                      "rushing": { "type": "integer" },
+                      "passing": { "type": "integer" },
+                      "receiving": { "type": "integer" },
+                      "penalty": { "type": "integer" }
+                  },
+                  "required": ["total", "rushing", "passing", "receiving", "penalty"]
+              },
+              "plays": {
+                  "type": "object",
+                  "properties": {
+                      "number": { "type": "integer" },
+                      "average": { "type": "string" }
+                  },
+                  "required": ["number", "average"]
+              },
+              "playsAgainst": {
+                  "type": "object",
+                  "properties": {
+                      "number": { "type": "integer" },
+                      "average": { "type": "string" }
+                  },
+                  "required": ["number", "average"]
+              }
+          },
+          "required": ["gamesPlayed", "firstDowns", "firstDownsAgainst", "plays", "playsAgainst"]
+      };
+  
+      var jsonData = res.getBody();
+      expect(tv4.validate(jsonData, schema)).to.be.true;
+  });
+  
+  
+  
+}

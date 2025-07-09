@@ -1,0 +1,19 @@
+meta {
+  name: GetCompetitionStandings
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/volleyball/cev/competitionstandings?competitionId=1053
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1053
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,47 @@
+meta {
+  name: GetSportsBooks
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/betting/oddschecker/sportsbooks
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 1000ms", function () {
+      expect(res.getResponseTime()).to.be.below(1000);
+  });
+  
+  test("Response has expected structure", function () {
+      let jsonData = res.getBody();
+      expect(jsonData).to.be.an("array");
+      jsonData.forEach((item) => {
+          expect(item).to.have.property("name");
+          expect(item).to.have.property("code");
+      });
+  });
+  
+  test("Fields 'name' and 'code' are not empty or null", function () {
+      let jsonData = res.getBody();
+      jsonData.forEach((item) => {
+          expect(item.name).to.not.be.null;
+          expect(item.name).to.not.equal("");
+          expect(item.code).to.not.be.null;
+          expect(item.code).to.not.equal("");
+      });
+  });
+  
+  
+  
+}

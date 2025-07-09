@@ -1,0 +1,19 @@
+meta {
+  name: GetMatchHitData
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/baseball/stats/match/hits?eventId=2174103
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2174103
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

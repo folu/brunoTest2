@@ -1,0 +1,40 @@
+meta {
+  name: GetPlayerSeasonStats - Test Automation
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/rugbyleague/opta/player/seasonstats?playerId=21363&seasonId=2025&competitionId=1
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 21363
+  seasonId: 2025
+  competitionId: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test('Status code is 200', function () {
+      expect(res.getStatus()).to.equal(200);
+  })
+  
+  let jsonData = res.getBody();
+  
+  test("Response has correct structure", function () {
+      expect(jsonData).to.be.an('object');
+      expect(jsonData).to.have.property('player');
+      expect(jsonData.player).to.have.all.keys('id', 'firstName', 'lastName', 'fullName', 'position', 'captainText');
+  
+      expect(jsonData).to.have.property('team');
+      expect(jsonData.team).to.have.all.keys('id', 'pbgId', 'name', 'crest', 'crestName');
+  });
+  
+  
+}

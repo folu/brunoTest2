@@ -1,0 +1,23 @@
+meta {
+  name: Update localisation cache blob
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/cache/refresh-blob-cache
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~confirmDelete: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

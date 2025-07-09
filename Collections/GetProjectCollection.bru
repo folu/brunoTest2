@@ -1,0 +1,19 @@
+meta {
+  name: GetProjectCollection
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/collections/projects/4174?name=testexternalcollection
+  body: none
+  auth: none
+}
+
+params:query {
+  name: testexternalcollection
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

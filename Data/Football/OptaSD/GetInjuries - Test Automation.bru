@@ -1,0 +1,78 @@
+meta {
+  name: GetInjuries - Test Automation
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/football/optasd/injuries?tournamentId=1jt5mxgn4q5r6mknmlqv5qjh0&teamId=4txjdaqveermfryvbfrr4taf7
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1jt5mxgn4q5r6mknmlqv5qjh0
+  teamId: 4txjdaqveermfryvbfrr4taf7
+  ~seasonId: 2021
+  ~startDate: 2023-10-23
+  ~endDate: 2023-10-30
+  ~date: 2023-09-19
+  ~collectionPath: /collections/2023/football/english premier league/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  const schema = {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "player": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "firstName": { "type": "string" },
+            "lastName": { "type": "string" },
+            "fullName": { "type": "string" },
+            "position": { "type": "string" },
+            "captainText": { "type": "string" }
+          },
+          "required": ["id", "firstName", "lastName", "fullName", "position", "captainText"]
+        },
+        "team": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "pbgId": { "type": "string" },
+            "crest": { "type": "string", "format": "uri" }
+          },
+          "required": ["id", "pbgId", "crest"]
+        },
+        "type": { "type": "string" },
+        "numberOfMatches": { "type": "integer" },
+        "startDate": { "type": "string", "format": "date-time" },
+        "endDate": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "player",
+        "team",
+        "type",
+        "numberOfMatches",
+        "startDate",
+        "endDate"
+      ]
+    }
+  };
+  
+  test("Response matches schema", function () {
+  //   pm.response.to.have.jsonSchema(schema);
+  });
+  
+}

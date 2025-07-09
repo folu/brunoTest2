@@ -1,0 +1,24 @@
+meta {
+  name: GetOddsWithTeamCrests
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/odds-with-team-crests?eventId=35142-17844-2024-10-23&sportbooks=bet365
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 35142-17844-2024-10-23
+  sportbooks: bet365
+  ~sportbooks: bet365,Barstool
+  ~playerId: 68735EA1FD1F
+  ~market: Moneyline
+  ~market: Moneyline,point_spread,total_points
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

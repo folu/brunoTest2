@@ -1,0 +1,19 @@
+meta {
+  name: GetSessionDetails
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/data/motorsport/motorsportstats/sessiondetails?sessionId=6202634b-3f29-4b48-a6b3-ece5d8722234
+  body: none
+  auth: none
+}
+
+params:query {
+  sessionId: 6202634b-3f29-4b48-a6b3-ece5d8722234
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

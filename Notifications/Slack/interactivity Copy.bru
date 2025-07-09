@@ -1,0 +1,20 @@
+meta {
+  name: interactivity Copy
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{api}}/slack/interactivity
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:multipart-form {
+  payload: {"actions":[{"action_id":"SxuZ","block_id":"T6DQ","text":{"type":"plain_text","text":"Approve","emoji":true},"value":"{\"UserId\":\"a72bce48-1c7a-45f6-8e4d-f248df05519f\",\"InvitationId\":\"\",\"IsReceiver\":false,\"Brand\":\"ps\"}","style":"primary","type":"button"}]}
+  ~payload: {"actions":[{"action_id":"SxuZ","block_id":"T6DQ","text":{"type":"plain_text","text":"Approve","emoji":true},"value":"{\"UserId\":\"b7f1a56e-247e-4f56-9ab9-554181dad03e\",\"InvitationId\":\"\",\"IsReceiver\":false,\"Brand\":\"ps\"}","style":"primary","type":"button"}]}
+}

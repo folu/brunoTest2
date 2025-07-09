@@ -1,0 +1,26 @@
+meta {
+  name: RequeueInplayMatch
+  type: http
+  seq: 19
+}
+
+post {
+  url: {{api}}/admin-tools/requeue-inplay-match?matchId=g2082034&competitionId=20&sport=football&isDev=true
+  body: none
+  auth: bearer
+}
+
+params:query {
+  matchId: g2082034
+  competitionId: 20
+  sport: football
+  isDev: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

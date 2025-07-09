@@ -1,0 +1,62 @@
+meta {
+  name: GetPlayerSeasonStats - Test Automation
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{api}}/data/basketball/stats/player/seasonstats?tournamentId=nba&playerId=463135&seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: nba
+  playerId: 463135
+  seasonId: 2024
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 2000ms", function () {
+      expect(res.getResponseTime()).to.be.below(2000);
+  });
+  
+  test("gamesPlayed is present and is a number", function () {
+      const jsonData = res.getBody();
+      expect(jsonData).to.have.property("gamesPlayed");
+      expect(jsonData.gamesPlayed).to.be.a("number");
+  });
+  
+  test("minutesPlayed is correctly calculated from totalSecondsPlayed", function () {
+      const jsonData = res.getBody();
+      const calculatedMinutes = Math.round(jsonData.totalSecondsPlayed / 60); // Use Math.round instead of Math.floor
+      expect(jsonData.minutesPlayed).to.eql(calculatedMinutes);
+  });
+  
+  //to verify that minutesPlated is calculated correctly from totalSecondsPlayed
+  test("validate conversion of totalSecondsPlayed to minutesPlayed with tolerance", function () {
+      const jsonData = res.getBody();
+      const calculatedMinutes = Math.round(jsonData.totalSecondsPlayed / 60);
+      expect(Math.abs(jsonData.minutesPlayed - calculatedMinutes)).to.be.below(2); // Allow a difference of 1 minute
+  });
+  
+  //to verify if the data types are correct
+  test("Data types are correct", function () {
+      const jsonData = res.getBody();
+      expect(jsonData.gamesPlayed).to.be.a("number");
+      expect(jsonData.minutesPlayed).to.be.a("number");
+      expect(jsonData.minutesPerGame).to.be.a("number");
+  });
+  
+  
+  
+}

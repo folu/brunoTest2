@@ -1,0 +1,19 @@
+meta {
+  name: GetMatchBulletInsights
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/baseball/stats/match/bulletinsights?matchId=2296462
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 2296462
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

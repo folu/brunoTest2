@@ -1,0 +1,50 @@
+meta {
+  name: Add Video Job
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{api}}/server/videoV2/add-video-job
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  x-api-key: {{apiKey}}
+  ~: a
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+  	"UserID": "00e20e52-f115-4b62-b89d-c39f071d5920",
+  	"JobTitle": "Test Insert",
+  	"JobDescription": "Test Insert Desc",
+  	"VideoTemplateId": "289",
+  	"ProjectId": "4765",
+  	"JobFilename": "output-video-test.mp4",
+  	"Width": "1920",
+  	"Height": "1080",
+  	"InputElements": [
+  		{
+  			"id": "text1",
+  			"value": "Matty Test 1",
+  			"type": 1
+  		}
+  	],
+      "Theme": {
+          "name": "mattytesttheme",
+          "source": [
+              {
+                  "name": "text1",
+                  "Effects.Fill.Color": "#FF00FF"
+              }
+          ]
+      }
+  }
+}

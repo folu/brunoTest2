@@ -1,0 +1,21 @@
+meta {
+  name: GetLineups
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/match/lineups?eventId=9226375&tournamentId=494&seasonId=38471
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 9226375
+  tournamentId: 494
+  seasonId: 38471
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

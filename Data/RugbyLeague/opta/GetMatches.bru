@@ -1,0 +1,22 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/rugbyleague/opta/matches?tournamentId=1&seasonId=2022&startDate=2022-01-01
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1
+  seasonId: 2022
+  startDate: 2022-01-01
+  ~groupbydate: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

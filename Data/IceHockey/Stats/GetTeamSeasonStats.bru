@@ -1,0 +1,23 @@
+meta {
+  name: GetTeamSeasonStats
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/data/icehockey/stats/team/seasonStats?competitionId=nhl&team=4954&eventTypeId=1&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nhl
+  team: 4954
+  eventTypeId: 1
+  seasonId: 2022
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

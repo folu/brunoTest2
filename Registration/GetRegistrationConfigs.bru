@@ -1,0 +1,15 @@
+meta {
+  name: GetRegistrationConfigs
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/registration/configs
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

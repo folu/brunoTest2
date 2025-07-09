@@ -1,0 +1,24 @@
+meta {
+  name: Get Collection V1 Flat
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/admin/collections/v1/flat?collectionPath=/collections/custom/football/mattytest/crests.json
+  body: none
+  auth: bearer
+}
+
+params:query {
+  collectionPath: /collections/custom/football/mattytest/crests.json
+  ~: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

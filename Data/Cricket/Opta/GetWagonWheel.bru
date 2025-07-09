@@ -1,0 +1,22 @@
+meta {
+  name: GetWagonWheel
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/data/cricket/opta/wagonwheel?innings=2&matchId=57108&playerId=4913&segments=8
+  body: none
+  auth: none
+}
+
+params:query {
+  innings: 2
+  matchId: 57108
+  playerId: 4913
+  segments: 8
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

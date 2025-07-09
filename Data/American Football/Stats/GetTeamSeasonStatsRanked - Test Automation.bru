@@ -1,0 +1,94 @@
+meta {
+  name: GetTeamSeasonStatsRanked - Test Automation
+  type: http
+  seq: 21
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/team/seasonstatsranked?teamId=327&leagueId=nfl&seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 327
+  leagueId: nfl
+  seasonId: 2024
+  ~amountOfBatches: 3
+  ~conferenceId: 73
+  ~collectionPath: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  let res = res.getBody();
+  
+  test("Status code is 200", () => {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  // Required fields from the ticket description (updated one)
+  test("Required team stats fields are present", () => {
+      const requiredFields = [
+          res.passing?.yards,
+          res.passing?.touchdowns,
+          res.passing?.completionPercentage,
+          res.passing?.yardsPerGame,
+          res.rushing?.yards,
+          res.rushing?.touchdowns
+      ];
+  
+      requiredFields.forEach((field, index) => {
+          expect(field, `Field index ${index} should be present`).to.not.be.undefined;
+      });
+  });
+  
+  
+  let schema = {
+      type: "object",
+      required: ["passing", "rushing", "generalTotals"],
+      properties: {
+          passing: {
+              type: "object",
+              required: ["yards", "touchdowns", "completionPercentage", "yardsPerGame", "attempts", "completions", "interceptions"],
+              properties: {
+                  yards: { type: "number" },
+                  touchdowns: { type: "number" },
+                  completionPercentage: { type: "string" },
+                  yardsPerGame: { type: "string" },
+                  attempts: { type: "number" },
+                  completions: { type: "number" },
+                  interceptions: { type: "number" }
+              }
+          },
+          rushing: {
+              type: "object",
+              required: ["yards", "touchdowns"],
+              properties: {
+                  yards: { type: "number" },
+                  touchdowns: { type: "number" }
+              }
+          },
+          generalTotals: {
+              type: "object",
+              required: ["passingTouchdownsPerGame", "rushingTouchdownsPerGame"],
+              properties: {
+                  passingTouchdownsPerGame: { type: "number" },
+                  rushingTouchdownsPerGame: { type: "number" }
+              }
+          }
+      }
+  };
+  
+  test("JSON Schema is valid", () => {
+      expect(tv4.validate(res, schema), JSON.stringify(tv4.error)).to.be.true;
+  });
+  
+}

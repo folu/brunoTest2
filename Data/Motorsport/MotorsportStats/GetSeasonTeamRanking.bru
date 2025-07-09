@@ -1,0 +1,20 @@
+meta {
+  name: GetSeasonTeamRanking
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/motorsport/motorsportstats/seasonTeamRankings?seasonId=4ed5fe27-9a26-4b7a-a66b-bf7f44057064&seriesId=a485d01c-f907-4ff7-83db-ca1c90cc28a1
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 4ed5fe27-9a26-4b7a-a66b-bf7f44057064
+  seriesId: a485d01c-f907-4ff7-83db-ca1c90cc28a1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

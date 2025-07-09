@@ -1,0 +1,19 @@
+meta {
+  name: GetWinProbability
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/americanfootball/optasd/winProbability?eventId=2542818
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2542818
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

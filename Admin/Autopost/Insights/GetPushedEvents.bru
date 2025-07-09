@@ -1,0 +1,19 @@
+meta {
+  name: GetPushedEvents
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/server/admin/autopost/insights/pushevents?matchId=g2367914
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: g2367914
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

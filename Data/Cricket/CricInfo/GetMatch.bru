@@ -1,0 +1,20 @@
+meta {
+  name: GetMatch
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/cricket/cricinfo/match?feedType=c1m&matchId=1194275
+  body: none
+  auth: none
+}
+
+params:query {
+  feedType: c1m
+  matchId: 1194275
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

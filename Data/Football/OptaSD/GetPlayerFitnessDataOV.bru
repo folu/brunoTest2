@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerFitnessDataOV
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/matchfitnessOV?eventId=275s60cyrmxknu83lprwzmxhw&playerId=8bvn7mn5tjfj3l2bnpvm75gmi
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 275s60cyrmxknu83lprwzmxhw
+  playerId: 8bvn7mn5tjfj3l2bnpvm75gmi
+  ~isInVenue: true
+  ~roundValuesTo: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

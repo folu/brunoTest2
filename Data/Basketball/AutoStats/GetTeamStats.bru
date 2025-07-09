@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamStats
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/basketball/autostats/teams/seasonstats?seasonId=2022&teamId=42711&tournamentId=fiba_asia
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2022
+  teamId: 42711
+  tournamentId: fiba_asia
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

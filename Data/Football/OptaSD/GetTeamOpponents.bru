@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamOpponents
+  type: http
+  seq: 44
+}
+
+get {
+  url: {{api}}/data/football/optasd/team/opponents?teamIds=t3&seasonId=2020&excludeToday=true&collectionPath=/collections/2020/football/english premier league/crests.json
+  body: none
+  auth: none
+}
+
+params:query {
+  teamIds: t3
+  seasonId: 2020
+  excludeToday: true
+  collectionPath: /collections/2020/football/english premier league/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

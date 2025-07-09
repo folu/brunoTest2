@@ -1,0 +1,98 @@
+meta {
+  name: GetMatches - Test Automation
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/basketball/stats/matches?tournamentId=nba&startDate=2024-01-01
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: nba
+  startDate: 2024-01-01
+  ~groupByDate: true
+  ~endDate: 2024-04-14
+  ~collectionPath: /collections/2021/basketball/nba/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  var body = JSON.parse(responseBody);
+    tests["Count: "  + body.length] = true;
+  
+  test("Response status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response Content-Type is application/json", function () {
+      expect(res.getHeader("Content-Type")).to.include("application/json");
+  });
+  
+  
+  test("Validate the schema of the 'items' array", function () {
+      const responseData = res.getBody();
+  
+      expect(responseData).to.be.an('array');
+      responseData.forEach(function (item) {
+  
+          if (item.hasOwnProperty('venueState')) {
+              expect(item.venueState).to.be.a('string'); 
+          } else {
+              console.log(`Item with ID ${item.id} is missing 'venueState'.`);
+          }
+  
+          expect(item).to.have.property('homeRecord').that.is.an('object');
+          expect(item).to.have.property('awayRecord').that.is.an('object');
+          expect(item).to.have.property('id').that.is.a('string');
+          expect(item).to.have.property('eventType').that.is.a('string');
+          expect(item).to.have.property('date').that.is.a('string');
+          expect(item).to.have.property('utcDate').that.is.a('string');
+          expect(item).to.have.property('matchStarted').that.is.a('boolean');
+          expect(item).to.have.property('homeTeam').that.is.an('object');
+          expect(item).to.have.property('awayTeam').that.is.an('object');
+          expect(item).to.have.property('venue').that.is.a('string');
+          expect(item).to.have.property('championshipName').that.is.a('string');
+          expect(item).to.have.property('venueCity').that.is.a('string');
+          expect(item).to.have.property('tvStations').that.is.an('array');
+      });
+  });
+  
+  
+  test("Validate the format of the date property within the items array", function () {
+      const responseData = res.getBody();
+      
+      expect(responseData).to.be.an('array');
+      responseData.forEach(function (item) {
+          expect(item).to.have.property('date').that.is.a('string').and.not.empty;
+      });
+  });
+  
+  const matches = res.getBody();
+  
+  test("Check period order for match at index 129", function () {
+      const match = matches[129];
+  
+      if (Array.isArray(match.periods)) {
+          const periodNumbers = match.periods
+              .map(p => parseInt(p.period))
+              .filter(p => !isNaN(p));
+  
+          const isSorted = periodNumbers.every((num, i, arr) => i === 0 || arr[i - 1] <= num);
+  
+          console.log(` Period numbers in match 129:`, periodNumbers);
+          expect(isSorted, `Match 129 has unordered periods`).to.be.true;
+      } else {
+          console.warn("Match 129 does not contain a valid periods array.");
+      }
+  });
+  
+  
+  
+  
+}

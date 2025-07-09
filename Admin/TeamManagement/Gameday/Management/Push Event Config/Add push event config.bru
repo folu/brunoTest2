@@ -1,0 +1,26 @@
+meta {
+  name: Add push event config
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{api}}/teammanagement/gameday/push-event-configurations
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "PostName": "Matty test",
+      "URL": "test.com/push",
+      "AuthKey": "testkey",
+      "AuthType": "header",
+      "AuthValue": "testauthvalue",
+      "Active": true
+  }
+}

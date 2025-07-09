@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchLineup
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/matchlineup/?matchId=101567&take=15
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 101567
+  take: 15
+  ~playerBatchCount: 8
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

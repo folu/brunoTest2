@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerSeasonStatsRadar
+  type: http
+  seq: 36
+}
+
+get {
+  url: {{api}}/data/football/opta/player/seasonstats/radar?competitionId=8&seasonId=2019&playerId=p80201|p169432|p146941&stats=total accurate pass ranking|total pass ranking|total fwd zone pass ranking|total clean sheet ranking|total accurate back zone pass ranking|total clearance ranking
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  seasonId: 2019
+  playerId: p80201|p169432|p146941
+  stats: total accurate pass ranking|total pass ranking|total fwd zone pass ranking|total clean sheet ranking|total accurate back zone pass ranking|total clearance ranking
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

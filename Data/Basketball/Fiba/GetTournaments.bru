@@ -1,0 +1,21 @@
+meta {
+  name: GetTournaments
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/basketball/fiba/tournaments?seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2022
+  ~language: en
+  ~groupByConference: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

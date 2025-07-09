@@ -1,0 +1,21 @@
+meta {
+  name: GetLineups
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/football/genius/match/lineups?matchId=26625
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 26625
+  ~tournamentId: 1
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

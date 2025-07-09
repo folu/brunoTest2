@@ -1,0 +1,19 @@
+meta {
+  name: AddTags
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{api}}/server/projects/assets/:assetId/tags
+  body: multipartForm
+  auth: none
+}
+
+params:path {
+  assetId: 33848
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

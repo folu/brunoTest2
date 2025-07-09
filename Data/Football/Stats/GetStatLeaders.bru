@@ -1,0 +1,20 @@
+meta {
+  name: GetStatLeaders
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/football/stats/player/leaders?leagueId=fran2&categoryId=1
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: fran2
+  categoryId: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

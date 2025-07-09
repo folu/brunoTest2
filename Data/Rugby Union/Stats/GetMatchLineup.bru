@@ -1,0 +1,23 @@
+meta {
+  name: GetMatchLineup
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/matchlineup?matchId=20201841010
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 20201841010
+  ~seasonId: 2020
+  ~groupbydate: true
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

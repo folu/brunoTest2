@@ -1,0 +1,23 @@
+meta {
+  name: GetMatchMomentum
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/match/momentum?competitionId=301&seasonId=2023&eventId=20233010110
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 301
+  seasonId: 2023
+  eventId: 20233010110
+  ~eventTypes: tries
+  ~matchMinutes: 80
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

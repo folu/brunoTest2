@@ -1,0 +1,25 @@
+meta {
+  name: RemoveBG
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/AssetProvider/79e0b509-0f28-452d-8f81-409755758dda/getThumbnails?SearchTerm=cat&UserId=00e20e52-f115-4b62-b89d-c39f071d5920
+  body: json
+  auth: none
+}
+
+params:query {
+  SearchTerm: cat
+  UserId: 00e20e52-f115-4b62-b89d-c39f071d5920
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+         {"SearchTerm": "dog",
+         "UserId": "00e20e52-f115-4b62-b89d-c39f071d5920"}
+}

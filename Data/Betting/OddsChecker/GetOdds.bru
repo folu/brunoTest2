@@ -1,0 +1,46 @@
+meta {
+  name: GetOdds
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/betting/oddschecker/odds?market=3569875253
+  body: none
+  auth: none
+}
+
+params:query {
+  market: 3569875253
+  ~sportBooks: BF,CE
+  ~orderDirection: desc
+  ~groupByMarketName: true
+  ~take: 5
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 1000ms", function () {
+      expect(res.getResponseTime()).to.be.below(1000);
+  });
+  
+  test("All required fields are present in response", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(item => {
+          expect(item).to.have.property("odds");
+          expect(item.odds[0]).to.have.property("id");
+          expect(item.odds[0]).to.have.property("name");
+          expect(item.odds[0]).to.have.property("price");
+          expect(item.odds[0].price).to.have.property("fraction");
+          expect(item.odds[0].price).to.have.property("decimal");
+      });
+  });
+  
+}

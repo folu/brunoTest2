@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamMatchIndex
+  type: http
+  seq: 49
+}
+
+get {
+  url: {{api}}/data/football/opta/team/matchindex?competitionId=8&seasonId=2020&matchId=g2128570&teamId=t14
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  seasonId: 2020
+  matchId: g2128570
+  teamId: t14
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

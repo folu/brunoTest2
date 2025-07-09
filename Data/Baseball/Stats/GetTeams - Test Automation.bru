@@ -1,0 +1,65 @@
+meta {
+  name: GetTeams - Test Automation
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{api}}/data/baseball/stats/teams?seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2024
+  ~leagueId: mlb
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 4000ms", function () {
+      expect(res.getResponseTime()).to.be.below(4000);
+  });
+  
+  test("Each team has required fields", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(item => {
+          expect(item).to.have.property("id");
+          expect(item).to.have.property("pbgId");
+          expect(item).to.have.property("name");
+          expect(item).to.have.property("abbreviation");
+          expect(item).to.have.property("crest");
+          expect(item).to.have.property("nickname");
+          expect(item).to.have.property("location");
+          expect(item).to.have.property("brand");
+          expect(item.brand).to.have.property("nickname");
+          expect(item.brand).to.have.property("abbreviation");
+          expect(item.brand).to.have.property("crest");
+      });
+  });
+  
+  test("Field data types are correct", function () {
+      const jsonData = res.getBody();
+      jsonData.forEach(item => {
+          expect(item.id).to.be.a("string");
+          expect(item.pbgId).to.be.a("string");
+          expect(item.name).to.be.a("string");
+          expect(item.abbreviation).to.be.a("string");
+          expect(item.crest).to.be.a("string");
+          expect(item.nickname).to.be.a("string");
+          expect(item.location).to.be.a("string");
+          expect(item.brand.nickname).to.be.a("string");
+          expect(item.brand.abbreviation).to.be.a("string");
+          expect(item.brand.crest).to.be.a("string");
+      });
+  });
+  
+}

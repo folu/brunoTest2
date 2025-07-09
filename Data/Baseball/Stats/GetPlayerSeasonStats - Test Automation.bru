@@ -1,0 +1,175 @@
+meta {
+  name: GetPlayerSeasonStats - Test Automation
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{api}}/data/baseball/stats/player/seasonstats?playerId=549847&seasonId=2024&leagueId=mlb
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 549847
+  seasonId: 2024
+  leagueId: mlb
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  test("Response time is less than 3000ms", function () {
+      expect(res.getResponseTime()).to.be.below(3000);
+  });
+  
+  test("Response structure is valid", function () {
+      const jsonData = res.getBody();
+      expect(jsonData).to.have.property("team");
+      expect(jsonData).to.have.property("battingStats");
+      expect(jsonData).to.have.property("pitchingStats");
+      expect(jsonData).to.have.property("fieldingStats");
+      expect(jsonData.fieldingStats.fieldingPositions).to.be.an("array");
+  });
+  
+  test("Team details are correct", function () {
+      const team = res.getBody().team;
+      expect(team.name).to.eql("New York Yankees");
+      expect(team.abbreviation).to.eql("NYY");
+      expect(team.crest).to.match(/^https?:\/\/.+/);
+  });
+  
+  test("Batting stats are correct", function () {
+      const battingStats = res.getBody().battingStats;
+      expect(battingStats.baseRunningRuns).to.eql("1.36");
+      expect(battingStats.hits.total).to.eql(180);
+      expect(battingStats.runsScored).to.eql(122);
+  });
+  
+  test("Fielding stats are consistent", function () {
+      const fieldingStats = res.getBody().fieldingStats;
+      fieldingStats.fieldingPositions.forEach(stat => {
+          expect(stat).to.have.property("positionName");
+          expect(stat).to.have.property("totalGames");
+          expect(stat).to.have.property("errors");
+      });
+  });
+  
+  //json schema validation
+  const Ajv = require('ajv');
+  const ajv = new Ajv();
+  
+  const schema = {
+      type: "object",
+      properties: {
+          player: {
+              type: "object",
+              properties: {
+                  id: { type: "string" },
+                  firstName: { type: "string" },
+                  lastName: { type: "string" },
+                  fullName: { type: "string" },
+                  teamId: { type: "string" },
+                  teamName: { type: "string" },
+                  captainText: { type: "string" }
+              },
+              required: ["id", "firstName", "lastName", "fullName", "teamId", "teamName", "captainText"]
+          },
+          team: {
+              type: "object",
+              properties: {
+                  id: { type: "string" },
+                  pbgId: { type: "string" },
+                  name: { type: "string" },
+                  abbreviation: { type: "string" },
+                  crest: { type: "string" },
+                  crestName: { type: "string" },
+                  nickname: { type: "string" },
+                  location: { type: "string" }
+              },
+              required: ["id", "name", "abbreviation", "crest", "crestName", "nickname", "location"]
+          },
+          battingStats: {
+              type: "object",
+              properties: {
+                  totalGames: { type: "integer" },
+                  starts: { type: "integer" },
+                  plateAppearances: { type: "integer" },
+                  atBats: { type: "integer" },
+                  runsScored: { type: "integer" },
+                  weightedRunsAboveAverage: { type: "string" },
+                  hits: {
+                      type: "object",
+                      properties: {
+                          total: { type: "integer" },
+                          singles: { type: "integer" },
+                          doubles: { type: "integer" },
+                          triples: { type: "integer" },
+                          homeRuns: { type: "integer" },
+                          extraBaseHIts: { type: "integer" }
+                      },
+                      required: ["total", "singles", "doubles", "triples", "homeRuns", "extraBaseHIts"]
+                  },
+                  average: { type: "string" },
+                  runsBattedInTotal: { type: "integer" }
+              },
+              required: ["totalGames", "starts", "plateAppearances", "hits", "average", "runsBattedInTotal"]
+          },
+          pitchingStats: {
+              type: "object",
+              properties: {
+                  average: { type: "string" },
+                  totalGames: { type: "integer" },
+                  wins: { type: "integer" },
+                  losses: { type: "integer" },
+                  saveRatioSVATT: { type: "string" },
+                  winLoss: { type: "string" }
+              },
+              required: ["average", "totalGames", "wins", "losses", "saveRatioSVATT", "winLoss"]
+          },
+          fieldingStats: {
+              type: "object",
+              properties: {
+                  fieldingPositions: {
+                      type: "array",
+                      items: {
+                          type: "object",
+                          properties: {
+                              positionName: { type: "string" },
+                              positionId: { type: "integer" },
+                              totalGames: { type: "integer" },
+                              starts: { type: "integer" },
+                              innings: { type: "number" },
+                              putOuts: { type: "integer" },
+                              errors: { type: "integer" },
+                              assists: { type: "integer" }
+                          },
+                          required: ["positionName", "positionId", "totalGames", "starts", "innings", "putOuts", "errors", "assists"]
+                      }
+                  }
+              },
+              required: ["fieldingPositions"]
+          }
+      },
+      required: ["player", "team", "battingStats", "pitchingStats", "fieldingStats"]
+  };
+  
+  
+  const response = res.getBody();
+  
+  const validate = ajv.compile(schema);
+  const valid = validate(response);
+  
+  test("Response matches expected JSON schema", function () {
+      expect(valid).to.be.true;
+      if (!valid) {
+          console.log(validate.errors);
+      }
+  });
+  
+}

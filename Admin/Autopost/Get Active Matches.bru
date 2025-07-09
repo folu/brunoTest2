@@ -1,0 +1,33 @@
+meta {
+  name: Get Active Matches
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/admin/autopost/active?sportId=1
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  sportId: 1
+  ~: 
+}
+
+auth:oauth2 {
+  grant_type: password
+  access_token_url: {{host}}/connect/token
+  refresh_token_url: 
+  username: 13strides
+  password: STRSTR13des
+  client_id: {{client_id}}
+  client_secret: {{client_secret}}
+  scope: graphics
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

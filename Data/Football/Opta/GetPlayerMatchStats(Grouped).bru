@@ -1,0 +1,25 @@
+meta {
+  name: GetPlayerMatchStats(Grouped)
+  type: http
+  seq: 33
+}
+
+get {
+  url: {{api}}/data/football/opta/player/groupedmatchstats?competitionId=24&seasonId=2023&playerId=p54694&eventId=g2376852&locale=en-op&IsInVenue=false&teamId=t144
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 24
+  seasonId: 2023
+  playerId: p54694
+  eventId: g2376852
+  locale: en-op
+  IsInVenue: false
+  teamId: t144
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

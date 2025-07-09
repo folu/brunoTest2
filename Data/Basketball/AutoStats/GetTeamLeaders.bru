@@ -1,0 +1,22 @@
+meta {
+  name: GetTeamLeaders
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/basketball/autostats/team/leaders?tournamentId=fiba_asia&leaderCategoryId=avgscreens&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: fiba_asia
+  leaderCategoryId: avgscreens
+  seasonId: 2022
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

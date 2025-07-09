@@ -1,0 +1,21 @@
+meta {
+  name: GetXYEventData
+  type: http
+  seq: 12
+}
+
+get {
+  url: /data/rugbyunion/stats/match/touches?matchId=20201841010
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: 20201841010
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

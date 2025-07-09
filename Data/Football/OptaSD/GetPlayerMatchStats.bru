@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerMatchStats
+  type: http
+  seq: 23
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/matchstats?seasonId=2021&comeptitionId=88uv51hj9upft1fpg33qbwob8&playerId=5zyesddpers0yejmqxbdce5sl&matchId=as18ozkemunvvv4acz5hqn4t0
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2021
+  comeptitionId: 88uv51hj9upft1fpg33qbwob8
+  playerId: 5zyesddpers0yejmqxbdce5sl
+  matchId: as18ozkemunvvv4acz5hqn4t0
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

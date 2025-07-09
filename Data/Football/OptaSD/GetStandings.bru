@@ -1,0 +1,23 @@
+meta {
+  name: GetStandings
+  type: http
+  seq: 36
+}
+
+get {
+  url: {{api}}/data/football/optasd/standings?leagueId=1qvg3k7yk9n7ivfabg6oribkk&seasonId=2021&locale=en-en&tournamentStage=1r4fai5omocyz8e620xfzv11w&division=away
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 1qvg3k7yk9n7ivfabg6oribkk
+  seasonId: 2021
+  locale: en-en
+  tournamentStage: 1r4fai5omocyz8e620xfzv11w
+  division: away
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

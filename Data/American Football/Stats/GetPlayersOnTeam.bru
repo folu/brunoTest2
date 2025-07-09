@@ -1,0 +1,28 @@
+meta {
+  name: GetPlayersOnTeam
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/team/players?teamId=3478&seasonId=2024&leagueId=cfb
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 3478
+  seasonId: 2024
+  leagueId: cfb
+  ~freeAgents: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+}

@@ -1,0 +1,34 @@
+meta {
+  name: Upsert Revision
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{api}}/videorevision/267
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "VideoTemplateId": "267",
+      "Id": "mattytest",
+      "Name": "Matty Test Revision",
+      "JobId": "BCB84BDC-6BE2-43CC-BF83-08DC1CC59BF1",
+      "Groups": [
+          {
+              "id": "matchweek_1",
+              "name": "Match Week 1"
+          },
+          {
+              "id": "new_test_group",
+              "name": "New test group"
+          }
+      ]
+  }
+}

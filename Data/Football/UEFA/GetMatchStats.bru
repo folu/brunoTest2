@@ -1,0 +1,24 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/football/uefa/match/stats?leagueId=1&seasonId=2020&includeMatchEvents=true&eventId=2027124
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 1
+  seasonId: 2020
+  includeMatchEvents: true
+  eventId: 2027124
+  ~startDate: 2019-08-01
+  ~teamId: 50037
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

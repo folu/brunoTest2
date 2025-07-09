@@ -1,0 +1,23 @@
+meta {
+  name: GetSeasonPlayerStats
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/seasonstats/player?tournamentId=503&seasonId=2021&playerId=48191
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 503
+  seasonId: 2021
+  playerId: 48191
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

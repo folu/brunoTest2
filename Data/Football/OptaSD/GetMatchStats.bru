@@ -1,0 +1,25 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/stats?competitionId=1sc9sn2keddyalfj2z0wy77ys&seasonId=2021&language=en-op&includeMatchEvents=true&eventId=7o7o7d9ormwib7i0lqpivx9n8&locale=en-op&collectionPath=/collections/custom/football/canalplus/crests.json
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 1sc9sn2keddyalfj2z0wy77ys
+  seasonId: 2021
+  language: en-op
+  includeMatchEvents: true
+  eventId: 7o7o7d9ormwib7i0lqpivx9n8
+  locale: en-op
+  collectionPath: /collections/custom/football/canalplus/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

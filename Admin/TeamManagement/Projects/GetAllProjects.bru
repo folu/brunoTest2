@@ -1,0 +1,21 @@
+meta {
+  name: GetAllProjects
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/teammanagement/projects?userId=a635fb66-cf7d-4bdd-993d-920329610c4a&all=true&active=false
+  body: none
+  auth: none
+}
+
+params:query {
+  userId: a635fb66-cf7d-4bdd-993d-920329610c4a
+  all: true
+  active: false
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

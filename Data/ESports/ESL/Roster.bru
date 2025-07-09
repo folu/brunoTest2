@@ -1,0 +1,23 @@
+meta {
+  name: Roster
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/esports/esl/roster?roundId=14274&teamId=14810&excludeCoaches=false
+  body: none
+  auth: none
+}
+
+params:query {
+  roundId: 14274
+  teamId: 14810
+  excludeCoaches: false
+  ~filterbyteam: 850
+  ~from: 2019-10-07
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

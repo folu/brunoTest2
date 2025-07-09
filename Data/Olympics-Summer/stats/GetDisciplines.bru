@@ -1,0 +1,20 @@
+meta {
+  name: GetDisciplines
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/olympics/stats/disciplines?seasonId=2016&language=en
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2016
+  language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

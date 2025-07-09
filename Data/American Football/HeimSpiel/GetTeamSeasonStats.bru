@@ -1,0 +1,20 @@
+meta {
+  name: GetTeamSeasonStats
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/americanfootball/heimspiel/team/seasonstats?leagueId=38471&teamId=3049
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 38471
+  teamId: 3049
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

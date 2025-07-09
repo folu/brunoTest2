@@ -1,0 +1,21 @@
+meta {
+  name: OptaSd Proxy Copy
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/admin/data/optasd-proxy/soccerdata/tournamentcalendar/1ckn0deyyj8b1vux5zq5xazab/active/authorized/?_lcl=en-op&_rt=b&_fmt=json
+  body: none
+  auth: none
+}
+
+params:query {
+  _lcl: en-op
+  _rt: b
+  _fmt: json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

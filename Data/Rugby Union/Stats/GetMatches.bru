@@ -1,0 +1,23 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/matches?competitionId=241&seasonId=2022&groupbydate=true&from=2022-01-01
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 241
+  seasonId: 2022
+  groupbydate: true
+  from: 2022-01-01
+  ~filterbyteam: 850
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

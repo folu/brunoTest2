@@ -1,0 +1,21 @@
+meta {
+  name: GetStatLeaders
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/data/rugbyunion/opta/player/leaders?leagueId=421&categoryId=Drop_goals_converted&seasonId=2022
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 421
+  categoryId: Drop_goals_converted
+  seasonId: 2022
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

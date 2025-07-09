@@ -1,0 +1,21 @@
+meta {
+  name: GetPlayersOnTeam
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/rugbyunion/stats/team/players/?teamId=1999&seasonId=2021&competitionId=503
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 1999
+  seasonId: 2021
+  competitionId: 503
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

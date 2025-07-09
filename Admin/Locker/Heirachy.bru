@@ -1,0 +1,25 @@
+meta {
+  name: Heirachy
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{api}}/locker/heirachy?userId=0ca66594-891b-4524-b818-bee9e5462332
+  body: none
+  auth: bearer
+}
+
+params:query {
+  userId: 0ca66594-891b-4524-b818-bee9e5462332
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

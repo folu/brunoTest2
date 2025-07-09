@@ -1,0 +1,19 @@
+meta {
+  name: Get Rankings
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/golf/europeantour/rankings?year=2021
+  body: none
+  auth: none
+}
+
+params:query {
+  year: 2021
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

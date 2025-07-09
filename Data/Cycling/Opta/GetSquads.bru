@@ -1,0 +1,20 @@
+meta {
+  name: GetSquads
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/cycling/opta/squads?competitionId=7101&seasonId=2025
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 7101
+  seasonId: 2025
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

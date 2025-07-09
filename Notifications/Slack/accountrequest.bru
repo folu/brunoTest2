@@ -1,0 +1,16 @@
+meta {
+  name: accountrequest
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{api}}/slack/accountrequest?companyName=13strides&teamName=test
+  body: none
+  auth: none
+}
+
+params:query {
+  companyName: 13strides
+  teamName: test
+}

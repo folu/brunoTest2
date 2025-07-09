@@ -1,0 +1,95 @@
+meta {
+  name: GetPlayerLeaders - Test Automation
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/player/leaders?teamId=3500&leagueId=cfb&compStage=1&seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  teamId: 3500
+  leagueId: cfb
+  compStage: 1
+  seasonId: 2024
+  ~categoryId: 2
+  ~amountOfBatches: 2
+  ~conferenceId: 73
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Category details are correct", function () {
+      const jsonData = res.getBody();
+      expect(jsonData).to.have.property("categoryName", "Passing Yards");
+      expect(jsonData).to.have.property("categoryId", "1");
+  });
+  
+  test("Schema is valid", function () {
+      const schema = {
+          type: "object",
+          properties: {
+              categoryName: { type: "string" },
+              categoryId: { type: "string" },
+              value: {
+                  type: "array",
+                  items: {
+                      type: "object",
+                      properties: {
+                          player: {
+                              type: "object",
+                              properties: {
+                                  id: { type: "string" },
+                                  firstName: { type: "string" },
+                                  lastName: { type: "string" },
+                                  fullName: { type: "string" },
+                                  captainText: { type: "string", minLength: 0 } // Allow empty string
+                              },
+                              required: ["id", "firstName", "lastName", "fullName", "captainText"]
+                          },
+                          team: {
+                              type: "object",
+                              properties: {
+                                  id: { type: "string" },
+                                  pbgId: { type: "string" },
+                                  name: { type: "string" },
+                                  abbreviation: { type: "string" },
+                                  crest: { type: "string" },
+                                  crestName: { type: "string" },
+                                  nickname: { type: "string" },
+                                  location: { type: "string" },
+                                  brand: {
+                                      type: "object",
+                                      properties: {
+                                          crest: { type: "string" }
+                                      },
+                                      required: ["crest"]
+                                  }
+                              },
+                              required: ["id", "pbgId", "name", "abbreviation", "crest", "crestName", "nickname", "location", "brand"]
+                          },
+                          rank: { type: "number" },
+                          stat: { type: "string" }, 
+                          appearance: { type: "number" }
+                      },
+                      required: ["player", "team", "rank", "stat", "appearance"]
+                  }
+              }
+          },
+          required: ["categoryName", "categoryId", "value"]
+      };
+  
+  //     pm.response.to.have.jsonSchema(schema); // Use Ajv validator
+  });
+  
+}

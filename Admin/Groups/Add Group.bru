@@ -1,0 +1,26 @@
+meta {
+  name: Add Group
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{api}}/admin/groups
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "name": "Test group 2025",
+      "description": "Test group description",
+      "categories": [
+          "test",
+          "test2"
+      ]
+  }
+}

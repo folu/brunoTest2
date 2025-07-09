@@ -1,0 +1,80 @@
+meta {
+  name: GetFormation - Test Automation
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/football/optasd/formation?eventId=g2292963&homeOrAway=home&leagueId=8&language=ar
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: g2292963
+  homeOrAway: home
+  leagueId: 8
+  language: ar
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  const schema = {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "coordinates": {
+          "type": "object",
+          "properties": {
+            "x": { "type": "number" },
+            "y": { "type": "number" }
+          },
+          "required": ["x", "y"]
+        },
+        "playerKnownName": { "type": "string" },
+        "playerLastName": { "type": "string" },
+        "playerDisplayLastName": { "type": "string" },
+        "matchName": { "type": "string" },
+        "teamName": { "type": "string" },
+        "teamId": { "type": "string" },
+        "shirtNumber": { "type": "string" },
+        "id": { "type": "string" },
+        "position": { "type": "string" },
+        "positionShortName": { "type": "string" },
+        "generalPosition": { "type": "string" },
+        "playerId": { "type": "string" },
+        "x": { "type": "number" },
+        "y": { "type": "number" }
+      },
+      "required": [
+        "coordinates",
+        "playerLastName",
+        "playerDisplayLastName",
+        "matchName",
+        "teamName",
+        "teamId",
+        "shirtNumber",
+        "id",
+        "position",
+        "positionShortName",
+        "generalPosition",
+        "playerId",
+        "x",
+        "y"
+      ]
+    }
+  };
+  
+  test("Response matches schema", function () {
+  //   pm.response.to.have.jsonSchema(schema);
+  });
+  
+}

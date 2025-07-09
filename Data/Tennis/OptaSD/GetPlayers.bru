@@ -1,0 +1,20 @@
+meta {
+  name: GetPlayers
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/players?seasonId=u79ss4bydlsel4iuue7bcmxg&type=single
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: u79ss4bydlsel4iuue7bcmxg
+  type: single
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

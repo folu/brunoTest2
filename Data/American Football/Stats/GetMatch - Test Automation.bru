@@ -1,0 +1,66 @@
+meta {
+  name: GetMatch - Test Automation
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/match?eventId=2656920&leagueId=nfl&includeMatchEvents=true&FilterType=DriveChart
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2656920
+  leagueId: nfl
+  includeMatchEvents: true
+  FilterType: DriveChart
+  ~includePlayerStatLeaders: false
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  let jsonData = res.getBody();
+  
+  test("homeLineScores exists and is an array", function () {
+      expect(jsonData.homeLineScores).to.be.an("array").that.is.not.empty;
+  });
+  
+  test("awayLineScores exists and is an array", function () {
+      expect(jsonData.awayLineScores).to.be.an("array").that.is.not.empty;
+  });
+  
+  test("homeLineScores items have score, order, name, totalScore", function () {
+      jsonData.homeLineScores.forEach(item => {
+          expect(item).to.have.property("score");
+          expect(item).to.have.property("order");
+          expect(item).to.have.property("name");
+          expect(item).to.have.property("totalScore");
+      });
+  });
+  
+  test("awayLineScores items have score, order, name, totalScore", function () {
+      jsonData.awayLineScores.forEach(item => {
+          expect(item).to.have.property("score");
+          expect(item).to.have.property("order");
+          expect(item).to.have.property("name");
+          expect(item).to.have.property("totalScore");
+      });
+  });
+  
+  test("Total score matches last entry's totalScore", function () {
+      let lastHome = jsonData.homeLineScores[jsonData.homeLineScores.length - 1];
+      let lastAway = jsonData.awayLineScores[jsonData.awayLineScores.length - 1];
+      expect(jsonData.homeScore).to.eql(lastHome.totalScore);
+      expect(jsonData.awayScore).to.eql(lastAway.totalScore);
+  });
+  
+}

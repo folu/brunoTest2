@@ -1,0 +1,21 @@
+meta {
+  name: Connect
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{api}}/social/connect
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "applicationId": "B9727238-1B6B-4416-B6FB-FCFB35F22534",
+      "userId": "A635FB66-CF7D-4BDD-993D-920329610C4A",
+      "networkId": "70B4A310-D7CF-444D-831A-CF83E505DB90",
+      "authId": "b1fa5ba0-2f6b-44e3-b0f2-a8235e63b0e7",
+      "callbackUrl": "http://localhost:62341/social/connect/twitter.aspx?tweetinvi_auth_request_id=b1fa5ba0-2f6b-44e3-b0f2-a8235e63b0e7&oauth_token=moxXRAAAAAABt0TfAAABkVBX1C8&oauth_verifier=Nd6atUXE0dtwC4rBYiW7HlrQuHmVIQAF"
+  }
+}

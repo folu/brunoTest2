@@ -1,0 +1,26 @@
+meta {
+  name: GetInjuries (NBA ONLY)
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/basketball/stats/injuries?seasonId=2023&from=2023-01-01&to=2024-08-09&teamId=10
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2023
+  from: 2023-01-01
+  to: 2024-08-09
+  teamId: 10
+  ~endDate: 2019-10-16
+  ~groupShotZone: true
+  ~includeMatchEvents: true
+  ~playerId: 1235198
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

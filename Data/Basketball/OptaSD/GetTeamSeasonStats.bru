@@ -1,0 +1,20 @@
+meta {
+  name: GetTeamSeasonStats
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/basketball/optasd/teams/seasonstats?tournamentId=d17vu4esjy1nwsl5glovzjvo4&teamId=dpl09q0dsbpkgnwsve17hdl4x
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: d17vu4esjy1nwsl5glovzjvo4
+  teamId: dpl09q0dsbpkgnwsve17hdl4x
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,19 @@
+meta {
+  name: GetStoryInsights
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{api}}/server/admin/autopost/insights/stories?matchId=g2413156
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: g2413156
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

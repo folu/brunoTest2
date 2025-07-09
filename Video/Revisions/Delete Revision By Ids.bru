@@ -1,0 +1,19 @@
+meta {
+  name: Delete Revision By Ids
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{api}}/videorevision/267?id=mattytest
+  body: none
+  auth: none
+}
+
+params:query {
+  id: mattytest
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

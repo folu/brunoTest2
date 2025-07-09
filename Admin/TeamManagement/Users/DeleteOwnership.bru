@@ -1,0 +1,23 @@
+meta {
+  name: DeleteOwnership
+  type: http
+  seq: 20
+}
+
+delete {
+  url: {{api}}/teammanagement/ownerships
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "OwnerId": "9e2b6401-70bb-4846-a54f-9dff3e466903",
+      "Id": "05C079EF-951F-4DA7-8137-637CA455715F",
+      "Type": "teamagent"
+  }
+}

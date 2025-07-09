@@ -1,0 +1,27 @@
+meta {
+  name: Add project language
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{api}}/teammanagement/gameday/projectlanguage/49
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "id": 173,
+      "projectId": 49,
+      "templateId": 94,
+      "templateName": "Man City",
+      "languageId": 6,
+      "language": "Spanish",
+      "translate": false
+  }
+}

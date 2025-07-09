@@ -1,0 +1,24 @@
+meta {
+  name: GetEvents
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/tennis/optasd/events?tournamentId=9jugfp4gjm7kjc6q7lr2b2as4&excludeDoubles=true&startDate=2022-01-01
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 9jugfp4gjm7kjc6q7lr2b2as4
+  excludeDoubles: true
+  startDate: 2022-01-01
+  ~startDate: 
+  ~endDate: 
+  ~year: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

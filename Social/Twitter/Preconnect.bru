@@ -1,0 +1,19 @@
+meta {
+  name: Preconnect
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{api}}/social/preconnect
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "applicationId": "B9727238-1B6B-4416-B6FB-FCFB35F22534",
+      "userId": "A635FB66-CF7D-4BDD-993D-920329610C4A",
+      "networkId": "70B4A310-D7CF-444D-831A-CF83E505DB90"
+  }
+}

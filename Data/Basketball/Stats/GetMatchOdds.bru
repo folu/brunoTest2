@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchOdds
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{api}}/data/basketball/stats/match/odds?eventId=2177113&tournamentId=nba
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 2177113
+  tournamentId: nba
+  ~endDate: 2019-10-16
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

@@ -1,0 +1,46 @@
+meta {
+  name: GetStandings - Test Automation
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/data/cycling/opta/standings?eventId=90823&classificationType=1&take=10&amountOfBatches=2
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 90823
+  classificationType: 1
+  take: 10
+  amountOfBatches: 2
+  ~stageId: 6
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  jsonData = res.getBody();
+  jsonData.batches.forEach((batch, batchIndex) => {
+      test(`Batch ${batchIndex + 1} contains cyclists with required fields`, function () {
+          batch.forEach((cyclist, index) => {
+              expect(cyclist).to.have.property("position");
+              expect(cyclist).to.have.property("time");
+              expect(cyclist).to.have.property("person");
+              expect(cyclist.person).to.have.property("fullName");
+              expect(cyclist.person).to.have.property("nationality");
+          });
+      });
+  
+  });
+  
+  
+  
+}

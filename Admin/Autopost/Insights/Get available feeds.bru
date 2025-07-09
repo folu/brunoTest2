@@ -1,0 +1,23 @@
+meta {
+  name: Get available feeds
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/server/admin/autopost/insights/available-feed?matchId=g2367914&competitionId=8&seasondId=2023&homeTeamId=t43&awayTeamId=t39
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: g2367914
+  competitionId: 8
+  seasondId: 2023
+  homeTeamId: t43
+  awayTeamId: t39
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

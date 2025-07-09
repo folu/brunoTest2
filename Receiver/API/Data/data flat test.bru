@@ -1,0 +1,30 @@
+meta {
+  name: data flat test
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{receiver-api}}/data/data_test?sport=football&provider=opta&leagueId=8&seasonId=2021&matchId=g2210634&type=match/goalsequence&teamId=t39
+  body: none
+  auth: bearer
+}
+
+params:query {
+  sport: football
+  provider: opta
+  leagueId: 8
+  seasonId: 2021
+  matchId: g2210634
+  type: match/goalsequence
+  teamId: t39
+  ~projectId: 4268
+}
+
+headers {
+  Accept: text/plain
+}
+
+auth:bearer {
+  token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2Y2xFRnFacVNVeWlpSG16UEQ5dyJ9.eyJodHRwczovL2lzZi5zY291dDcuY29tX1VzZXJJZCI6IndhYWR8QlJFQUNpUEdRbENDbzZmeWN0QXpCOTdSQVMtdEluVkVhSGlzcXk3NG8xWSIsImh0dHBzOi8vaXNmLnNjb3V0Ny5jb21fVXNlcm5hbWUiOiJNYXR0aGV3IENoYW1iZXJsYWluIiwiaHR0cHM6Ly9yZWNlaXZlci9lbWFpbCI6Ik1hdHRoZXcuQ2hhbWJlcmxhaW5Ac3RhdHNwZXJmb3JtLmNvbSIsImh0dHBzOi8vcmVjZWl2ZXIvZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJodHRwczovL3JlY2VpdmVyL25hbWUiOiJNYXR0aGV3IENoYW1iZXJsYWluIiwiaHR0cHM6Ly9yZWNlaXZlci9wYmdfaWQiOlsiNDU2MTBmOTUtOTgyMi00ZDZiLTgwMGUtODEzMDQ3ZjhmYzgxIl0sImlzcyI6Imh0dHBzOi8vc3RhdHNwZXJmb3Jtbm9ucHJvZC51cy5hdXRoMC5jb20vIiwic3ViIjoid2FhZHxCUkVBQ2lQR1FsQ0NvNmZ5Y3RBekI5N1JBUy10SW5WRWFIaXNxeTc0bzFZIiwiYXVkIjpbImh0dHBzOi8vcmVjZWl2ZXIiLCJodHRwczovL3N0YXRzcGVyZm9ybW5vbnByb2QudXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTY1MTU3MDg2OSwiZXhwIjoxNjUxNjU3MjY5LCJhenAiOiJ3ZHd3OXBScUZ4c3puSGF3YllTZW5Cak9wUUxOTGpndiIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgcmVjZWl2ZXIifQ.mYTiMyq2puyD-Diz_9y9xKePbP3os_fCCddcW51gq2CwkRV89t1Xlb_sqZAcKzLwA6oyhcryoK-Hyad8PfiHyPx-U0C6caSDs_1ux1ZbXGCYy6dbhVo6h-kDhhBCwmsdY08BgNvILk96gkMFT4twGc7dMXPjgK5iT_F_ZizcB9-kckgLRo-JqmOJl1ZjeTHc4pqdEbaY3hfgyl-P-UHOi9hEFzbmwd4GUihKrOh23yJZnFFjSVRA5XkozO83xsG2PC0m64PS0f0UBLy57rpOdUF9orAtgXhBXSnnIK7SeAUc85krgoqyvx7ErqjQkxGIwPuTvFyihNKCLcDkiaIplA
+}

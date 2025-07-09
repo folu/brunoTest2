@@ -1,0 +1,32 @@
+meta {
+  name: Get token
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://statsperformnonprod.us.auth0.com/oauth/token?grant_type=client_credentials
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  grant_type: client_credentials
+}
+
+auth:oauth2 {
+  grant_type: password
+  access_token_url: https://statsperformnonprod.us.auth0.com/oauth/token
+  refresh_token_url: 
+  username: 13strides
+  password: STSTST13rides
+  client_id: wdww9pRqFxsznHawbYSenBjOpQLNLjgv
+  client_secret: ZN30Bmwn-0Eom4W5qE4vZY04N65bUUMf-OZI62MXiGefixSRmpm74y1yqJEoOQa-
+  scope: offline asset:read
+  credentials_placement: body
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

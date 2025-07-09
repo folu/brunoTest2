@@ -1,0 +1,77 @@
+meta {
+  name: GetTeamLastFiveGameStats -  Test Automation
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{api}}/data/basketball/stats/team/lastFiveGames?competitionId=nba&teamId=5312&language=en&seasonId=2024&eventTypeId=regular season
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: nba
+  teamId: 5312
+  language: en
+  seasonId: 2024
+  eventTypeId: regular season
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response time is less than 2000ms", function () {
+      expect(res.getResponseTime()).to.be.below(2000);
+  });
+  
+  test("Team details are accurate", function () {
+      const team = res.getBody().team;
+  
+      // Check if the team object exists
+      expect(team, "Team object is present").to.exist;
+  
+      // Verify key team details
+      expect(team).to.have.property("name", "Charlotte Hornets");
+      expect(team).to.have.property("abbreviation", "CHA");
+      expect(team).to.have.property("location", "Charlotte");
+      expect(team.crest).to.include("charlotte hornets_bsk5312.png"); // Validate crest url
+  });
+  
+  test("Game stats are valid for each game", function () {
+      const gameStats = res.getBody().gameStats;
+  
+      // Ensure the response contains game stats
+      expect(gameStats, "Game stats are present").to.be.an("array").that.is.not.empty;
+  
+      // Validate fields for each game
+      gameStats.forEach((game, index) => {
+          expect(game).to.have.property("gameDate"); // Check if 'gameDate' exists
+          expect(game.gameDate).to.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/); // Matches the full date-time format
+      });
+  });
+  
+  test("Game averages are calculated correctly", function () {
+      const averages = res.getBody().gameStatsAverages;
+  
+      // Ensure averages object exists
+      expect(averages, "Game averages object is present").to.exist;
+  
+      // Validate key averages for defense
+      expect(averages.defence).to.have.property("rebounds").that.is.a("number");
+      expect(averages.defence).to.have.property("turnoversForced").that.is.a("number");
+  
+      // Validate key averages for offense
+      expect(averages.offense).to.have.property("pointsPerGame").that.is.a("number");
+      expect(averages.offense.fieldGoalPercentage).to.match(/^\d+(\.\d+)?%$/); // Percentage format
+  });
+  
+  
+  
+}

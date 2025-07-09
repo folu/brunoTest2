@@ -1,0 +1,98 @@
+meta {
+  name: GetPredictedStandings - Test Automation
+  type: http
+  seq: 31
+}
+
+get {
+  url: {{api}}/data/football/optasd/predicted-standings?leagueId=9n12waklv005j8r32sfjj2eqc&seasonId=2024&collectionPath=/collections/projects/6029/crests.json
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 9n12waklv005j8r32sfjj2eqc
+  seasonId: 2024
+  collectionPath: /collections/projects/6029/crests.json
+  ~tournamentStage: 1r4fai5omocyz8e620xfzv11w
+  ~locale: en-en
+  ~division: away
+  ~includePositionDistribution: true
+  ~amountOfBatches: 1
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  //teamm structure 
+  test("Response should be an array of teams", function () {
+      let jsonData = res.getBody();
+      expect(jsonData).to.be.an('array').that.is.not.empty;
+  
+      jsonData.forEach(team => {
+          expect(team).to.have.property("team");
+          expect(team.team).to.have.property("id").that.is.a("string");
+          expect(team.team).to.have.property("name").that.is.a("string");
+          expect(team.team).to.have.property("abbreviation").that.is.a("string");
+          expect(team.team).to.have.property("brand").that.is.an("object");
+  
+          expect(team.team.brand).to.have.property("crest").that.includes("https://");
+      });
+  });
+  
+  //check if leaguePosition is a valid number
+  test("League position should be a valid number", function () {
+      let jsonData = res.getBody();
+  
+      jsonData.forEach(team => {
+          expect(team.currentStats).to.have.property("leaguePosition").that.is.a("number");
+          expect(team.currentStats).to.have.property("leaguePositionStart").that.is.a("string");
+          expect(team.currentStats).to.have.property("leaguePositionChange").that.is.oneOf(["neutral", "up", "down"]);
+      });
+  });
+  
+  //predictedPoints and predictedRank exists and they are numbers
+  test("Predicted rank should match predicted points", function () {
+      let jsonData = res.getBody();
+  
+      jsonData.forEach(team => {
+          expect(team).to.have.property("predictedPoints").that.is.a("number");
+          expect(team).to.have.property("predictedRank").that.is.a("number");
+  
+          if (team.hasOwnProperty("rankPrediction")) {
+              expect(team.rankPrediction).to.be.an("array");
+  
+              team.rankPrediction.forEach(rank => {
+                  expect(rank).to.have.property("rankStatus").that.is.a("string");
+                  expect(rank).to.have.property("value").that.is.a("string").and.match(/^\d+(\.\d+)?%$/);
+              });
+          } else {
+              console.warn(`Skipping rankPrediction check for team: ${team.team.name}`);
+          }
+      });
+  });
+  
+  
+  
+  test("Form streak should only contain valid match results", function () {
+      let jsonData = res.getBody();
+  
+      jsonData.forEach(team => {
+          expect(team.currentStats).to.have.property("form").that.is.an("array", "Form streak should be an array");
+  
+          // each entry in the array is a valid match result
+          team.currentStats.form.forEach(f => {
+              expect(["W", "L", "D"]).to.include(String(f).trim().toUpperCase(), 
+                  `Unexpected value found: ${f}`);
+          });
+      });
+  });
+  
+  
+}

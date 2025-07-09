@@ -1,0 +1,26 @@
+meta {
+  name: GetTranslationCollection
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/admin/collections/translations/?sport=football&languages=en,de&collectionName=mattytest1
+  body: none
+  auth: bearer
+}
+
+params:query {
+  sport: football
+  languages: en,de
+  collectionName: mattytest1
+  ~words: 
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}

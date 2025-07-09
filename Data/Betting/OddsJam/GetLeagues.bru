@@ -1,0 +1,20 @@
+meta {
+  name: GetLeagues
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/data/betting/oddsjam/leagues?sport=soccer&isLive=true
+  body: none
+  auth: none
+}
+
+params:query {
+  sport: soccer
+  isLive: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

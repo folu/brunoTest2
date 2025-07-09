@@ -1,0 +1,30 @@
+meta {
+  name: Get Video Render Id Status
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/server/videoV2/get-video-jobs-status?userId=19c87481-5514-4d78-b1db-4d339950691a&renderId=4e241c49-65df-4fe0-8082-d7252f779f46&includeSeen=true
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  userId: 19c87481-5514-4d78-b1db-4d339950691a
+  renderId: 4e241c49-65df-4fe0-8082-d7252f779f46
+  includeSeen: true
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+  x-api-key: {{apiKey}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  File: @file(/C:/Users/Matty/Desktop/D9J7E_RW4AA6dag.mp4)
+}

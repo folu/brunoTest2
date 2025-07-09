@@ -1,0 +1,21 @@
+meta {
+  name: Assign Projects
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{api}}/admin/groups/db2573c9-d9bb-472b-9ae1-840501707a61/assigned/projects
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  [
+      3770
+  ]
+}

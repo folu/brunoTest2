@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchStats
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{api}}/data/football/stats/match/stats?leagueId=fran2&teamId=6158&eventId=2147703
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: fran2
+  teamId: 6158
+  eventId: 2147703
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

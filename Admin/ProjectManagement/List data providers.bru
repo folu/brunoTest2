@@ -1,0 +1,21 @@
+meta {
+  name: List data providers
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/project-management/list/dataproviders
+  body: none
+  auth: bearer
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

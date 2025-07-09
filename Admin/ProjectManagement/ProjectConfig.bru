@@ -1,0 +1,25 @@
+meta {
+  name: ProjectConfig
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api}}/project-management?projectId=5264
+  body: none
+  auth: bearer
+}
+
+params:query {
+  projectId: 5264
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: text/html
+  ~Accept-Encoding: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

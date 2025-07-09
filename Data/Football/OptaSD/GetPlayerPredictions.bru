@@ -1,0 +1,22 @@
+meta {
+  name: GetPlayerPredictions
+  type: http
+  seq: 20
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/predictions?tournamentId=80foo89mm28qjvyhjzlpwj28k&eventId=7e0iedo5h5g8kbfjir1rurt3o&seasonId=2019&playerId=1vz038uyzmq8saskeeo0qhm8l
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 80foo89mm28qjvyhjzlpwj28k
+  eventId: 7e0iedo5h5g8kbfjir1rurt3o
+  seasonId: 2019
+  playerId: 1vz038uyzmq8saskeeo0qhm8l
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

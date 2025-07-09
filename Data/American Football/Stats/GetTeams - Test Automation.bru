@@ -1,0 +1,50 @@
+meta {
+  name: GetTeams - Test Automation
+  type: http
+  seq: 22
+}
+
+get {
+  url: {{api}}/data/americanfootball/stats/teams?seasonId=2025&competitionId=elf
+  body: none
+  auth: none
+}
+
+params:query {
+  seasonId: 2025
+  competitionId: elf
+  ~teamId: af324
+  ~language: en
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Check if all teams have a location", function () {
+      let jsonData = res.getBody();
+      jsonData.forEach(team => {
+          expect(team.location).to.be.a("string").and.not.empty;
+      });
+  });
+  
+  test("Check if all crest URLs are valid", function () {
+      let jsonData = res.getBody();
+      jsonData.forEach(team => {
+          expect(team.crest).to.match(/^https?:\/\/.+\.(png|jpg|jpeg)$/);
+      });
+  });
+  
+  test("Check if all crest URLs are valid", function () {
+      let jsonData = res.getBody();
+      jsonData.forEach(team => {
+          expect(team.crest).to.match(/^https?:\/\/.+\.(png|jpg|jpeg)$/);
+      });
+  });
+  
+}

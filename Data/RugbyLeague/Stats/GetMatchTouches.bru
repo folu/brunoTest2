@@ -1,0 +1,22 @@
+meta {
+  name: GetMatchTouches
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/rugbyleague/stats/xyevents?playerId=100001622&matchId=20231112320
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 100001622
+  matchId: 20231112320
+  ~teamId: 500013
+  ~specificEvent: tackle-made
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

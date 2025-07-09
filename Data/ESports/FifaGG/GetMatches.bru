@@ -1,0 +1,25 @@
+meta {
+  name: GetMatches
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/esports/fifagg/matches?roundId=7f3953fc-3cc6-4190-8514-8f4df9537f3f&endDate=2022-07-16T19:00:00Z&startDate=2022-07-14T15:00:00Z&groupOrderDirection=asc&batchSize=4
+  body: none
+  auth: none
+}
+
+params:query {
+  roundId: 7f3953fc-3cc6-4190-8514-8f4df9537f3f
+  endDate: 2022-07-16T19:00:00Z
+  startDate: 2022-07-14T15:00:00Z
+  groupOrderDirection: asc
+  batchSize: 4
+  ~from: 2019-10-07
+  ~groupbyGameweek: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

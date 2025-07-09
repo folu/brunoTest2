@@ -1,0 +1,19 @@
+meta {
+  name: GetRaceStats
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/horseracing/pa/racestats?raceId=20180414ain1425
+  body: none
+  auth: none
+}
+
+params:query {
+  raceId: 20180414ain1425
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

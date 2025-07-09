@@ -1,0 +1,26 @@
+meta {
+  name: disconnect
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{api}}/social/disconnect
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+  
+      "ApplicationId": "B9727238-1B6B-4416-B6FB-FCFB35F22534",
+      "NetworkId": "199BB571-0E5D-415F-A307-04A355589533",
+      "UserId": "D0A3BABD-B8C1-4EEF-8BC9-EA308CC1CECE",
+      "ConnectionId": "6939B7F9-C7B9-4CEE-9082-6AF479FC6E23"
+  }
+}

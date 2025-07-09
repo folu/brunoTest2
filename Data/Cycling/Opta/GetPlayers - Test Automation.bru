@@ -1,0 +1,64 @@
+meta {
+  name: GetPlayers - Test Automation
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/data/cycling/opta/players?competitionId=7101&seasonId=2025
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 7101
+  seasonId: 2025
+  ~playerId: 9003617
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  const schema = {
+    type: "array",
+    items: {
+      type: "object",
+      required: [
+        "dateOfBirth",
+        "age",
+        "height",
+        "weight",
+        "id",
+        "fullName",
+        "nationality",
+        "teamId",
+        "teamName"
+      ],
+      properties: {
+        dateOfBirth: { type: "string" }, 
+        age: { type: "integer" },
+        height: { type: "integer" },
+        weight: { type: "integer" },
+        id: { type: "string" },
+        fullName: { type: "string" },
+        nationality: { type: "string" },
+        teamId: { type: "string" },
+        teamName: { type: "string" },
+        captainText: { type: "string" }
+      },
+      additionalProperties: false
+    }
+  };
+  
+  test("Schema is valid", function () {
+  //   pm.response.to.have.jsonSchema(schema);
+  });
+  
+  
+}

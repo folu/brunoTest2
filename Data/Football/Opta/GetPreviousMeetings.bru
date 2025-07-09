@@ -1,0 +1,24 @@
+meta {
+  name: GetPreviousMeetings
+  type: http
+  seq: 40
+}
+
+get {
+  url: {{api}}/data/football/opta/match/previousmeetings?tournamentId=23&matchId=g2219328
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 23
+  matchId: g2219328
+  ~teamId: 10470g1063790
+  ~leagueId: 
+  ~seasonId: 2020
+  ~includePlayerLeaderStats: true
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

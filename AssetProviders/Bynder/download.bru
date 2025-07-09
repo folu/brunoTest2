@@ -1,0 +1,26 @@
+meta {
+  name: download
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/AssetProvider/EA2684BB-F2C5-43C6-A88E-C74614DFE15D/downloadImage?imageId=AAE8D109-6610-4235-A7213E3036C3C70D_0&userId=02F96260-BE3F-4263-97E2-8DF6C3587681&ApplicationId=B9727238-1B6B-4416-B6FB-FCFB35F22534
+  body: json
+  auth: none
+}
+
+params:query {
+  imageId: AAE8D109-6610-4235-A7213E3036C3C70D_0
+  userId: 02F96260-BE3F-4263-97E2-8DF6C3587681
+  ApplicationId: B9727238-1B6B-4416-B6FB-FCFB35F22534
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+         {"SearchTerm": "dog",
+         "UserId": "00e20e52-f115-4b62-b89d-c39f071d5920"}
+}

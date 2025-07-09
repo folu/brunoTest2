@@ -1,0 +1,55 @@
+meta {
+  name: GetPlayerSeasonIndex - Test Automation
+  type: http
+  seq: 34
+}
+
+get {
+  url: {{api}}/data/football/opta/player/seasonindex?competitionId=8&seasonId=2020&teamId=t3
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 8
+  seasonId: 2020
+  teamId: t3
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Response schema is valid and idPrefix has 'p' prefix", function () {
+      let jsonData = res.getBody();
+      expect(jsonData).to.have.property('competitionId').that.is.a('string');
+      expect(jsonData).to.have.property('competitionName').that.is.a('string');
+      expect(jsonData).to.have.property('seasonId').that.is.a('string');
+      expect(jsonData).to.have.property('team').that.is.an('object');
+      expect(jsonData.team).to.have.property('id').that.is.a('string');
+      expect(jsonData.team).to.have.property('name').that.is.a('string');
+      expect(jsonData.team).to.have.property('crest').that.is.a('string');
+  
+      // Check each player's data - adding this instead of JSON schema
+      expect(jsonData).to.have.property('players').that.is.an('array');
+      jsonData.players.forEach(player => {
+          expect(player).to.have.property('idPrefix').that.includes('p');
+          expect(player.idPrefix).to.match(/^p\d+$/);
+          expect(player).to.have.property('firstName').that.is.a('string');
+          expect(player).to.have.property('lastName').that.is.a('string');
+          expect(player).to.have.property('fullName').that.is.a('string');
+          expect(player).to.have.property('position').that.is.a('string');
+          expect(player).to.have.property('shirtNumber').that.is.a('string');
+      });
+  });
+  
+  test("Response time is acceptable", function () {
+      expect(res.getResponseTime()).to.be.below(4000); 
+  });
+  
+}

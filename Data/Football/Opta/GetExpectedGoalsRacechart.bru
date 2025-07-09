@@ -1,0 +1,22 @@
+meta {
+  name: GetExpectedGoalsRacechart
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{api}}/data/football/opta/expectedgoals?matchId=g2219431&seasonId=2021&leagueId=23&dataType=racechart
+  body: none
+  auth: none
+}
+
+params:query {
+  matchId: g2219431
+  seasonId: 2021
+  leagueId: 23
+  dataType: racechart
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

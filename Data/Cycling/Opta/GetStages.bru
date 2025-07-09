@@ -1,0 +1,20 @@
+meta {
+  name: GetStages
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{api}}/data/cycling/opta/stages?competitionId=7102&seasonId=2024
+  body: none
+  auth: none
+}
+
+params:query {
+  competitionId: 7102
+  seasonId: 2024
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

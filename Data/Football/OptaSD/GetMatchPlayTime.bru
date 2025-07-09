@@ -1,0 +1,22 @@
+meta {
+  name: GetMatchPlayTime
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/data/football/optasd/match/playtime?tournamentId=1jt5mxgn4q5r6mknmlqv5qjh0&eventId=cbdhas785obfxzkr1jar1vkes
+  body: none
+  auth: none
+}
+
+params:query {
+  tournamentId: 1jt5mxgn4q5r6mknmlqv5qjh0
+  eventId: cbdhas785obfxzkr1jar1vkes
+  ~seasonId: 2020
+  ~collectionPath: /collections/2021/football/english premier league/crests.json
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

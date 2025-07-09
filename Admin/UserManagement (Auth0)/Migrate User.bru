@@ -1,0 +1,22 @@
+meta {
+  name: Migrate User
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{api}}/admin/user/management/migrate-user
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "userId": "85e87cb9-6d21-4a79-ab60-0be2bb2144b6",
+      "initialPassword": "matty123"
+  }
+}

@@ -1,0 +1,35 @@
+meta {
+  name: Get Event Data
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{api}}/admin/autopost/events/data?sport=football&provider=opta
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  sport: football
+  provider: opta
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: 
+  access_token_url: 
+  refresh_token_url: 
+  client_id: 
+  client_secret: 
+  scope: 
+  state: 
+  pkce: false
+  credentials_placement: basic_auth_header
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}

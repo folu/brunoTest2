@@ -1,0 +1,28 @@
+meta {
+  name: test connection
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{api}}/social/test-connection
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+  
+      "ApplicationId": "B9727238-1B6B-4416-B6FB-FCFB35F22534",
+      "NetworkId": "199BB571-0E5D-415F-A307-04A355589533",
+      "Props": {
+          "ADD PROPS SPECIFIC TO PROVIDER HERE" :"TODO",
+          "SEE PROVIDER FOLDER FOR SAVED EXAMPLES": "TODO"
+      }
+  }
+}

@@ -1,0 +1,20 @@
+meta {
+  name: GetPCareerTrophies
+  type: http
+  seq: 28
+}
+
+get {
+  url: {{api}}/data/football/optasd/player/careertrophies?playerId=3r7wi8r14k888ip3y2bzbacid
+  body: none
+  auth: none
+}
+
+params:query {
+  playerId: 3r7wi8r14k888ip3y2bzbacid
+  ~includeYouthStats: false
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

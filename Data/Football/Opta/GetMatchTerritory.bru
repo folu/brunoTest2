@@ -1,0 +1,21 @@
+meta {
+  name: GetMatchTerritory
+  type: http
+  seq: 22
+}
+
+get {
+  url: {{api}}/data/football/opta/match/territory?leagueId=8&eventId=g2210271&seasonId=2021
+  body: none
+  auth: none
+}
+
+params:query {
+  leagueId: 8
+  eventId: g2210271
+  seasonId: 2021
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

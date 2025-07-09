@@ -1,0 +1,15 @@
+meta {
+  name: Update
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{api}}/admin/collections/ingestion/update
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}

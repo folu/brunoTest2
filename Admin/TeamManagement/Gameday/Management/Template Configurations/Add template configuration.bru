@@ -1,0 +1,23 @@
+meta {
+  name: Add template configuration
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{api}}/teammanagement/gameday/template-configurations
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
+
+body:json {
+  {
+      "TemplateName": "matty test 2024",
+      "TemplateData": "{\"fulltime\":61717}",
+      "LanguageId": 1
+  }
+}

@@ -1,0 +1,23 @@
+meta {
+  name: GetTeamFitnessData (Deprecated MA24)
+  type: http
+  seq: 38
+}
+
+get {
+  url: {{api}}/data/football/optasd/team/matchfitness?eventId=7vz309dptrwaxgsuie6tt5g8a&teamId=121le8unjfzug3iu9pgkqa1c7
+  body: none
+  auth: none
+}
+
+params:query {
+  eventId: 7vz309dptrwaxgsuie6tt5g8a
+  teamId: 121le8unjfzug3iu9pgkqa1c7
+  ~seasonId: 2021
+  ~comeptitionId: 88uv51hj9upft1fpg33qbwob8
+  ~language: en-gb
+}
+
+headers {
+  x-api-key: {{apiKey}}
+}
